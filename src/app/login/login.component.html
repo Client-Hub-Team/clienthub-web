@@ -1,0 +1,31 @@
+<style>
+  .login {
+    background: #FFF;
+    height:100vh;
+  }
+
+</style>
+
+
+<div class="login">
+
+<div id="landing">
+    <div id="login-form">
+
+        <a href="http://cloudclienthub.com">
+            <img src="https://logo" alt="CLOUDCLIENTHUB logo">
+        </a>
+
+        <fieldset>
+            <label class="highlight-text" for="email">User</label>
+            <input class="highlight-text highlight-border" type="text" [(ngModel)]="email" placeholder='E-mail' autocomplete="off" autofocus="autofocus">
+        </fieldset>
+        <fieldset>
+            <label class="highlight-text" for="password">Password</label>
+            <input class="highlight-text highlight-border" type='password' placeholder='Password' [(ngModel)]="password" autocomplete="off">
+        </fieldset>
+        <input class="highlight-bg" type='submit' name='submit' value="Login" (click)="login()">
+    </div>
+</div>
+
+</div>

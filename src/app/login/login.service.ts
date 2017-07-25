@@ -1,0 +1,23 @@
+import { Injectable } from '@angular/core';
+import { Http, Headers, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+import { LocalStorageService } from 'angular-2-local-storage';
+import { environment } from '../../environments/environment';
+
+@Injectable()
+export class LoginService {
+
+
+  constructor(private http: Http, private localStorageService: LocalStorageService) {
+
+  }
+
+  login(email, password): Promise<any> {
+    let headers = new Headers();
+    headers.set('Content-Type','application/json');
+    let options = new RequestOptions({ headers: headers });
+    // headers.set('Authorization', 'JWT ' + this.localStorageService.get('access_token'));
+    return this.http.post(`${environment.apiUrl}/auth`, {email:email, password:password}, options).toPromise();
+  }
+
+}
