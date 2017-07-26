@@ -13,11 +13,11 @@ export class LoginService {
   }
 
   login(email, password): Promise<any> {
-    let headers = new Headers();
-    headers.set('Content-Type','application/json');
-    let options = new RequestOptions({ headers: headers });
+    const headers = new Headers();
+    headers.set('Content-Type', 'application/json');
+    const options = new RequestOptions({ headers: headers });
     // headers.set('Authorization', 'JWT ' + this.localStorageService.get('access_token'));
-    return this.http.post(`${environment.apiUrl}/auth`, {email:email, password:password}, options).toPromise();
+    return this.http.post(`${environment.apiUrl}/auth`, {email: email, password: password}, options).toPromise();
   }
 
 }

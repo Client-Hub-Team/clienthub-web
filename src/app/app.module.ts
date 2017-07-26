@@ -9,11 +9,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MainDashboardComponent } from './dashboard/main/main.component';
 import { LoginService } from './login/login.service';
 import { DashboardService } from './dashboard/dashboard.service';
+import { RegistrationComponent } from './registration/registration.component';
+import { CreateComponent } from './registration/create/create.component';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { AuthGuard } from './guards/auth.guard';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgUploaderModule } from 'ngx-uploader';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { RegistrationModule } from './registration/registration.module';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -22,7 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    MainDashboardComponent,
+    MainDashboardComponent
   ],
   imports: [
     LocalStorageModule.withConfig({
@@ -33,6 +36,7 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     HttpModule,
     AppRoutingModule,
+    RegistrationModule,
     NgUploaderModule,
     BsDropdownModule.forRoot()
   ],
