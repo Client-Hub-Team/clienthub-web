@@ -1,4 +1,4 @@
-# Alana.AI
+# Cloud Client Hub
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.4.
 
@@ -19,11 +19,6 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Building the Electron App
-
-Go to `web/electron_app` and run `npm install`. After it's done, run `npm run dist` and it should be created in a minute or so.
-Settings for the Electron build can be found in `package.json`. Electron code can be changed in `electron.js`.
 
 ## Running unit tests
 
