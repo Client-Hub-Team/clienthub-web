@@ -1,0 +1,23 @@
+.avatar {
+	width: 64px;
+	height: 64px;
+	border-radius: 64px;
+	text-align: center;
+	background-color: #b3bac5;
+	color: #fff;
+	overflow: hidden;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.avatar > img {
+	position: absolute;
+	left: 0; top: 0; right: 0; bottom: 0;
+	z-index: 1;
+}
+
+.avatar-64 {
+	line-height: 64px;
+	font-size: 22px;
+}
