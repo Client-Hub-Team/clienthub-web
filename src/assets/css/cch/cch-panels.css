@@ -1,0 +1,18 @@
+.panel {
+	border-radius: 2px;
+}
+
+.panel-default {
+	background-color: #fff;
+	box-shadow: 0 3px 11px 0 rgba(39,76,132,0.15);
+	border: none;
+	/*border: 1px solid #f1f4f7;*/
+}
+
+.panel-default > .panel-heading {
+	background-color: #fff;
+	color: #333c48;
+	border-bottom: 1px solid #f1f4f7;
+	padding: 15px;
+	font-weight: 700;
+}

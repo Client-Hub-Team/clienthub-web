@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500');
+
+body {
+	font-family: 'Fira Sans', sans-serif;
+	color: #7e8692;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #333c48;
+	font-weight: 400;
+}
+
+a {
+	color: #0084ff;
+	text-decoration: none !important;
+}
+
+a:hover, a:focus {
+	color: #006acd;
+	text-decoration: none !important;
+}
