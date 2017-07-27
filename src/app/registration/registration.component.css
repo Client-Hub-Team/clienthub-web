@@ -1,0 +1,86 @@
+header {
+	background-color: #fff;
+	padding: 20px 0;
+	/*box-shadow: 0 3px 11px 0 rgba(39,76,132,0.15);*/
+	border-bottom: 1px solid #f1f4f7;
+	margin-bottom: 30px;
+}
+
+.btn-primary, .btn-default {
+	margin-top: 30px;
+}
+
+p {
+	margin-bottom: 20px;
+}
+
+a p {
+	margin: 0;
+}
+
+a.choose-link {
+	padding: 10px;
+	display: block !important;
+}
+
+.practice-url {
+	padding-top: 10px;
+}
+
+.d-padding-r {
+	padding-right: 3px;
+}
+
+.d-padding-l {
+	padding-left: 3px;
+}
+
+.current-invited {
+	font-size: 14px;
+	margin: 20px 0 0 0;
+	padding: 15px;
+	background-color: #eef0f4;
+	border-radius: 2px;
+}
+
+.current-invited .btn {
+	margin-top: 15px;
+}
+
+.modal p {
+	line-height: 2;
+}
+
+.invitation-group {
+	margin-bottom: 10px;
+}
+
+.copy-url {
+	margin: 0
+}
+
+@media screen and (max-width: 768px) {
+	.practice-url {
+		padding-top: 5px;
+		text-align: right;
+	}
+
+	.d-padding-r {
+		padding-right: 15px !important;
+	}
+
+	.d-padding-l {
+		padding-left: 15px !important;
+	}
+
+	input {
+		text-align: left;
+	}
+
+	.copy-url {
+		margin-top: 15px;
+		display: block !important;
+		width: 100%;
+	}
+
+}

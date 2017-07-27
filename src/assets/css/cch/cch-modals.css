@@ -1,0 +1,44 @@
+.modal-backdrop {
+	background: rgba(30,35,40,1);
+	/*opacity: 1 !important;*/
+}
+
+.modal {
+  text-align: center;
+}
+
+.modal.fade .modal-dialog {
+  -webkit-transition: -webkit-transform .15s ease-out;
+       -o-transition:      -o-transform .15s ease-out;
+          transition:         transform .15s ease-out;
+  -webkit-transform: scale(0.75) !important;
+      -ms-transform: scale(0.75) !important;
+       -o-transform: scale(0.75) !important;
+          transform: scale(0.75) !important;
+}
+.modal.in .modal-dialog {
+  -webkit-transform: scale(1) !important;
+      -ms-transform: scale(1) !important;
+       -o-transform: scale(1) !important;
+          transform: scale(1) !important;
+}
+
+.modal-content {
+	box-shadow: 0 15px 30px 0 rgba(0,0,0,0.2);
+	border: none;
+}
+
+@media screen and (min-width: 768px) { 
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}

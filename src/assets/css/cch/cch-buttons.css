@@ -3,7 +3,7 @@
 	border: none;
 	box-shadow: none !important;
 	font-size: 14px;
-	font-weight: 700;
+	font-weight: 500;
 	outline: none !important;
 	transition: 150ms;
 	padding: 9px 16px;
@@ -31,14 +31,33 @@
 	transform: translate3d(0,1px,0);
 }
 
+.btn-default {
+	background-color: #b3bac5;
+	color: #fff !important;
+}
+.btn-default:hover, .btn-default:focus {
+	background-color: #9ba3b0;
+}
+.btn-default:active {
+	background-color: #8e96a3 !important;
+}
+
 .btn-success {
 	background-color: #09cd33;
 }
-
 .btn-success:hover, .btn-success:focus {
 	background-color: #05b32a;
 }
-
 .btn-success:active {
 	background-color: #00901f !important;
+}
+
+.btn-primary {
+	background-color: #0084ff;
+}
+.btn-primary:hover, .btn-primary:focus {
+	background-color: #0074e1;
+}
+.btn-primary:active {
+	background-color: #006acd !important;
 }

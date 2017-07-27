@@ -18,11 +18,24 @@
   font-variant: normal;
   text-transform: none;
 
-  vertical-align: -1px;
+  vertical-align: -2px;
 
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.feather.x2 {
+  font-size: 18px !important;
+}
+
+.feather.x3 {
+  font-size: 22px !important;
+  margin-top: -2px;
+}
+
+.feather.x3 {
+  font-size: 32px !important;
 }
 
 .activity:before {
@@ -279,9 +292,6 @@
 }
 .fast-forward:before {
   content: "\e954";
-}
-.feather:before {
-  content: "\e955";
 }
 .file-minus:before {
   content: "\e956";

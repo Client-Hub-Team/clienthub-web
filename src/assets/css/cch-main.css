@@ -3,7 +3,9 @@
 @import url(cch/cch-buttons.css);
 @import url(cch/cch-feather-icons.css);
 @import url(cch/cch-forms.css);
+@import url(cch/cch-modals.css);
 @import url(cch/cch-panels.css);
+@import url(cch/cch-tooltips.css);
 @import url(cch/cch-typography.css);
 
 html, body {
@@ -14,8 +16,19 @@ html, body {
 	height: 100%;
 }
 
+.fake-body.white {
+	background: #fff;
+	min-height: 100%;
+	height: auto;
+	padding-bottom: 50px;
+}
+
 body {
 	background-color: #f2f3f6;
+}
+
+hr {
+	border-top: 1px solid rgba(179, 186, 197, 0.2);
 }
 
 /* Background top bar */

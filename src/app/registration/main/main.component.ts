@@ -7,7 +7,7 @@ import { LocalStorageService } from 'angular-2-local-storage';
 @Component({
   selector: 'app-registration-main',
   templateUrl: './main.component.html',
-  styleUrls: []
+  styleUrls: [ '../registration.component.css' ]
 })
 export class MainRegistrationComponent implements OnInit {
 
