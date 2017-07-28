@@ -11,6 +11,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgUploaderModule } from 'ngx-uploader';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
+import { CreateService } from './create/create.service';
+import { LoginService } from '../login/login.service';
+
 const routes: Routes = [
   { path: 'registration', component: RegistrationComponent,
     children: [
@@ -40,6 +43,6 @@ const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [CreateService, LoginService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
 })
 export class RegistrationModule {  }

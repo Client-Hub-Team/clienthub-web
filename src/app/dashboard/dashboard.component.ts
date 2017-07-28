@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
-import { DomSanitizer } from '@angular/platform-browser';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
@@ -12,34 +10,20 @@ import { Title } from '@angular/platform-browser';
  a login is successfull.
  */
 @Component({
-  selector: 'dashboard',
+  selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: [ './dashboard.component.css' ]
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
 
-  name: String = '';
-  bg: any = {};
-  header_bg: any = {};
-  logo: String = '';
-  site: String = '';
-  style: any = '';
-
-  constructor(private localStorage: LocalStorageService, private sanitizer: DomSanitizer, private router: Router, private titleCtrl: Title) {
+  constructor(private localStorage: LocalStorageService, private router: Router) {
 
   }
 
   ngOnInit(): void {
-    let brand = this.localStorage.get('brand')['brand']
-    let user = this.localStorage.get('brand')['brand']['user']
-
-    this.name = user.name;
-    this.bg[brand.bg.split(':')[0]] = brand.bg.split(':')[1]
-    this.header_bg[brand.header_bg.split(':')[0]] = brand.header_bg.split(':')[1]
-    this.logo = brand.logo
-    this.site = brand.site
-    this.style = this.sanitizer.bypassSecurityTrustStyle(brand.style);
-    this.titleCtrl.setTitle(`${brand.name} powered by ALANA`);
+    if (this.localStorage.get('practice') == null || this.localStorage.get('practice') === undefined) {
+      this.router.navigate(['/registration/create']);
+    }
   }
 
 
@@ -48,7 +32,9 @@ export class DashboardComponent {
    */
   logout(): void {
     this.localStorage.remove('access_token');
-    this.localStorage.remove('brand');
+    this.localStorage.remove('data');
+    this.localStorage.remove('user');
+    this.localStorage.remove('practice');
     this.router.navigate(['/login']);
   }
 

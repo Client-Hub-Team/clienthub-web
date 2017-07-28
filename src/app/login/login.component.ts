@@ -23,8 +23,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loginService.login(this.email, this.password).then(res => {
-      console.log(res.json());
       this.localStorage.set('access_token', res.json().access_token);
+      this.localStorage.set('user', res.json().user);
+      this.localStorage.set('data', res.json().data);
+      this.localStorage.set('practice', res.json().practice);
+
+      this.router.navigate(['/dashboard/main']);
     });
   }
 

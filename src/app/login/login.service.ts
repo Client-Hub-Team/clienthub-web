@@ -17,7 +17,7 @@ export class LoginService {
     headers.set('Content-Type', 'application/json');
     const options = new RequestOptions({ headers: headers });
     // headers.set('Authorization', 'JWT ' + this.localStorageService.get('access_token'));
-    return this.http.post(`${environment.apiUrl}/auth`, {email: email, password: password}, options).toPromise();
+    return this.http.post(`${environment.apiUrl}/api-token-auth/`, {username: email, password: password}, options).toPromise();
   }
 
 }
