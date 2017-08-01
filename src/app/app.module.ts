@@ -17,16 +17,13 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgUploaderModule } from 'ngx-uploader';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { RegistrationModule } from './registration/registration.module';
-
+import { DashboardModule } from './dashboard/dashboard.module';
 import { AppRoutingModule } from './app-routing.module';
-import { SlickModule } from 'ngx-slick';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    DashboardComponent,
-    MainDashboardComponent
+    LoginComponent
   ],
   imports: [
     LocalStorageModule.withConfig({
@@ -38,9 +35,9 @@ import { SlickModule } from 'ngx-slick';
     HttpModule,
     AppRoutingModule,
     RegistrationModule,
+    DashboardModule,
     NgUploaderModule,
-    BsDropdownModule.forRoot(),
-    SlickModule.forRoot()
+    BsDropdownModule.forRoot()
   ],
   providers: [LoginService, DashboardService, AuthGuard, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

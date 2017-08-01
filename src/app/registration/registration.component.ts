@@ -26,8 +26,8 @@ export class RegistrationComponent implements OnInit {
       this.localStorage.get('user') !== undefined &&
       this.localStorage.get('data') !== null &&
       this.localStorage.get('data') !== undefined &&
-      this.localStorage.get('practice') !== null &&
-      this.localStorage.get('practice') !== undefined
+      this.localStorage.get('company') !== null &&
+      this.localStorage.get('company') !== undefined
     ) {
       this.router.navigate(['/dashboard/main']);
     } else {

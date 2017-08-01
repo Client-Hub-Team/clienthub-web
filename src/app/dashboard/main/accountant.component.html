@@ -1,0 +1,237 @@
+<div class="practice-sidebar animated fadeInLeft">
+	<a href="#" data-toggle="tooltip" data-placement="right" title="Dashboard"><i class="feather compass"></i></a>
+	<a class="active" href="#" data-toggle="tooltip" data-placement="right" title="Clients"><i class="feather users"></i></a>
+	<a href="#" data-toggle="tooltip" data-placement="right" title="Apps"><i class="feather package"></i></a>
+	<a href="#" data-toggle="tooltip" data-placement="right" title="Resources"><i class="feather folder"></i></a>
+	<a href="#" data-toggle="tooltip" data-placement="right" title="Messages"><i class="feather message-square"></i></a>
+	<a href="#" data-toggle="tooltip" data-placement="right" title="Settings"><i class="feather settings"></i></a>
+</div>
+
+<div class="main">
+	<header class="header-bar header-bar-practice animated fadeIn delay-1">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-7">
+					<img src="assets/img/logo-default.png" width="150" alt="Cloud Client Hub">
+				</div>
+				<div class="col-md-5 text-right">
+					<span class="dropdown pull-right">
+					  <span id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    <div class="practive-user-top">
+						<div class="practice-user-top-info">
+							<div class="practice-user-top-info-name">Julie Books</div>
+							<div class="practice-user-top-info-practice">Chicago Accounting Pros</div>
+						</div>
+						<div class="practice-user-top-avatar">
+							<div class="bubble-avatar">
+								<div class="avatar avatar-32">
+									<div class="avatar-inicitials">JB</div>
+								</div>
+							</div>
+						</div>
+						<div class="practice-user-top-chevron">
+							<i class="feather chevron-down"></i>
+						</div>
+					</div>
+					  </span>
+					  <ul class="dropdown-menu pull-right" aria-labelledby="dLabel">
+						  <li><a href="#"><i class="feather user"></i> My Account</a></li>
+						  <li role="separator" class="divider"></li>
+						  <li (click)="logout()"><a href="#"><i class="feather log-out"></i> Logout</a></li>
+					  </ul>
+					</span>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="widgets widgets-practice">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 animated fadeIn delay-2">
+					<div class="clients-list-wrapper">
+						<label class="clients-list-search">
+							<i class="feather search"></i> <input type="text" placeholder="Search by client name">
+						</label>
+						<div class="clients-list scrollable">
+							<a class="clients-list-item active">
+								<div class="clients-list-name">The Cheeky Rabbit Company</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+							<a class="clients-list-item">
+								<div class="clients-list-name">The Freezing Hamster Company</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+							<a class="clients-list-item">
+								<div class="clients-list-name">The Intelligent Alligator Company</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+							<a class="clients-list-item">
+								<div class="clients-list-name">Angry Pigeon</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+							<a class="clients-list-item">
+								<div class="clients-list-name">The Sad Badger Company</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+							<a class="clients-list-item">
+								<div class="clients-list-name">The Thin Mobile Company</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+							<a class="clients-list-item">
+								<div class="clients-list-name">The White Phone Company</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+							<a class="clients-list-item">
+								<div class="clients-list-name">The Cold Dog Company</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+							<a class="clients-list-item">
+								<div class="clients-list-name">Rainy Fish</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+							<a class="clients-list-item">
+								<div class="clients-list-name">Deep Penguin</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+							<a class="clients-list-item">
+								<div class="clients-list-name">Transparent Chicken</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+							<a class="clients-list-item">
+								<div class="clients-list-name">The Snowy Mouse Company</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+							<a class="clients-list-item">
+								<div class="clients-list-name">Purple Meerkat</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+							<a class="clients-list-item">
+								<div class="clients-list-name">Big Gorilla</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+							<a class="clients-list-item">
+								<div class="clients-list-name">Alpha Donkey</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+							<a class="clients-list-item">
+								<div class="clients-list-name">Sad Whale</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+							<a class="clients-list-item">
+								<div class="clients-list-name">The Fat Mouse Company</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+							<a class="clients-list-item">
+								<div class="clients-list-name">Plain Duck</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+							<a class="clients-list-item">
+								<div class="clients-list-name">Scarf</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+							<a class="clients-list-item">
+								<div class="clients-list-name">Angry Moose</div>
+								<div class="clients-list-description">Some text goes here...</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-8 animated fadeInUp delay-3">
+					<div class="panel panel-default communications-widget coming-soon">
+						<div class="panel-heading">
+							Communications <span class="badge">1</span>
+							<button class="btn btn-success">Ask something</button>
+						</div>
+						<div class="panel-body">
+							<div class="label-date-wrapper">
+								<div class="label-date">Today</div>
+							</div>
+							<div class="bubble bubble-attention">
+								<div class="bubble-avatar">
+									<div class="avatar avatar-32">
+										<div class="avatar-inicitials">CP</div>
+									</div>
+								</div>
+								<div class="bubble-content">
+									<div class="bubble-message-sender">
+										<span class="bubble-message-sender-name">Chicago Accounting Pros</span>
+										<span class="bubble-message-sender-time">10:30am</span>
+									</div>
+									<div class="bubble-message-text">
+										Vivamus efficitur consectetur ante, sed condimentum mauris consectetur sollicitudin.
+									</div>
+								</div>
+								<div class="bubble-action-right">Reply</div>
+							</div>
+							<div class="label-date-wrapper">
+								<div class="label-date">Yesterday</div>
+							</div>
+							<div class="bubble">
+								<div class="bubble-message">
+									<div class="bubble-avatar">
+										<div class="avatar avatar-32">
+											<div class="avatar-inicitials">JM</div>
+										</div>
+									</div>
+									<div class="bubble-content">
+										<div class="bubble-message-sender">
+											<span class="bubble-message-sender-name">Jane Maxwell</span>
+											<span class="bubble-message-sender-time">2:13pm</span>
+										</div>
+										<div class="bubble-message-text">
+											Pellentesque eu turpis rutrum?
+										</div>
+									</div>
+								</div>
+								<div class="bubble-message">
+									<div class="bubble-avatar">
+										<div class="avatar avatar-32">
+											<div class="avatar-inicitials">CP</div>
+										</div>
+									</div>
+									<div class="bubble-content">
+										<div class="bubble-message-sender">
+											<span class="bubble-message-sender-name">Chicago Accounting Pros</span>
+											<span class="bubble-message-sender-time">3:27pm</span>
+										</div>
+										<div class="bubble-message-text">
+											<a href="#"><i class="feather download"></i> filename.pdf</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<app-apps-widget></app-apps-widget>
+					<app-resources-widget></app-resources-widget>
+
+					<div class="panel panel-default reviews-widget ">
+						<div class="panel-heading">
+							Leave a review
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-xs-6 col-md-3">
+									<a href="#"><img src="http://placehold.it/64x64/111"></a>
+								</div>
+								<div class="col-xs-6 col-md-3">
+									<a href="#"><img src="http://placehold.it/64x64/444"></a>
+								</div>
+								<div class="col-xs-6 col-md-3">
+									<a href="#"><img src="http://placehold.it/64x64/888"></a>
+								</div>
+								<div class="col-xs-6 col-md-3">
+									<a href="#"><img src="http://placehold.it/64x64/666"></a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		
+		</div>
+	</div>
+</div>

@@ -1,0 +1,18 @@
+<div class="panel panel-default apps-widget">
+    <div class="panel-heading">
+        Apps
+        <button class="btn btn-success" *ngIf="data.user_type == 1">Manage</button>
+    </div>
+    <div class="panel-body">
+        <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
+            <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+                <a href="#">
+                    <img src="{{ slide.img }}">
+                    <div class="app-name">{{ slide.name }}</div>
+                </a>
+                <div class="app-description">{{ slide.description }}</div>
+                <a class="interesting-data" href="#">Interesting data?</a>
+            </div>
+        </ngx-slick>
+    </div>
+</div>

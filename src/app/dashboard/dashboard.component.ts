@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.localStorage.get('practice') == null || this.localStorage.get('practice') === undefined) {
+    if (this.localStorage.get('company') == null || this.localStorage.get('company') === undefined) {
       this.router.navigate(['/registration/create']);
     }
   }
@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
     this.localStorage.remove('access_token');
     this.localStorage.remove('data');
     this.localStorage.remove('user');
-    this.localStorage.remove('practice');
+    this.localStorage.remove('company');
     this.router.navigate(['/login']);
   }
 
