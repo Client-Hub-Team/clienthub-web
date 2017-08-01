@@ -1,7 +1,12 @@
 .tooltip-inner {
 	background: #15181d;
+	font-family: 'Fira Sans', sans-serif;
 }
 
 .tooltip.top .tooltip-arrow {
     border-top-color: #15181d;
+}
+
+.tooltip.right .tooltip-arrow {
+    border-right-color: #15181d;
 }

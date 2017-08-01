@@ -1,0 +1,35 @@
+.dropdown-menu {
+	background-color: #fff;
+    box-shadow: 0 6px 11px 0 rgba(39,76,132,0.2);
+    border: none;
+}
+
+.dropdown-menu>li>a {
+	color: #7e8692;
+}
+
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #0084ff;
+}
+
+.filter .dropdown-menu {
+	left: -20px;
+}
+
+.dropdown .dropdown-menu {
+	-webkit-animation-duration: 300ms;
+	animation-duration: 300ms;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	animation-name: fadeInUp;
+}
+
+.dropdown-menu a {
+	margin-right: 0 !important;
+}
+
+.dropdown-menu .divider {
+	background-color: #f1f4f7; 
+}

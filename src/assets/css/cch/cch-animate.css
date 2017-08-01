@@ -8,6 +8,37 @@
  * Copyright (c) 2017 Daniel Eden
  */
 
+.delay-1 {
+animation-delay: 100ms;
+}
+.delay-2 {
+animation-delay: 200ms;
+}
+.delay-3 {
+animation-delay: 300ms;
+}
+.delay-4 {
+animation-delay: 400ms;
+}
+.delay-5 {
+animation-delay: 500ms;
+}
+.delay-6 {
+animation-delay: 600ms;
+}
+.delay-7 {
+animation-delay: 700ms;
+}
+.delay-8 {
+animation-delay: 800ms;
+}
+.delay-9 {
+animation-delay: 900ms;
+}
+.delay-10 {
+animation-delay: 1000ms;
+}
+
 .animated {
   animation-duration: 1s;
   animation-fill-mode: both;
@@ -605,7 +636,7 @@
 @keyframes fadeInLeft {
   from {
     opacity: 0;
-    transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-20px, 0, 0);
   }
 
   to {
@@ -637,7 +668,7 @@
 @keyframes fadeInRight {
   from {
     opacity: 0;
-    transform: translate3d(100%, 0, 0);
+    transform: translate3d(20px, 0, 0);
   }
 
   to {

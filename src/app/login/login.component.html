@@ -1,24 +1,25 @@
-<div class="fake-body header-bar">
+<div class="fake-body">
     <div class="main">
-        <div class="container text-center">
-            <div class="practice-logo-wrapper">
-                <div class="practice-logo">
-                    <div class="practice-logo-name"><img src="http://via.placeholder.com/250x90"></div>
-                    <!-- <div class="practice-logo-name">Chicago Accounting Pros</div> -->
+        <header class="header-bar animated fadeIn delay-1">
+            <div class="container">
+                <div class="practice-logo text-center">
+                    <img src="assets/img/logo-default.png" width="250" alt="Cloud Client Hub">
                 </div>
             </div>
-            <div class="panel panel-default panel-login text-left animated fadeInUp">
+        </header>
+        <div class="container text-center widgets animated fadeInUp delay-3">
+            <div class="panel panel-default panel-login text-left">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
                     <form>
                         <div class="form-group">
                             <label for="inputEmail01">Email address</label>
-                            <input [(ngModel)]="email" id="inputEmail01" [ngModelOptions]="{standalone:true}" type="text" class="form-control" placeholder="user@domain.com" autocomplete="off" autofocus="autofocus">
+                            <input [(ngModel)]="email" id="inputEmail01" [ngModelOptions]="{standalone:true}" type="email" class="form-control" placeholder="user@domain.com" autofocus>
                         </div>
                         <div class="form-group">
                             <label for="inputPw01">Password</label>
                             <div class="input-password">
-                                <input [(ngModel)]="password" id="inputPw01" [ngModelOptions]="{standalone:true}" type="password" class="form-control" placeholder='Password' autocomplete="off">
+                                <input [(ngModel)]="password" id="inputPw01" [ngModelOptions]="{standalone:true}" type="password" class="form-control" placeholder="Password">
                                 <i class="feather eye-off"></i>
                             </div>
                         </div>
@@ -29,7 +30,7 @@
         </div>
     </div>
 
-    <div class="container text-center">
+    <div class="container text-center animated fadeIn delay-5">
         <footer class="privacy-terms">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms & Conditions</a>

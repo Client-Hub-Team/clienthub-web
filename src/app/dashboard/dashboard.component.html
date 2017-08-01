@@ -1,13 +1,12 @@
-<header>
-  <button (click)="logout()">Logout</button>
-</header>
+<div class="fake-body">
 
-<div id="container">
+	  <router-outlet></router-outlet>
 
-  <router-outlet></router-outlet>
+		<div class="container text-center animated fadeIn delay-5">
+			<footer class="privacy-terms">
+				<a href="#" (click)="logout()">Privacy Policy</a>
+				<a href="#">Terms & Conditions</a>
+			</footer>
+		</div>
 
 </div>
-
-<footer>
-    
-</footer>

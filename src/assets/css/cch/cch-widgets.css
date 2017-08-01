@@ -1,0 +1,246 @@
+.widgets {
+	margin-top: -50px;
+	position: relative;
+}
+
+.widgets-practice {
+	margin-top: 100px;
+}
+
+/* Apps */
+.apps-widget .panel-body {
+	padding: 15px;
+	min-height: 246px;
+}
+/* Apps */
+
+/* Communications */
+.communications-widget .panel-body {
+	max-height: 318px;
+}
+
+.bubble {
+	background-color: #f7f8fa;
+	border: 1px solid #eeeff1;
+	padding: 12px 15px;
+	border-radius: 19px;
+	margin-bottom: 15px;
+	display: table;
+	width: 100%;
+}
+.bubble-attention {
+	background-color: #e5f2ff;
+	border-color: #a3d3ff; 
+}
+
+.bubble-message {
+	margin-bottom: 15px;
+}
+
+.bubble-message:last-child {
+	margin: 0;
+}
+
+.bubble-avatar,
+.bubble-content {
+	display: table-cell;
+	vertical-align: top;
+}
+
+.bubble-avatar {
+	width: 47px;
+}
+
+.bubble-action-right {
+	display: table-cell;
+	vertical-align: middle;
+	cursor: pointer;
+	color: #0084ff;
+	font-weight: 500;
+}
+
+.bubble-action-right:hover,
+.bubble-action-right:focus {
+	color: #006acd;
+}
+
+.bubble-message-sender-name {
+	color: #333c48;
+	font-weight: 500;
+}
+
+.bubble-message-sender-time {
+	padding-left: 5px;
+	font-weight: 400;
+}
+
+.bubble-message-text {
+	color: #333c48;
+}
+
+.label-date-wrapper {
+	text-align: center;
+	position: relative;
+	margin-top: 25px;
+	margin-bottom: 10px;
+}
+
+.label-date-wrapper:first-child {
+	margin-top: -27px !important; /* Make the first label reach the .panel-heading */
+}
+
+.label-date-wrapper::before {
+	content: " ";
+	position: absolute;
+	left: 0; top: 50%; right: 0;
+	height: 1px;
+	background-color: #f1f4f7;
+	margin-top: -1px;
+	z-index: 0;
+}
+
+.label-date {
+	background-color: #fff;
+	padding: 3px 15px;
+	border-radius: 19px;
+	font-size: 13px;
+	color: #333c48;
+	text-align: center;
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+}
+/* Communications */
+
+/* Resources */
+.resources-widget .panel-body {
+	height: 185px;
+	overflow: auto;
+}
+
+.resources-item {
+	margin-bottom: 15px;
+	display: table;
+	width: 100%;
+}
+
+.resources-item:hover .resources-title {
+	color: #0084ff;
+}
+
+.resources-thumb {
+	vertical-align: top;
+	display: table-cell;
+	width: 79px;
+}
+
+.resources-content {
+	vertical-align: top;
+	display: table-cell;
+}
+
+.resources-content-wrapper {
+	height: 72px;
+	overflow: hidden;
+}
+
+.resources-title {
+	color: #333c48;
+	font-weight: 500;
+}
+
+.resources-description {
+	color: #7e8692;
+	font-size: 12px;
+}
+/* Resources */
+
+/* Review */
+.reviews-widget .panel-body {
+	min-height: 113px;
+}
+/* Review */
+
+/* Clients list */
+.clients-list-wrapper {
+	/*min-width: 500px;*/
+}
+.clients-list {
+	overflow: auto;
+	position: fixed;
+	display: block;
+	width: 360px;
+	top: 150px;
+	bottom: 30px;
+	/*border: 1px solid #fff;*/
+}
+
+.clients-list-search {
+	position: fixed;
+	top: 94px;
+	width: 360px;
+	padding: 9px 0;
+	cursor: text;
+}
+
+.clients-list-search i {
+	vertical-align: -1px;
+}
+
+.clients-list-search input {
+	border: none;
+	background-color: transparent;
+	outline: none;
+	padding-left: 5px;
+	font-weight: 400;
+}
+
+@media screen and (max-width: 1200px) {
+	.clients-list, .clients-list-search {
+		width: 293px;
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.clients-list, .clients-list-search {
+		width: 220px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.clients-list, .clients-list-search {
+		display: none;
+	}
+}
+
+.clients-list-item {
+	background: transparent;
+	padding: 5px 10px;
+	border-radius: 2px;
+	cursor: pointer;
+	display: block;
+	margin-bottom: 10px;
+}
+.clients-list-item:hover {
+	background: #e6e8ed;
+}
+
+.clients-list-item.active {
+	background: #0084ff;
+}
+.clients-list-item.active .clients-list-name {
+	color: #fff;
+}
+.clients-list-item.active .clients-list-description {
+	color: #9ec6eb;
+}
+
+.clients-list-name {
+	font-weight: 500;
+	color: #333c48;
+}
+
+.clients-list-description {
+	color: #b3bac5;
+}
+/* Clients list */

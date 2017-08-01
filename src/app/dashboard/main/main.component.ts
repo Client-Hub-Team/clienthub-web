@@ -17,6 +17,21 @@ export class MainDashboardComponent implements OnInit {
   data: any;
   practice: any;
 
+  slides = [
+      {img: "http://placehold.it/64x64/2c9f1c", name: "Application name", description: "Last activity: 5 days ago"},
+      {img: "http://placehold.it/64x64/df1f26", name: "Application name", description: "Last activity: 5 days ago"},
+      {img: "http://placehold.it/64x64/f67800", name: "Application name", description: "Last activity: 5 days ago"},
+      {img: "http://placehold.it/64x64/673e92", name: "Application name", description: "Last activity: 5 days ago"},
+      {img: "http://placehold.it/64x64/0084ff", name: "Application name", description: "Last activity: 5 days ago"},
+      {img: "http://placehold.it/64x64/555", name: "Application name", description: "Last activity: 5 days ago"},
+      {img: "http://placehold.it/64x64/ffb400", name: "Application name", description: "Last activity: 5 days ago"}
+    ];
+    slideConfig = {
+      "slidesToShow": 3,
+      "slidesToScroll": 3,
+      "dots": true
+    };
+
   constructor(private localStorage: LocalStorageService) {
 
   }

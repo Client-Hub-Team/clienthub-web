@@ -21,3 +21,10 @@
 	line-height: 64px;
 	font-size: 22px;
 }
+
+.avatar-32 {
+	line-height: 34px;
+	width: 32px;
+	height: 32px;
+	font-size: 14px;
+}

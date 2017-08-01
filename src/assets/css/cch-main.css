@@ -1,12 +1,20 @@
 @import url(cch/cch-animate.css);
 @import url(cch/cch-avatars.css);
 @import url(cch/cch-buttons.css);
+@import url(cch/cch-dropdowns.css);
 @import url(cch/cch-feather-icons.css);
 @import url(cch/cch-forms.css);
 @import url(cch/cch-modals.css);
 @import url(cch/cch-panels.css);
 @import url(cch/cch-tooltips.css);
+@import url(cch/cch-slick.css);
 @import url(cch/cch-typography.css);
+@import url(cch/cch-widgets.css);
+
+/* Debug */
+* {
+	/*outline: 1px solid pink;*/
+}
 
 html, body {
 	height: 100%;
@@ -32,59 +40,58 @@ hr {
 }
 
 /* Background top bar */
-.header-bar::before {
+.header-bar {
 	background-color: #fff;
 	box-shadow: 0 3px 11px 0 rgba(39,76,132,0.15);
-	content: " ";
-	left: 0; top: 0; right: 0;
-	height: 225px;
-	z-index: -1;
-	position: absolute;
+	padding: 40px 0;
+	padding-bottom: 85px;
 }
 
-.welcome-user-wrapper {
-	display: table;
-	width: 100%;
-	height: 175px;
-}
-
-.welcome-user {
-	display: table-cell;
-	vertical-align: middle;
-	padding-top: 4px;
+.header-bar.header-bar-practice {
+	padding: 20px 0;
+	position: fixed;
+	top: 0; left: 0; right: 0;
+	z-index: 2;
 }
 
 .welcome-user h2 {
 	margin: 0;
 	font-size: 26px;
 	font-weight: 400;
-	padding-bottom: 13px;
-    padding-top: 6px;
+	margin-bottom: 15px;
+    padding-top: 8px;
 }
 
-.welcome-user-links a {
+.header-bar * a {
 	display: inline-block;
 	padding: 5px 0;
 	margin-right: 15px;
 }
 
-.practice-logo-wrapper {
-	display: table;
-	width: 100%;
-}
-
-.practice-logo {
-	height: 175px;
-	margin: auto;
-	width: 100%;
+.practice-header {
 	color: #333c48;
-	display: table-cell;
-	vertical-align: middle;
 }
 
 .practice-logo-name {
 	font-size: 32px;
 	font-weight: 500;
+	height: 64px;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+.practice-logo-name img {
+	max-width: 250px;
+	max-height: 64px;
+}
+
+.practice-logo-urls {
+	margin-top: 10px;
+}
+
+.practice-logo-urls > * {
+	padding: 5px;
+	margin-right: 5px;
 }
 
 .panel-login {
@@ -105,11 +112,121 @@ hr {
 	color: inherit;
 }
 
-.practice-logo-urls {
-	margin-top: 10px;
+.coming-soon {
+	position: relative;
 }
 
-.practice-logo-urls > * {
-	padding: 5px;
+.coming-soon > * {
+	position: relative;
+	pointer-events: none;
+	opacity: .3;
+	transition: 300ms;
+	-webkit-touch-callout: none; /* iOS Safari */
+	  -webkit-user-select: none; /* Safari */
+	   -khtml-user-select: none; /* Konqueror HTML */
+	     -moz-user-select: none; /* Firefox */
+	      -ms-user-select: none; /* Internet Explorer/Edge */
+	          user-select: none; /* Non-prefixed version, currently
+	                                supported by Chrome and Opera */
+}
+
+.coming-soon:hover::before {
+	opacity: 1;
+}
+
+.coming-soon:hover > * {
+	opacity: .05;
+}
+
+.coming-soon::before {
+	content: "Coming soon";
+	position: absolute;
+	left: 40px; top: 45%; right: 40px;
+	text-align: center;
+	font-size: 22px;
+	z-index: 2;
+	background: #fff;
+	opacity: 0;
+	transition: 300ms;
+}
+
+.filter {
+	margin-left: 15px;
+	color: #b3bac5;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.filter i {
+	width: 15px;
+	display: inline-block;
 	margin-right: 5px;
+}
+
+.practice-sidebar {
+	background-color: #333c48;
+	/*padding: 15px;*/
+	position: fixed;
+	left: 0; top: 0; bottom: 0;
+	z-index: 3; 
+}
+
+.practice-sidebar > a {
+	display: block;
+	color: #7f8ea4;
+	font-size: 24px;
+	padding: 5px 15px;
+	margin-bottom: 25px;
+	margin-top: 14px;
+}
+.practice-sidebar > a:hover {
+	color: #b7c6dd;
+}
+.practice-sidebar > a.active {
+	color: #fff;
+	border-left: 5px solid #0084ff;
+	padding-left: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+	
+}
+
+@media screen and (max-width: 992px) {
+	
+}
+
+@media screen and (max-width: 768px) {
+	.practice-sidebar {
+		display: none;
+	}
+}
+
+.practive-user-top {
+	display: table;
+}
+
+.practice-user-top-info,
+.practice-user-top-avatar,
+.practice-user-top-chevron {
+	display: table-cell;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.practice-user-top-info {
+	color: #333c48;
+	line-height: 1.3;
+}
+
+.practice-user-top-info-practice {
+	font-weight: 500;
+}
+
+.practice-user-top-avatar {
+	width: 42px;
+}
+
+.practice-user-top-chevron {
+	width: 24px;
 }

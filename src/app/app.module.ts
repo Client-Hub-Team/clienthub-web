@@ -19,6 +19,7 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { RegistrationModule } from './registration/registration.module';
 
 import { AppRoutingModule } from './app-routing.module';
+import { SlickModule } from 'ngx-slick';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     RegistrationModule,
     NgUploaderModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    SlickModule.forRoot()
   ],
   providers: [LoginService, DashboardService, AuthGuard, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
