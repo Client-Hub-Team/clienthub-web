@@ -16,6 +16,8 @@ export class AppsWidgetComponent implements OnInit {
   data: any;
   company: any;
 
+  innerWidth: any;
+
   slides = [
       {img: "http://placehold.it/64x64/2c9f1c", name: "Application name", description: "Last activity: 5 days ago"},
       {img: "http://placehold.it/64x64/df1f26", name: "Application name", description: "Last activity: 5 days ago"},
@@ -25,20 +27,32 @@ export class AppsWidgetComponent implements OnInit {
       {img: "http://placehold.it/64x64/555", name: "Application name", description: "Last activity: 5 days ago"},
       {img: "http://placehold.it/64x64/ffb400", name: "Application name", description: "Last activity: 5 days ago"}
     ];
+  
     slideConfig = {
       "slidesToShow": 3,
       "slidesToScroll": 3,
       "dots": true
     };
 
-  constructor(private localStorage: LocalStorageService) {
+    constructor(private localStorage: LocalStorageService) {
+        this.innerWidth = (window.screen.width);
+        console.log(this.innerWidth);
 
-  }
+        
+    }
 
   ngOnInit(): void {
     this.user = this.localStorage.get('user');
     this.data = this.localStorage.get('data');
     this.company = this.localStorage.get('company');
+
+    if( this.innerWidth < 600 ) {
+        this.slideConfig = {
+          "slidesToShow": 2,
+          "slidesToScroll": 2,
+          "dots": true
+        };
+    }
   }
 
 }

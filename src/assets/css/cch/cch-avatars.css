@@ -28,3 +28,12 @@
 	height: 32px;
 	font-size: 14px;
 }
+
+@media screen and (max-width: 767px) {
+	.avatar-64 {
+		line-height: 34px;
+		width: 32px;
+		height: 32px;
+		font-size: 14px;
+	}
+}

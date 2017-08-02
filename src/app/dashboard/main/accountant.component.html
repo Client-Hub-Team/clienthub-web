@@ -7,18 +7,28 @@
 	<a href="#" data-toggle="tooltip" data-placement="right" title="Settings"><i class="feather settings"></i></a>
 </div>
 
+<div class="mobile-menu" style="display: none;">
+	<a href="#"><i class="feather compass"></i> <span>Dashboard</span></a>
+	<a href="#"><i class="feather users"></i> <span>Users</span></a>
+	<a href="#"><i class="feather package"></i> <span>Apps</span></a>
+	<a href="#"><i class="feather folder"></i> <span>Resources</span></a>
+	<a href="#"><i class="feather message-square"></i> <span>Messages</span></a>
+	<a href="#"><i class="feather settings"></i> <span>Settings</span></a>
+</div>
+
 <div class="main">
 	<header class="header-bar header-bar-practice animated fadeIn delay-1">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-7">
-					<img src="assets/img/logo-default.png" width="150" alt="Cloud Client Hub">
+				<div class="col-xs-8 col-sm-5">
+					<i class="feather menu menu-icon animated fadeIn"></i>
+					<img class="cch-logo" src="assets/img/logo-default.png" width="150" alt="Cloud Client Hub">
 				</div>
-				<div class="col-md-5 text-right">
+				<div class="col-xs-4 col-sm-7 text-right">
 					<span class="dropdown pull-right">
 					  <span id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					    <div class="practive-user-top">
-						<div class="practice-user-top-info">
+						<div class="practice-user-top-info hidden-xs">
 							<div class="practice-user-top-info-name">Julie Books</div>
 							<div class="practice-user-top-info-practice">Chicago Accounting Pros</div>
 						</div>
@@ -48,8 +58,8 @@
 	<div class="widgets widgets-practice">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-4 animated fadeIn delay-2">
-					<div class="clients-list-wrapper">
+				<div class="col-sm-5 col-md-4 animated fadeIn delay-2">
+					<div class="clients-list-wrapper hidden-xs">
 						<label class="clients-list-search">
 							<i class="feather search"></i> <input type="text" placeholder="Search by client name">
 						</label>
@@ -137,7 +147,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-8 animated fadeInUp delay-3">
+				<div class="col-sm-7 col-md-8 animated fadeInUp delay-3">
 					<div class="panel panel-default communications-widget coming-soon">
 						<div class="panel-heading">
 							Communications <span class="badge">1</span>
@@ -206,28 +216,6 @@
 
 					<app-apps-widget></app-apps-widget>
 					<app-resources-widget></app-resources-widget>
-
-					<div class="panel panel-default reviews-widget ">
-						<div class="panel-heading">
-							Leave a review
-						</div>
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-xs-6 col-md-3">
-									<a href="#"><img src="http://placehold.it/64x64/111"></a>
-								</div>
-								<div class="col-xs-6 col-md-3">
-									<a href="#"><img src="http://placehold.it/64x64/444"></a>
-								</div>
-								<div class="col-xs-6 col-md-3">
-									<a href="#"><img src="http://placehold.it/64x64/888"></a>
-								</div>
-								<div class="col-xs-6 col-md-3">
-									<a href="#"><img src="http://placehold.it/64x64/666"></a>
-								</div>
-							</div>
-						</div>
-					</div>
 
 				</div>
 			</div>

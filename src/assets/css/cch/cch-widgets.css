@@ -7,14 +7,55 @@
 	margin-top: 100px;
 }
 
+@media screen and (max-width: 767px) {
+	.widgets-practice {
+	    margin-top: 86px;
+	}
+}
+
 /* Apps */
 .apps-widget .panel-body {
 	padding: 15px;
 	min-height: 246px;
 }
+
+.app-name {
+    margin: 20px 0;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333c48;
+}
+
+.app-description {
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.interesting-data {
+    font-size: 11px;
+}
+
+.slick-slide a:hover .app-name {
+    color: #0084ff;
+}
+
+@media screen and (max-width: 600px) {
+    .apps-widget .panel-body {
+        padding: 15px 0;
+    }
+
+    .app-description {
+        font-size: 11px;
+    }
+}
+
 /* Apps */
 
 /* Communications */
+.communications-widget {
+	overflow: hidden;
+}
+
 .communications-widget .panel-body {
 	max-height: 318px;
 }
@@ -159,6 +200,15 @@
 .reviews-widget .panel-body {
 	min-height: 113px;
 }
+.reviews-widget .panel-body a {
+	display: inline-block;
+	margin-bottom: 19px;
+}
+@media screen and (max-width: 767px) {
+	.reviews-widget .panel-body {
+		text-align: center;
+	}
+}
 /* Review */
 
 /* Clients list */
@@ -195,7 +245,53 @@
 	font-weight: 400;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (min-width: 768px) and (max-width: 999px) {
+	.clients-list, .clients-list-search {
+		width: 250px;
+		margin-left: 50px;
+	}
+	.cch-logo {
+		margin-left: 50px;
+	}
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1100px) {
+	.clients-list, .clients-list-search {
+		width: 250px;
+		margin-left: 50px;
+	}
+	.cch-logo {
+		margin-left: 50px;
+	}
+}
+
+@media screen and (min-width: 1101px) and (max-width: 1199px) {
+	.clients-list, .clients-list-search {
+		width: 300px;
+	}
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1250px) {
+	.clients-list, .clients-list-search {
+		width: 300px;
+		margin-left: 50px;
+	}
+	.cch-logo {
+		margin-left: 50px;
+	}
+}
+
+@media screen and (min-width: 1251px) and (max-width: 1300px) {
+	.clients-list, .clients-list-search {
+		width: 300px;
+		margin-left: 50px;
+	}
+	.cch-logo {
+		margin-left: 50px;
+	}
+}
+
+/*@media screen and (max-width: 1200px) {
 	.clients-list, .clients-list-search {
 		width: 293px;
 	}
@@ -211,7 +307,7 @@
 	.clients-list, .clients-list-search {
 		display: none;
 	}
-}
+}*/
 
 .clients-list-item {
 	background: transparent;
