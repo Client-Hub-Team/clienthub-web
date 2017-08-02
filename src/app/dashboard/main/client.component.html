@@ -4,12 +4,12 @@
 			<div class="row">
 				<div class="col-sm-7 col-md-7">
 					<div class="practice-header">
-						<div class="practice-logo-name"><img src="assets/img/logo-default.png" alt="Cloud Client Hub"></div>
+						<div class="practice-logo-name"><img src="assets/img/logo-default.png" alt="{{company.accounting_company.name}}"></div>
 						<div class="practice-logo-urls">
 							<a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
 							<a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
 							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-							<a href="#">cloudclienthub.com</a>
+							<a href="#">{{company.accounting_company.name}}</a>
 						</div>
 					</div>
 				</div>
@@ -23,9 +23,9 @@
 								</div>
 							</div>
 							<div class="col-xs-10 col-md-9 col-lg-10">
-								<h2><div style="font-size: 20px;">Welcome back</div>Christian Gusukuma</h2>
+								<h2><div style="font-size: 20px;">Welcome back</div>{{user.first_name}} {{user.last_name}}</h2>
 								<a href="#"><i class="feather user"></i> My account</a>
-								<a (click)="logout()"><i class="feather log-out"></i> Logout</a>
+								<a href="#" (click)="logout()"><i class="feather log-out"></i> Logout</a>
 							</div>
 						</div>
 					</div>

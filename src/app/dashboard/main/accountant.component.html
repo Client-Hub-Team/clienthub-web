@@ -29,8 +29,8 @@
 					  <span id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					    <div class="practive-user-top">
 						<div class="practice-user-top-info hidden-xs">
-							<div class="practice-user-top-info-name">Julie Books</div>
-							<div class="practice-user-top-info-practice">Chicago Accounting Pros</div>
+							<div class="practice-user-top-info-name">{{user.first_name}} {{user.last_name}}</div>
+							<div class="practice-user-top-info-practice">{{company.name}}</div>
 						</div>
 						<div class="practice-user-top-avatar">
 							<div class="bubble-avatar">
@@ -47,7 +47,7 @@
 					  <ul class="dropdown-menu pull-right" aria-labelledby="dLabel">
 						  <li><a href="#"><i class="feather user"></i> My Account</a></li>
 						  <li role="separator" class="divider"></li>
-						  <li (click)="logout()"><a href="#"><i class="feather log-out"></i> Logout</a></li>
+						  <li><a (click)="logout()" href="#"><i class="feather log-out"></i> Logout</a></li>
 					  </ul>
 					</span>
 				</div>
