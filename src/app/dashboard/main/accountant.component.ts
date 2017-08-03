@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { LoginService } from '../../login/login.service';
+import { AccountantService } from './accountant.service';
 
 
 /**
@@ -17,7 +18,7 @@ export class AccountantViewComponent implements OnInit {
   data: any;
   company: any;
 
-  constructor(private localStorage: LocalStorageService, private loginService: LoginService) {
+  constructor(private localStorage: LocalStorageService, private loginService: LoginService, private accountantService: AccountantService) {
 
   }
 

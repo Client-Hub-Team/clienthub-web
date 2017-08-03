@@ -4,17 +4,23 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { LocalStorageModule } from 'angular-2-local-storage';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { NgUploaderModule } from 'ngx-uploader';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+
+// Components
 import { LoginService } from '../login/login.service';
 import { DashboardComponent } from './dashboard.component';
-import { DashboardService } from './dashboard.service';
 import { MainDashboardComponent } from './main/main.component';
 import { AppsWidgetComponent } from './main/apps.component';
 import { ResourcesWidgetComponent } from './main/resources.component';
 import { AccountantViewComponent } from './main/accountant.component';
 import { ClientViewComponent } from './main/client.component';
+import { UserlistWidgetComponent } from './main/userlist.component';
+
+// Services
+import { DashboardService } from './dashboard.service';
+import { AccountantService } from './main/accountant.service';
+
+// Other imports
 import { AuthGuard } from '../guards/auth.guard';
 import { SlickModule } from 'ngx-slick';
 
@@ -33,7 +39,8 @@ const routes: Routes = [
     AppsWidgetComponent,
     ResourcesWidgetComponent,
     AccountantViewComponent,
-    ClientViewComponent
+    ClientViewComponent,
+    UserlistWidgetComponent
   ],
   exports: [
     DashboardComponent,
@@ -54,6 +61,6 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     SlickModule.forRoot()
   ],
-  providers: [LoginService, DashboardService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [LoginService, DashboardService, AccountantService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
 })
 export class DashboardModule {  }
