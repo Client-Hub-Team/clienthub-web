@@ -1,0 +1,14 @@
+
+<div class="col-sm-4 animated fadeIn delay-2">
+    <div class="clients-list-wrapper">
+        <label class="clients-list-search">
+            <i class="feather search"></i> <input type="text" placeholder="Search by client name">
+        </label>
+        <div class="clients-list scrollable">
+            <a class="clients-list-item" *ngFor="let c of clients">
+                <div class="clients-list-name">{{c.user.first_name}} {{c.user.last_name}}</div>
+                <div class="clients-list-description">{{c.user.email}}</div>
+            </a>
+        </div>
+    </div>
+</div>

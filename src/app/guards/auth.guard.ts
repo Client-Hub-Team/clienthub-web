@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
      * Checks if user has access_token in localStorage.
      */
     canActivate() {
-        if (this.localStorage.get('access_token') != undefined && this.localStorage.get('access_token') != null) {
+        if (this.localStorage.get('access_token') !== undefined && this.localStorage.get('access_token') != null) {
             // logged in so return true
             return true;
         }
