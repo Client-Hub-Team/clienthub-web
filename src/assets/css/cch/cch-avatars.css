@@ -12,14 +12,18 @@
 }
 
 .avatar > img {
-	position: absolute;
-	left: 0; top: 0; right: 0; bottom: 0;
+	position: absolute !important;
+	left: 0; top: 0; right: 0; bottom: 0 !important;
 	z-index: 1;
 }
 
 .avatar-64 {
 	line-height: 64px;
 	font-size: 22px;
+}
+
+.avatar-64 > img {
+	width: 64px; height: 64px;
 }
 
 .avatar-32 {
@@ -29,11 +33,19 @@
 	font-size: 14px;
 }
 
+.avatar-32 > img {
+	width: 32px; height: 32px;
+}
+
 @media screen and (max-width: 767px) {
 	.avatar-64 {
 		line-height: 34px;
 		width: 32px;
 		height: 32px;
 		font-size: 14px;
+	}
+
+	.avatar-64 > img {
+		width: 32px; height: 32px;
 	}
 }
