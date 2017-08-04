@@ -19,7 +19,6 @@ export class AppsWidgetComponent implements OnInit {
   innerWidth: any;
 
   slides = [
-<<<<<<< HEAD
       {img: 'http://placehold.it/64x64/2c9f1c', name: 'Application name', description: 'Last activity: 5 days ago'},
       {img: 'http://placehold.it/64x64/df1f26', name: 'Application name', description: 'Last activity: 5 days ago'},
       {img: 'http://placehold.it/64x64/f67800', name: 'Application name', description: 'Last activity: 5 days ago'},
