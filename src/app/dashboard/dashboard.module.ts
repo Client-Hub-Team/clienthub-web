@@ -10,15 +10,16 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { LoginService } from '../login/login.service';
 import { DashboardComponent } from './dashboard.component';
 import { MainDashboardComponent } from './main/main.component';
-import { AppsWidgetComponent } from './main/apps.component';
-import { ResourcesWidgetComponent } from './main/resources.component';
-import { AccountantViewComponent } from './main/accountant.component';
-import { ClientViewComponent } from './main/client.component';
-import { UserlistWidgetComponent } from './main/userlist.component';
+import { AppsWidgetComponent } from './main/common/apps.component';
+import { ResourcesWidgetComponent } from './main/common/resources.component';
+import { AccountantViewComponent } from './main/accountant/accountant.component';
+import { ClientViewComponent } from './main/client/client.component';
+import { ClientlistWidgetComponent } from './main/accountant/clientlist.component';
+import { PracticeinfoComponent } from './main/accountant/practiceinfo.component';
 
 // Services
 import { DashboardService } from './dashboard.service';
-import { AccountantService } from './main/accountant.service';
+import { AccountantService } from './main/accountant/accountant.service';
 
 // Other imports
 import { AuthGuard } from '../guards/auth.guard';
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],
     children: [
      { path: 'main', component: MainDashboardComponent },
+     { path: 'practice-info', component: PracticeinfoComponent },
     ]
   }
 ];
@@ -40,7 +42,8 @@ const routes: Routes = [
     ResourcesWidgetComponent,
     AccountantViewComponent,
     ClientViewComponent,
-    UserlistWidgetComponent
+    ClientlistWidgetComponent,
+    PracticeinfoComponent
   ],
   exports: [
     DashboardComponent,

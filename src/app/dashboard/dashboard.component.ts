@@ -16,14 +16,20 @@ import { Title } from '@angular/platform-browser';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private localStorage: LocalStorageService, private router: Router) {
+  user: any;
+  data: any;
+  company: any;
 
-  }
+  constructor(private localStorage: LocalStorageService, private router: Router) {}
 
   ngOnInit(): void {
     if (this.localStorage.get('company') == null || this.localStorage.get('company') === undefined) {
       this.router.navigate(['/registration/create']);
     }
+
+    this.user = this.localStorage.get('user');
+    this.data = this.localStorage.get('data');
+    this.company = this.localStorage.get('company');
   }
 
 

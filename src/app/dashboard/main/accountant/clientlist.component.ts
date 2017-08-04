@@ -6,11 +6,11 @@ import { AccountantService } from './accountant.service';
  * Dashboard main page component. It's empty for now
  */
 @Component({
-  selector: 'app-userlist-widget',
-  templateUrl: './userlist.component.html',
+  selector: 'app-clientlist-widget',
+  templateUrl: './clientlist.component.html',
   styleUrls: []
 })
-export class UserlistWidgetComponent implements OnInit {
+export class ClientlistWidgetComponent implements OnInit {
 
   clients: any;
 
