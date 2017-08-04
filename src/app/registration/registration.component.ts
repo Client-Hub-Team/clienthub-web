@@ -31,7 +31,7 @@ export class RegistrationComponent implements OnInit {
     ) {
       this.router.navigate(['/dashboard/main']);
     } else {
-      this.router.navigate(['/registration/create']);
+      this.router.navigate(['/registration/select']);
     }
   }
 

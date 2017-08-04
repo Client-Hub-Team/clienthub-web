@@ -13,6 +13,7 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 import { CreateService } from './create/create.service';
 import { LoginService } from '../login/login.service';
+import { RegistrationService } from './registration.service';
 
 const routes: Routes = [
   { path: 'registration', component: RegistrationComponent,
@@ -43,6 +44,6 @@ const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [CreateService, LoginService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [CreateService, LoginService, RegistrationService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
 })
 export class RegistrationModule {  }

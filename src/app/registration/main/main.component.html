@@ -1,21 +1,46 @@
-<div class="row">
+<div class="row" *ngIf="invite == null || invite === undefined">
+	<div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+		<h3>Who are you?</h3>
+		<p>Perceived end knowledge certainly day sweetness why cordially.</p>
+		<div class="form-group">
+			<label for="email01">Email address</label>
+			<input id="email01" type="email" [(ngModel)]="email" class="form-control" placeholder="name@domain.com">
+		</div>
+		<button class="btn btn-primary" (click)="check_email()">That's my email address <i class="feather chevron-right"></i></button>
+	</div>
+</div> 
+
+<div class="row" *ngIf="invite !== null && invite !== undefined">
 	<div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 text-center">
 		<img src="assets/img/team-illustration.png" alt="Team" width="280">
 		<div class="text-left">
 			<br>
-			<h3>Start with a practice</h3>
-			<p>Perceived end knowledge certainly day sweetness why cordially. Ask quick six seven offer see among. Handsome met debating sir dwelling age material.</p>
-			<a class="choose-link" [routerLink]="['../join']">
+
+			<!-- invite == true and there's a company tied to the invite. Can be an accountant or a client -->
+			<div *ngIf="invite == true && invite_info.invited_to !== null">
+			<a class="choose-link" [routerLink]="['../create']">
 				<i class="feather x3 users pull-left" style="margin-right: 15px;"></i>
-				<strong>Join an existing practice</strong>
-				<p>Find practices you've been invited to join.</p>
+				<strong>Join {{invite_info.invited_to.name}}</strong>
+				<p>You were invited by {{invite_info.invited_by.first_name}} {{invite_info.invited_by.last_name}}.</p>
 			</a>
 			<hr>
-			<a class="choose-link" [routerLink]="['../create']">
-				<i class="feather x3 plus pull-left" style="margin-right: 15px;"></i>
-				<strong>Set up a new practice</strong>
-				<p>Make a practice from scratch.</p>
-			</a>
+			</div>
+		  <!-- invite == true and invited to a company == null, its a new client invited by an accountant -->
+			<div *ngIf="invite == true && invite_info.invited_to == null">
+				<a class="choose-link" [routerLink]="['../create']">
+					<i class="feather x3 plus pull-left" style="margin-right: 15px;"></i>
+					<strong>Set up a new company</strong>
+					<p>Make a company from scratch.</p>
+				</a>
+			</div>
+			<!-- Invite == False, user is Accountant  -->
+			<div *ngIf="invite == false">
+				<a class="choose-link" [routerLink]="['../create']">
+					<i class="feather x3 plus pull-left" style="margin-right: 15px;"></i>
+					<strong>Set up a new practice</strong>
+					<p>Make a practice from scratch.</p>
+				</a>
+			</div>
 		</div>
 	</div>
 </div>
