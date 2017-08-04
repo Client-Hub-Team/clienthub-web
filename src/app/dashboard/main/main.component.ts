@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
-// import { LoginService } from './login.service';
+import { LoginService } from '../../login/login.service';
 
 
 /**
@@ -17,7 +17,7 @@ export class MainDashboardComponent implements OnInit {
   data: any;
   company: any;
 
-  constructor(private localStorage: LocalStorageService) {
+  constructor(private localStorage: LocalStorageService, private loginService: LoginService) {
 
   }
 
@@ -25,6 +25,10 @@ export class MainDashboardComponent implements OnInit {
     this.user = this.localStorage.get('user');
     this.data = this.localStorage.get('data');
     this.company = this.localStorage.get('company');
+  }
+
+  logout(): void {
+    this.loginService.logout();
   }
 
 }

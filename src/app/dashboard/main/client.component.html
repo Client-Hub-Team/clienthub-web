@@ -1,57 +1,58 @@
- <div class="main">
-	<header class="header-bar animated fadeIn delay-1">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-7 col-md-7">
-					<div class="practice-header">
-						<div class="practice-logo-name"><img src="assets/img/logo-default.png" alt="{{company.accounting_company.name}}"></div>
-						<div class="practice-logo-urls">
-							<a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-							<a href="#">{{company.accounting_company.name}}</a>
-						</div>
-					</div>
-
-					<hr class="visible-xs">
-				</div>
-				<div class="col-sm-5 col-md-5">
-					<div class="welcome-user">
-						<div class="welcome-user-avatar-wrapper">
-							<div class="avatar avatar-64 avatar-welcome-user">
-								<img src="http://via.placeholder.com/64x64">
-								<div class="avatar-inicitials">CG</div>
-							</div>
-						</div>
-						<div class="welcome-user-name-wrapper">
-							<h2><div style="font-size: 20px;">Welcome back</div>{{user.first_name}} {{user.last_name}}</h2>
-							<a href="#"><i class="feather user"></i> My account</a>
-							<a href="#" (click)="logout()"><i class="feather log-out"></i> Logout</a>
-						</div>
-					</div>
-				</div>
+<div class="widgets animated fadeInUp delay-3">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-7">
+				<app-apps-widget></app-apps-widget>
+				<app-resources-widget></app-resources-widget>
 			</div>
-		</div>
-	</header>
-
-	<div class="widgets animated fadeInUp delay-3">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-7">
-					<app-apps-widget></app-apps-widget>
-					<app-resources-widget></app-resources-widget>
-				</div>
-				<div class="col-md-5">
-					<div class="panel panel-default communications-widget coming-soon">
-						<div class="panel-heading">
-							Communications <span class="badge">1</span>
-							<button class="btn btn-success">Ask something</button>
+			<div class="col-md-5">
+				<div class="panel panel-default communications-widget coming-soon">
+					<div class="panel-heading">
+						Communications <span class="badge">1</span>
+						<button class="btn btn-success">Ask something</button>
+					</div>
+					<div class="panel-body">
+						<div class="label-date-wrapper">
+							<div class="label-date">Today</div>
 						</div>
-						<div class="panel-body">
-							<div class="label-date-wrapper">
-								<div class="label-date">Today</div>
+						<div class="bubble bubble-attention">
+							<div class="bubble-avatar">
+								<div class="avatar avatar-32">
+									<div class="avatar-inicitials">CP</div>
+								</div>
 							</div>
-							<div class="bubble bubble-attention">
+							<div class="bubble-content">
+								<div class="bubble-message-sender">
+									<span class="bubble-message-sender-name">Chicago Accounting Pros</span>
+									<span class="bubble-message-sender-time">10:30am</span>
+								</div>
+								<div class="bubble-message-text">
+									Vivamus efficitur consectetur ante, sed condimentum mauris consectetur sollicitudin.
+								</div>
+							</div>
+							<div class="bubble-action-right">Reply</div>
+						</div>
+						<div class="label-date-wrapper">
+							<div class="label-date">Yesterday</div>
+						</div>
+						<div class="bubble">
+							<div class="bubble-message">
+								<div class="bubble-avatar">
+									<div class="avatar avatar-32">
+										<div class="avatar-inicitials">JM</div>
+									</div>
+								</div>
+								<div class="bubble-content">
+									<div class="bubble-message-sender">
+										<span class="bubble-message-sender-name">Jane Maxwell</span>
+										<span class="bubble-message-sender-time">2:13pm</span>
+									</div>
+									<div class="bubble-message-text">
+										Pellentesque eu turpis rutrum?
+									</div>
+								</div>
+							</div>
+							<div class="bubble-message">
 								<div class="bubble-avatar">
 									<div class="avatar avatar-32">
 										<div class="avatar-inicitials">CP</div>
@@ -60,72 +61,34 @@
 								<div class="bubble-content">
 									<div class="bubble-message-sender">
 										<span class="bubble-message-sender-name">Chicago Accounting Pros</span>
-										<span class="bubble-message-sender-time">10:30am</span>
+										<span class="bubble-message-sender-time">3:27pm</span>
 									</div>
 									<div class="bubble-message-text">
-										Vivamus efficitur consectetur ante, sed condimentum mauris consectetur sollicitudin.
-									</div>
-								</div>
-								<div class="bubble-action-right">Reply</div>
-							</div>
-							<div class="label-date-wrapper">
-								<div class="label-date">Yesterday</div>
-							</div>
-							<div class="bubble">
-								<div class="bubble-message">
-									<div class="bubble-avatar">
-										<div class="avatar avatar-32">
-											<div class="avatar-inicitials">JM</div>
-										</div>
-									</div>
-									<div class="bubble-content">
-										<div class="bubble-message-sender">
-											<span class="bubble-message-sender-name">Jane Maxwell</span>
-											<span class="bubble-message-sender-time">2:13pm</span>
-										</div>
-										<div class="bubble-message-text">
-											Pellentesque eu turpis rutrum?
-										</div>
-									</div>
-								</div>
-								<div class="bubble-message">
-									<div class="bubble-avatar">
-										<div class="avatar avatar-32">
-											<div class="avatar-inicitials">CP</div>
-										</div>
-									</div>
-									<div class="bubble-content">
-										<div class="bubble-message-sender">
-											<span class="bubble-message-sender-name">Chicago Accounting Pros</span>
-											<span class="bubble-message-sender-time">3:27pm</span>
-										</div>
-										<div class="bubble-message-text">
-											<a href="#"><i class="feather download"></i> filename.pdf</a>
-										</div>
+										<a href="#"><i class="feather download"></i> filename.pdf</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+				</div>
 
-					<div class="panel panel-default reviews-widget ">
-						<div class="panel-heading">
-							Leave a review
-						</div>
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-xs-4 col-sm-3 col-md-3">
-									<a href="#"><img src="http://placehold.it/64x64/111"></a>
-								</div>
-								<div class="col-xs-4 col-sm-3 col-md-3">
-									<a href="#"><img src="http://placehold.it/64x64/444"></a>
-								</div>
-								<div class="col-xs-4 col-sm-3 col-md-3">
-									<a href="#"><img src="http://placehold.it/64x64/888"></a>
-								</div>
-								<div class="col-xs-4 col-sm-3 col-md-3">
-									<a href="#"><img src="http://placehold.it/64x64/666"></a>
-								</div>
+				<div class="panel panel-default reviews-widget ">
+					<div class="panel-heading">
+						Leave a review
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-xs-4 col-sm-3 col-md-3">
+								<a href="#"><img src="http://placehold.it/64x64/111"></a>
+							</div>
+							<div class="col-xs-4 col-sm-3 col-md-3">
+								<a href="#"><img src="http://placehold.it/64x64/444"></a>
+							</div>
+							<div class="col-xs-4 col-sm-3 col-md-3">
+								<a href="#"><img src="http://placehold.it/64x64/888"></a>
+							</div>
+							<div class="col-xs-4 col-sm-3 col-md-3">
+								<a href="#"><img src="http://placehold.it/64x64/666"></a>
 							</div>
 						</div>
 					</div>
@@ -133,4 +96,4 @@
 			</div>
 		</div>
 	</div>
-</div> 
+</div>

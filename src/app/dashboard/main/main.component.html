@@ -1,2 +1,98 @@
-<app-accountant-view *ngIf="data.user_type == 1"></app-accountant-view>
-<app-client-view *ngIf="data.user_type == 2"></app-client-view>
+<div class="main">
+
+	<!-- End practice -->
+	<div class="practice-sidebar animated fadeInLeft" *ngIf="data.user_type == 1">
+		<a href="#" data-toggle="tooltip" data-placement="right" title="Dashboard"><i class="feather compass"></i> <span>Dashboard</span></a>
+		<a class="active" href="#" data-toggle="tooltip" data-placement="right" title="Clients"><i class="feather users"></i> <span>Users</span></a>
+		<a href="#" data-toggle="tooltip" data-placement="right" title="Apps"><i class="feather package"></i> <span>Apps</span></a>
+		<a href="#" data-toggle="tooltip" data-placement="right" title="Resources"><i class="feather folder"></i> <span>Resources</span></a>
+		<a href="#" data-toggle="tooltip" data-placement="right" title="Messages"><i class="feather message-square"></i> <span>Messages</span></a>
+		<a href="#" data-toggle="tooltip" data-placement="right" title="Settings"><i class="feather settings"></i> <span>Settings</span></a>
+	</div>
+	<div class="mobile-menu" style="display: none;" *ngIf="data.user_type == 1">
+		<a href="#"><i class="feather compass"></i> <span>Dashboard</span></a>
+		<a href="#"><i class="feather users"></i> <span>Users</span></a>
+		<a href="#"><i class="feather package"></i> <span>Apps</span></a>
+		<a href="#"><i class="feather folder"></i> <span>Resources</span></a>
+		<a href="#"><i class="feather message-square"></i> <span>Messages</span></a>
+		<a href="#"><i class="feather settings"></i> <span>Settings</span></a>
+	</div>
+	<header class="header-bar header-bar-practice animated fadeIn delay-1" *ngIf="data.user_type == 1">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-8 col-sm-5">
+					<i class="feather menu menu-icon animated fadeIn"></i>
+					<img class="cch-logo" src="assets/img/logo-default.png" width="150" alt="Cloud Client Hub">
+				</div>
+				<div class="col-xs-4 col-sm-7 text-right">
+					<span class="dropdown pull-right">
+					  <span id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    <div class="practive-user-top">
+						<div class="practice-user-top-info hidden-xs">
+							<div class="practice-user-top-info-name">{{user.first_name}} {{user.last_name}}</div>
+							<div class="practice-user-top-info-practice">{{company.name}}</div>
+						</div>
+						<div class="practice-user-top-avatar">
+							<div class="bubble-avatar">
+								<div class="avatar avatar-32">
+									<div class="avatar-inicitials">JB</div>
+								</div>
+							</div>
+						</div>
+						<div class="practice-user-top-chevron">
+							<i class="feather chevron-down"></i>
+						</div>
+					</div>
+					  </span>
+					  <ul class="dropdown-menu pull-right" aria-labelledby="dLabel">
+						  <li><a href="#"><i class="feather user"></i> My Account</a></li>
+						  <li role="separator" class="divider"></li>
+						  <li><a (click)="logout()" href="#"><i class="feather log-out"></i> Logout</a></li>
+					  </ul>
+					</span>
+				</div>
+			</div>
+		</div>
+	</header>
+	<app-accountant-view *ngIf="data.user_type == 1"></app-accountant-view>
+	<!-- End practice -->
+
+	<!-- Start client -->
+	<header class="header-bar animated fadeIn delay-1" *ngIf="data.user_type == 2">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-7 col-md-7">
+					<div class="practice-header">
+						<div class="practice-logo-name"><img src="assets/img/logo-default.png" alt="{{company.accounting_company.name}}"></div>
+						<div class="practice-logo-urls">
+							<a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							<a href="#">{{company.accounting_company.name}}</a>
+						</div>
+					</div>
+
+					<hr class="visible-xs">
+				</div>
+				<div class="col-sm-5 col-md-5">
+					<div class="welcome-user">
+						<div class="welcome-user-avatar-wrapper">
+							<div class="avatar avatar-64 avatar-welcome-user">
+								<img src="http://via.placeholder.com/64x64">
+								<div class="avatar-inicitials">CG</div>
+							</div>
+						</div>
+						<div class="welcome-user-name-wrapper">
+							<h2><div style="font-size: 20px;">Welcome back</div>{{user.first_name}} {{user.last_name}}</h2>
+							<a href="#"><i class="feather user"></i> My account</a>
+							<a href="#" (click)="logout()"><i class="feather log-out"></i> Logout</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<app-client-view *ngIf="data.user_type == 2"></app-client-view>
+	<!-- End client -->
+
+</div><!-- Close .main div for both components -->
