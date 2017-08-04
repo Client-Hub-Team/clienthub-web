@@ -3,6 +3,12 @@
 	margin-bottom: 30px;
 }
 
+@media screen and (max-width: 768px) {
+	.panel {
+		margin-bottom: 15px;
+	}
+}
+
 .panel ::-webkit-scrollbar, .clients-list::-webkit-scrollbar {
     width: 14px;
     height: 18px;

@@ -349,22 +349,14 @@
 
 /* CUSTOM */
 
-.app-name {
-    margin: 20px 0;
-    margin-bottom: 5px;
-    font-weight: 500;
-    color: #333c48;
-}
+@media screen and (max-width: 600px) {
+    .slick-prev,
+    .slick-next {
+        display: none;
+    }
 
-.app-description {
-    margin-bottom: 5px;
-    font-size: 12px;
-}
+    .slick-slider {
+        padding: 0;
+    }
 
-.interesting-data {
-    font-size: 11px;
-}
-
-.slick-slide a:hover .app-name {
-    color: #0084ff;
 }
