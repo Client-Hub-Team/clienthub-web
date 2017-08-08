@@ -1,10 +1,27 @@
 .modal-backdrop {
 	background: rgba(30,35,40,1);
-	/*opacity: 1 !important;*/
+  /*opacity: 1 !important;*/
+  display: none
 }
 
 .modal {
-  text-align: center;
+
+}
+
+.modal.in {
+   display:block;
+}
+
+.modal-header {
+    border-bottom: 1px solid #e1e4e9;
+}
+
+.modal-body {
+    background: #f2f3f6;
+}
+
+.modal-footer {
+    border-top: 1px solid #e1e4e9;
 }
 
 .modal.fade .modal-dialog {
@@ -26,19 +43,4 @@
 .modal-content {
 	box-shadow: 0 15px 30px 0 rgba(0,0,0,0.2);
 	border: none;
-}
-
-@media screen and (min-width: 768px) { 
-  .modal:before {
-    display: inline-block;
-    vertical-align: middle;
-    content: " ";
-    height: 100%;
-  }
-}
-
-.modal-dialog {
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle;
 }

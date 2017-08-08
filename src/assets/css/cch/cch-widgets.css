@@ -49,6 +49,129 @@
     }
 }
 
+.manage-apps-row {
+	white-space: nowrap;
+	overflow-y: visible;
+	overflow-x: auto;
+	padding: 15px;
+	padding-top: 0;
+	margin: 0 -15px;
+}
+
+.manage-apps-list:first-child {
+	margin-bottom: 30px;
+}
+
+.manage-apps-list h4 {
+	font-weight: 500;
+}
+
+.manage-apps-filter {
+	cursor: pointer;
+	display: inline-block;
+}
+
+.manage-apps-search {
+	display: inline-block;
+	margin-left: 15px;
+}
+
+.manage-apps-search input {
+	background: transparent;
+	border: transparent;
+	padding-left: 5px;
+	outline: none
+}
+
+.manage-apps-card {
+	background: #fff;
+	box-shadow: 0 2px 4px 0 rgba(39,76,132,0.15);
+	display: inline-block;
+	width: 125px;
+	padding: 8px 10px 10px;
+	text-align: center;
+	margin-right: 15px;
+	transition: 150ms;
+	border: 1px solid transparent;
+	border-radius: 2px;
+}
+
+.manage-apps-card:last-child {
+	margin: 0;
+}
+
+.library .manage-apps-card:hover {
+	border:1px solid #0084ff;
+}
+
+.manage-apps-card:hover .app-name {
+	color: #0084ff;
+}
+
+.manage-apps-card {
+	cursor: pointer;
+}
+
+.manage-apps-card.active {
+	background: #0084ff;
+	cursor: default;
+}
+
+.manage-apps-card.active * {
+	color: #fff !important;
+}
+
+.manage-apps-icon {
+	display: inline-block;
+	text-align: left;
+	float: left;
+	clear: left;
+	margin-bottom: 5px;
+	margin-top: -4px;
+	margin-left: -2px;
+}
+
+.manage-apps-card .app-name {
+	margin-top: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.manage-apps-card .app-description {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.manage-apps-logo {
+	display: block;
+	margin: auto;
+	clear: both
+}
+
+.manage-apps-order {
+	margin-top: 11px;
+	cursor: pointer;
+	color: #333c48;
+}
+
+.manage-apps-order .sort-by {
+	font-weight: 500;
+}
+
+.manage-apps-order .dropdown-menu {
+	right: 15px;
+}
+
+.new-app {
+	height: 162px;
+	vertical-align: top;
+	padding-top: 37px;
+	border: 1px dashed #929eb3;
+	box-shadow: none;
+	transition: 300ms;
+}
 /* Apps */
 
 /* Communications */

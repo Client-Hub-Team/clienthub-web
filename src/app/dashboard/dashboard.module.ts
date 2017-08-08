@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 // Components
 import { LoginService } from '../login/login.service';
@@ -62,7 +65,10 @@ const routes: Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
-    SlickModule.forRoot()
+    SlickModule.forRoot(),
+    ModalModule.forRoot(),
+    TooltipModule.forRoot(),
+    BsDropdownModule.forRoot()
   ],
   providers: [LoginService, DashboardService, AccountantService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
 })
