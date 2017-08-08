@@ -17,127 +17,123 @@
     </div>
 </div>
 
-<ng-template class="modal in fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" #appsModal>
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Manage Apps for <strong>Client Name</strong></h4>
-      </div>
-      <div class="modal-body">
-        <div class="manage-apps-list">
-            <h4>Selected Apps</h4>
-            <p>Drag and drop the Selected Apps and choose the best order do display it to your client. Click an App to remove it from this list.</p>
-            <div class="manage-apps-row scrollbars">
-                <div class="manage-apps-card active">
-                    <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
-                    <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                    <div class="app-name">App Name</div>
-                    <div class="app-description">Accounting</div>
-                </div>
-                <div class="manage-apps-card active">
-                    <i class="manage-apps-icon feather package" placement="right" tooltip="Global library" placement="right" tooltip="Global library"></i>
-                    <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                    <div class="app-name">App Name</div>
-                    <div class="app-description">Accounting</div>
-                </div>
-                <div class="manage-apps-card active">
-                    <i class="manage-apps-icon feather upload-cloud" placement="right" tooltip="Practice library"></i>
-                    <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                    <div class="app-name">App Name</div>
-                    <div class="app-description">Accounting</div>
-                </div>
-            </div>
-        </div>
-        <div class="manage-apps-list">
-            <div class="row">
-                <div class="col-xs-6">
-                    <div dropdown style="display:inline-block">
-                        <span dropdownToggle>
-                            <h4 class="manage-apps-filter"><span class="library-name">All Libraries</span> <i class="feather chevron-down"></i></h4>
-                        </span>
-                        <ul *dropdownMenu class="dropdown-menu" role="menu" style="left:15px;top:30px">
-                            <li role="menuitem"><a class="dropdown-item" href="#">Global Library</a></li>
-                            <li role="menuitem"><a class="dropdown-item" href="#">Practice Library</a></li>
-                        </ul>
-                    </div>
-                    <div class="manage-apps-search">
-                        <i class="feather search"></i> <input type="text" placeholder="Search in Apps">
-                    </div>
-                </div>
-                <div class="col-xs-6 text-right">
-                    <div class="manage-apps-order" dropdown placement="bottom right">
-                        <span dropdownToggle>
-                            Sort by <span class="sort-by">Recently Used</span> <i class="feather chevron-down"></i>
-                        </span>
-                        <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
-                            <li role="menuitem"><a class="dropdown-item" href="#">Recently Used</a></li>
-                            <li role="menuitem"><a class="dropdown-item" href="#">Alphabetical Order</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <p>Simply click an App to add it to the Selected Apps.</p>
-            <div class="manage-apps-row library scrollbars">
-                <div class="manage-apps-card new-app">
-                    <i class="feather upload-cloud x3"></i>
-                    <div class="app-name">New App</div>
-                </div>
-                <div class="manage-apps-card">
-                    <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
-                    <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                    <div class="app-name">App Name Big example</div>
-                    <div class="app-description">Accounting</div>
-                </div>
-                <div class="manage-apps-card">
-                    <i class="manage-apps-icon feather upload-cloud" placement="right" tooltip="Practice library"></i>
-                    <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                    <div class="app-name">App Name</div>
-                    <div class="app-description">Accounting</div>
-                </div>
-                <div class="manage-apps-card">
-                    <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
-                    <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                    <div class="app-name">App Name</div>
-                    <div class="app-description">Accounting</div>
-                </div>
-                <div class="manage-apps-card">
-                    <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
-                    <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                    <div class="app-name">App Name</div>
-                    <div class="app-description">Accounting</div>
-                </div>
-                <div class="manage-apps-card">
-                    <i class="manage-apps-icon feather upload-cloud" placement="right" tooltip="Practice library"></i>
-                    <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                    <div class="app-name">App Name</div>
-                    <div class="app-description">Accounting</div>
-                </div>
-                <div class="manage-apps-card">
-                    <i class="manage-apps-icon feather upload-cloud" placement="right" tooltip="Practice library"></i>
-                    <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                    <div class="app-name">App Name</div>
-                    <div class="app-description">Accounting</div>
-                </div>
-                <div class="manage-apps-card">
-                    <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
-                    <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                    <div class="app-name">App Name</div>
-                    <div class="app-description">Accounting</div>
-                </div>
-                <div class="manage-apps-card">
-                    <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
-                    <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                    <div class="app-name">App Name</div>
-                    <div class="app-description">Accounting</div>
-                </div>
-            </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+<ng-template #appsModal class="modal-lg">
+    <div class="modal-header">
+    <button type="button" class="close" (click)="modalRef.hide()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel">Manage Apps for <strong>Client Name</strong></h4>
     </div>
-  </div>
+    <div class="modal-body">
+    <div class="manage-apps-list">
+        <h4>Selected Apps</h4>
+        <p>Drag and drop the Selected Apps and choose the best order do display it to your client. Click an App to remove it from this list.</p>
+        <div class="manage-apps-row scrollbars" [dragula]='"bag-one"'>
+            <div class="manage-apps-card active">
+                <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
+                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
+                <div class="app-name">App Name</div>
+                <div class="app-description">Accounting</div>
+            </div>
+            <div class="manage-apps-card active">
+                <i class="manage-apps-icon feather package" placement="right" tooltip="Global library" placement="right" tooltip="Global library"></i>
+                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
+                <div class="app-name">App Name</div>
+                <div class="app-description">Accounting</div>
+            </div>
+            <div class="manage-apps-card active">
+                <i class="manage-apps-icon feather upload-cloud" placement="right" tooltip="Practice library"></i>
+                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
+                <div class="app-name">App Name</div>
+                <div class="app-description">Accounting</div>
+            </div>
+        </div>
+    </div>
+    <div class="manage-apps-list">
+        <div class="row">
+            <div class="col-xs-6">
+                <div dropdown style="display:inline-block">
+                    <span dropdownToggle>
+                        <h4 class="manage-apps-filter"><span class="library-name">All Libraries</span> <i class="feather chevron-down"></i></h4>
+                    </span>
+                    <ul *dropdownMenu class="dropdown-menu" role="menu" style="left:15px;top:30px">
+                        <li role="menuitem"><a class="dropdown-item" href="#">Global Library</a></li>
+                        <li role="menuitem"><a class="dropdown-item" href="#">Practice Library</a></li>
+                    </ul>
+                </div>
+                <div class="manage-apps-search">
+                    <i class="feather search"></i> <input type="text" placeholder="Search in Apps">
+                </div>
+            </div>
+            <div class="col-xs-6 text-right">
+                <div class="manage-apps-order" dropdown placement="bottom right">
+                    <span dropdownToggle>
+                        Sort by <span class="sort-by">Recently Used</span> <i class="feather chevron-down"></i>
+                    </span>
+                    <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li role="menuitem"><a class="dropdown-item" href="#">Recently Used</a></li>
+                        <li role="menuitem"><a class="dropdown-item" href="#">Alphabetical Order</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <p>Simply click an App to add it to the Selected Apps.</p>
+        <div class="manage-apps-row library scrollbars">
+            <div class="manage-apps-card new-app">
+                <i class="feather upload-cloud x3"></i>
+                <div class="app-name">New App</div>
+            </div>
+            <div class="manage-apps-card">
+                <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
+                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
+                <div class="app-name">App Name Big example</div>
+                <div class="app-description">Accounting</div>
+            </div>
+            <div class="manage-apps-card">
+                <i class="manage-apps-icon feather upload-cloud" placement="right" tooltip="Practice library"></i>
+                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
+                <div class="app-name">App Name</div>
+                <div class="app-description">Accounting</div>
+            </div>
+            <div class="manage-apps-card">
+                <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
+                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
+                <div class="app-name">App Name</div>
+                <div class="app-description">Accounting</div>
+            </div>
+            <div class="manage-apps-card">
+                <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
+                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
+                <div class="app-name">App Name</div>
+                <div class="app-description">Accounting</div>
+            </div>
+            <div class="manage-apps-card">
+                <i class="manage-apps-icon feather upload-cloud" placement="right" tooltip="Practice library"></i>
+                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
+                <div class="app-name">App Name</div>
+                <div class="app-description">Accounting</div>
+            </div>
+            <div class="manage-apps-card">
+                <i class="manage-apps-icon feather upload-cloud" placement="right" tooltip="Practice library"></i>
+                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
+                <div class="app-name">App Name</div>
+                <div class="app-description">Accounting</div>
+            </div>
+            <div class="manage-apps-card">
+                <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
+                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
+                <div class="app-name">App Name</div>
+                <div class="app-description">Accounting</div>
+            </div>
+            <div class="manage-apps-card">
+                <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
+                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
+                <div class="app-name">App Name</div>
+                <div class="app-description">Accounting</div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
 </ng-template>

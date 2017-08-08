@@ -8,6 +8,7 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { DragulaModule } from 'ng2-dragula/ng2-dragula';
 
 // Components
 import { LoginService } from '../login/login.service';
@@ -69,7 +70,8 @@ const routes: Routes = [
     ModalModule.forRoot(),
     TooltipModule.forRoot(),
     BsDropdownModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    DragulaModule
   ],
   providers: [LoginService, DashboardService, AccountantService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
 })
