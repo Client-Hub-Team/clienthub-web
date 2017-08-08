@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-login',
@@ -11,14 +12,26 @@ import { LoginService } from './login.service';
 export class LoginComponent implements OnInit {
   email: String = '';
   password: String = '';
-  constructor(private loginService: LoginService, private localStorage: LocalStorageService, private router: Router) {
 
+  constructor(
+    private loginService: LoginService,
+    private localStorage: LocalStorageService,
+    private router: Router,
+    public toastr: ToastsManager,
+    vcr: ViewContainerRef
+  ) {
+    this.toastr.setRootViewContainerRef(vcr);
   }
 
   ngOnInit(): void {
     if (this.localStorage.get('access_token') !== undefined && this.localStorage.get('access_token') != null) {
       this.router.navigate(['/dashboard/main']);
     }
+
+    this.toastr.error('Error test', 'Oops!', {dismiss: 'click'});
+    this.toastr.success('Success test', 'Oops!', {dismiss: 'click'});
+    this.toastr.warning('Warning test', 'Oops!', {dismiss: 'click'});
+    this.toastr.info('Info test', 'Oops!', {dismiss: 'click'} );
   }
 
   login() {
@@ -29,6 +42,9 @@ export class LoginComponent implements OnInit {
       this.localStorage.set('company', res.json().company);
 
       this.router.navigate(['/dashboard/main']);
+    }, (err) => {
+      console.log(err);
+      this.toastr.error(err.json().non_field_errors[0], 'Oops!');
     });
   }
 

@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -19,6 +20,12 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { RegistrationModule } from './registration/registration.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AppRoutingModule } from './app-routing.module';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import {ToastOptions} from 'ng2-toastr';
+
+export class CustomOptions extends ToastOptions {
+  // positionClass = 'toast-top-center';
+}
 
 @NgModule({
   declarations: [
@@ -31,15 +38,23 @@ import { AppRoutingModule } from './app-routing.module';
       storageType: 'localStorage'
     }),
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
     RegistrationModule,
     DashboardModule,
     NgUploaderModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    ToastModule.forRoot()
   ],
-  providers: [LoginService, DashboardService, AuthGuard, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [
+    LoginService,
+    DashboardService,
+    AuthGuard,
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    {provide: ToastOptions, useClass: CustomOptions}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {  }
