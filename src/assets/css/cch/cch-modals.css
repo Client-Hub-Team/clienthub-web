@@ -1,15 +1,11 @@
 .modal-backdrop {
 	background: rgba(30,35,40,1);
   /*opacity: 1 !important;*/
-  display: none
+  /* display: none */
 }
 
 .modal {
 
-}
-
-.modal.in {
-   display:block;
 }
 
 .modal-header {

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
-
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
 /**
  * Dashboard main page component. It's empty for now
@@ -12,6 +13,7 @@ import { LocalStorageService } from 'angular-2-local-storage';
 })
 export class AppsWidgetComponent implements OnInit {
 
+  public modalRef: BsModalRef;
   user: any;
   data: any;
   company: any;
@@ -33,7 +35,7 @@ export class AppsWidgetComponent implements OnInit {
     'dots': true
   };
 
-    constructor(private localStorage: LocalStorageService) {}
+  constructor(private localStorage: LocalStorageService, private modalService: BsModalService) {}
 
   ngOnInit(): void {
 
@@ -51,6 +53,10 @@ export class AppsWidgetComponent implements OnInit {
           'dots': true
         };
     }
+  }
+
+  public openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 
 }

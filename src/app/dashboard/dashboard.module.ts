@@ -68,7 +68,8 @@ const routes: Routes = [
     SlickModule.forRoot(),
     ModalModule.forRoot(),
     TooltipModule.forRoot(),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [LoginService, DashboardService, AccountantService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
 })

@@ -1,7 +1,7 @@
 <div class="panel panel-default apps-widget">
     <div class="panel-heading">
         Apps
-        <button class="btn btn-success" *ngIf="data.user_type == 1" (click)="openModalWithComponent()" data-toggle="modal" data-target="#myModal">Manage</button>
+        <button class="btn btn-success" *ngIf="data.user_type == 1" (click)="openModal(appsModal)">Manage</button>
     </div>
     <div class="panel-body">
          <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
@@ -17,7 +17,7 @@
     </div>
 </div>
 
-<div class="modal in fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<ng-template class="modal in fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" #appsModal>
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -140,4 +140,4 @@
       </div>
     </div>
   </div>
-</div>
+</ng-template>
