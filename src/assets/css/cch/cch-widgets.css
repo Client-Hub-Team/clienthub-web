@@ -147,7 +147,8 @@
 .manage-apps-logo {
 	display: block;
 	margin: auto;
-	clear: both
+	clear: both;
+	pointer-events: none
 }
 
 .manage-apps-order {
