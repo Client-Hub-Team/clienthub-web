@@ -1,7 +1,11 @@
+import { AccountantViewComponent } from '../accountant/accountant.component';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { DashboardService } from '../../dashboard.service';
+import { AccountantService } from '../accountant/accountant.service';
+import { Subscription } from 'rxjs/Subscription';
 
 /**
  * Dashboard main page component. It's empty for now
@@ -17,25 +21,24 @@ export class AppsWidgetComponent implements OnInit {
   user: any;
   data: any;
   company: any;
-
+  all_apps: any;
+  client_apps: any;
   innerWidth: any;
+  current_client: any;
+  clientSubscription: Subscription;
 
-  slides = [
-      {img: 'http://placehold.it/64x64/2c9f1c', name: 'Application name', description: 'Last activity: 5 days ago'},
-      {img: 'http://placehold.it/64x64/df1f26', name: 'Application name', description: 'Last activity: 5 days ago'},
-      {img: 'http://placehold.it/64x64/f67800', name: 'Application name', description: 'Last activity: 5 days ago'},
-      {img: 'http://placehold.it/64x64/673e92', name: 'Application name', description: 'Last activity: 5 days ago'},
-      {img: 'http://placehold.it/64x64/0084ff', name: 'Application name', description: 'Last activity: 5 days ago'},
-      {img: 'http://placehold.it/64x64/555', name: 'Application name', description: 'Last activity: 5 days ago'},
-      {img: 'http://placehold.it/64x64/ffb400', name: 'Application name', description: 'Last activity: 5 days ago'}
-  ];
   slideConfig = {
     'slidesToShow': 3,
     'slidesToScroll': 3,
     'dots': true
   };
 
-  constructor(private localStorage: LocalStorageService, private modalService: BsModalService) {}
+  constructor(
+    private localStorage: LocalStorageService,
+    private modalService: BsModalService,
+    private dashboardService: DashboardService,
+    private accountantService: AccountantService
+  ) {}
 
   ngOnInit(): void {
 
@@ -46,13 +49,26 @@ export class AppsWidgetComponent implements OnInit {
     this.data = this.localStorage.get('data');
     this.company = this.localStorage.get('company');
 
-    if( this.innerWidth < 600 ) {
+    if (this.innerWidth < 600) {
         this.slideConfig = {
           'slidesToShow': 2,
           'slidesToScroll': 2,
           'dots': true
         };
     }
+
+    this.dashboardService.get_apps().then((res) => {
+      const response = res.json();
+      console.log(response);
+      this.client_apps = response.client_apps;
+      this.all_apps = response.all_apps;
+    });
+
+    this.clientSubscription = this.accountantService.current_client.subscribe(client => {
+      console.log(client);
+      this.client_apps = client.client.apps;
+    });
+
   }
 
   public openModal(template: TemplateRef<any>) {

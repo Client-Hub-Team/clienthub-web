@@ -27,11 +27,6 @@ export class LoginComponent implements OnInit {
     if (this.localStorage.get('access_token') !== undefined && this.localStorage.get('access_token') != null) {
       this.router.navigate(['/dashboard/main']);
     }
-
-    this.toastr.error('Error test', 'Oops!', {dismiss: 'click'});
-    this.toastr.success('Success test', 'Oops!', {dismiss: 'click'});
-    this.toastr.warning('Warning test', 'Oops!', {dismiss: 'click'});
-    this.toastr.info('Info test', 'Oops!', {dismiss: 'click'} );
   }
 
   login() {

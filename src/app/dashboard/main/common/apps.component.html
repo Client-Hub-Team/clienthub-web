@@ -5,12 +5,12 @@
     </div>
     <div class="panel-body">
          <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
-            <div ngxSlickItem *ngFor="let slide of slides" class="slide">
-                <a href="#">
-                    <img src="{{ slide.img }}">
-                    <div class="app-name">{{ slide.name }}</div>
+            <div ngxSlickItem *ngFor="let app of client_apps" class="slide">
+                <a href="{{app.url}}" target="_blank">
+                    <img src="assets/img/logos/{{ app.logo }}">
+                    <div class="app-name">{{ app.name }}</div>
                 </a>
-                <div class="app-description">{{ slide.description }}</div>
+                <div class="app-description">{{ app.category }}</div>
                 <a class="interesting-data" href="#">Interesting data?</a>
             </div>
         </ngx-slick> 
@@ -27,23 +27,11 @@
         <h4>Selected Apps</h4>
         <p>Drag and drop the Selected Apps and choose the best order do display it to your client. Click an App to remove it from this list.</p>
         <div class="manage-apps-row scrollbars" [dragula]='"bag-one"'>
-            <div class="manage-apps-card active">
+            <div class="manage-apps-card active" *ngFor="let app of client_apps">
                 <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
-                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                <div class="app-name">App Name</div>
-                <div class="app-description">Accounting</div>
-            </div>
-            <div class="manage-apps-card active">
-                <i class="manage-apps-icon feather package" placement="right" tooltip="Global library" placement="right" tooltip="Global library"></i>
-                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                <div class="app-name">App Name</div>
-                <div class="app-description">Accounting</div>
-            </div>
-            <div class="manage-apps-card active">
-                <i class="manage-apps-icon feather upload-cloud" placement="right" tooltip="Practice library"></i>
-                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                <div class="app-name">App Name</div>
-                <div class="app-description">Accounting</div>
+                <img src="assets/img/logos/{{app.logo}}" alt="{{app.name}}" class="manage-apps-logo">
+                <div class="app-name">{{app.name}}</div>
+                <div class="app-description">{{app.category}}</div>
             </div>
         </div>
     </div>
@@ -81,53 +69,11 @@
                 <i class="feather upload-cloud x3"></i>
                 <div class="app-name">New App</div>
             </div>
-            <div class="manage-apps-card">
+            <div class="manage-apps-card" *ngFor="let app of all_apps">
                 <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
-                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                <div class="app-name">App Name Big example</div>
-                <div class="app-description">Accounting</div>
-            </div>
-            <div class="manage-apps-card">
-                <i class="manage-apps-icon feather upload-cloud" placement="right" tooltip="Practice library"></i>
-                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                <div class="app-name">App Name</div>
-                <div class="app-description">Accounting</div>
-            </div>
-            <div class="manage-apps-card">
-                <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
-                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                <div class="app-name">App Name</div>
-                <div class="app-description">Accounting</div>
-            </div>
-            <div class="manage-apps-card">
-                <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
-                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                <div class="app-name">App Name</div>
-                <div class="app-description">Accounting</div>
-            </div>
-            <div class="manage-apps-card">
-                <i class="manage-apps-icon feather upload-cloud" placement="right" tooltip="Practice library"></i>
-                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                <div class="app-name">App Name</div>
-                <div class="app-description">Accounting</div>
-            </div>
-            <div class="manage-apps-card">
-                <i class="manage-apps-icon feather upload-cloud" placement="right" tooltip="Practice library"></i>
-                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                <div class="app-name">App Name</div>
-                <div class="app-description">Accounting</div>
-            </div>
-            <div class="manage-apps-card">
-                <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
-                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                <div class="app-name">App Name</div>
-                <div class="app-description">Accounting</div>
-            </div>
-            <div class="manage-apps-card">
-                <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
-                <img src="http://via.placeholder.com/64x64" alt="App Name" class="manage-apps-logo">
-                <div class="app-name">App Name</div>
-                <div class="app-description">Accounting</div>
+                <img src="assets/img/logos/{{app.logo}}" alt="{{app.name}}" class="manage-apps-logo">
+                <div class="app-name">{{app.name}}</div>
+                <div class="app-description">{{app.description}}</div>
             </div>
         </div>
     </div>

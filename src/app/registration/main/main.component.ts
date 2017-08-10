@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { RegistrationService } from '../registration.service';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormUtil } from '../../utils/formutils';
 
 /**
  * Registration main page component.
@@ -12,22 +14,35 @@ import { RegistrationService } from '../registration.service';
 })
 export class MainRegistrationComponent implements OnInit {
 
-  email: string;
   invite: any = null;
   invite_info: any;
+  emailForm: FormGroup;
+  formUtil: FormUtil;
 
-  constructor(private localStorage: LocalStorageService, private registrationService: RegistrationService) {
+  constructor(
+    private localStorage: LocalStorageService,
+    private registrationService: RegistrationService,
+    private formBuilder: FormBuilder
+  ) {
 
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.formUtil = new FormUtil();
+
+    this.emailForm = this.formBuilder.group({
+      email: [null, [Validators.required, Validators.email]],
+    });
+
+  }
 
   check_email(): void {
-    this.registrationService.check_invitation(this.email).then((res) => {
+    this.registrationService.check_invitation(this.emailForm.get('email').value).then((res) => {
       const response = res.json();
 
       console.log(response);
-      this.registrationService.email = this.email;
+      this.registrationService.email = this.emailForm.get('email').value;
       this.registrationService.invite_info = null;
       if (response.invites.length > 0) {
         this.invite = true;

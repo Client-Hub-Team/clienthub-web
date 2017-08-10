@@ -1,9 +1,12 @@
+import { ValidateFn } from 'codelyzer/walkerFactory/walkerFn';
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { CreateService } from './create.service';
 import { LoginService } from '../../login/login.service';
 import { RegistrationService } from '../registration.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormUtil } from '../../utils/formutils';
 
 
 /**
@@ -17,8 +20,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 export class CreateComponent implements OnInit {
 
   step: number;
-  first_name: string;
-  last_name: string;
   email: string;
   password: string;
   user_type: number;
@@ -27,6 +28,11 @@ export class CreateComponent implements OnInit {
   company_name: string;
   company_handle: string;
   invited: boolean;
+  infoForm: FormGroup;
+  companyForm: FormGroup;
+  formUtil: FormUtil;
+  infoFormSubmitAttempt: boolean;
+  companyFormSubmitAttempt: boolean;
 
   constructor(
     private localStorage: LocalStorageService,
@@ -34,10 +40,12 @@ export class CreateComponent implements OnInit {
     private loginService: LoginService,
     private registrationService: RegistrationService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder,
   ) {
 
   }
+
 
   ngOnInit(): void {
     if (
@@ -83,45 +91,73 @@ export class CreateComponent implements OnInit {
 
       this.step = 2;
     }
-  }
 
-  step_email(): void {
-    // add email to localStorage in case user goes back
-    this.localStorage.set('temp_email', this.email);
-    this.step = 2;
+    this.formUtil = new FormUtil();
+
+    this.infoForm = this.formBuilder.group({
+      first_name: [
+        null,
+        [Validators.required],
+      ],
+      last_name: [
+        null,
+        [Validators.required],
+      ],
+      password: [
+        null,
+        [Validators.required, this.formUtil.validatePassword]
+      ]
+    });
+
+    this.companyForm = this.formBuilder.group({
+      company_name: [
+        null,
+        [Validators.required],
+      ]
+    });
   }
 
   step_name_and_password(): void {
-    // add more info to localStorage in case user goes back
-    this.localStorage.set('temp_first_name', this.first_name);
-    this.localStorage.set('temp_last_name', this.last_name);
 
-    // creates the user account
-    this.createService.add_user(this.first_name, this.last_name, this.email, this.password, this.user_type, this.access_level, this.company_id).then(res => {
-      const response = res.json();
-      this.localStorage.set('data', response.data);
-      this.localStorage.set('user', response.user);
+    this.infoFormSubmitAttempt = true;
+    if (this.infoForm.valid) {
+      // add more info to localStorage in case user goes back
+      this.localStorage.set('temp_first_name', this.infoForm.get('first_name').value);
+      this.localStorage.set('temp_last_name', this.infoForm.get('last_name').value);
 
-      // removes temporary info from localStorage
-      this.localStorage.remove('temp_email');
-      this.localStorage.remove('temp_first_name');
-      this.localStorage.remove('temp_last_name');
+      // creates the user account
+      this.createService.add_user(
+        this.infoForm.get('first_name').value,
+        this.infoForm.get('last_name').value,
+        this.email,
+        this.infoForm.get('password').value,
+        this.user_type,
+        this.access_level,
+        this.company_id
+      ).then(res => {
+        const response = res.json();
+        this.localStorage.set('data', response.data);
+        this.localStorage.set('user', response.user);
 
-      this.loginService.login(this.email, this.password).then(loginRes => {
-        const loginResponse = loginRes.json();
-        this.localStorage.set('access_token', loginResponse.access_token);
-        this.localStorage.set('company', loginResponse.company);
+        // removes temporary info from localStorage
+        this.localStorage.remove('temp_email');
+        this.localStorage.remove('temp_first_name');
+        this.localStorage.remove('temp_last_name');
 
-        // console.log('Invited?', this.invited);
-        // console.log('Company_id?', this.company_id);
-        if (this.invited && this.company_id !== null) {
-          // Do something here to tell the user that his account is complete
-          this.router.navigate(['/dashboard/main']);
-        } else {
-          this.step = 3;
-        }
+        this.loginService.login(this.email, this.infoForm.get('password').value).then(loginRes => {
+          const loginResponse = loginRes.json();
+          this.localStorage.set('access_token', loginResponse.access_token);
+          this.localStorage.set('company', loginResponse.company);
+
+          if (this.invited && this.company_id !== null) {
+            // Do something here to tell the user that his account is complete
+            this.router.navigate(['/dashboard/main']);
+          } else {
+            this.step = 3;
+          }
+        });
       });
-    });
+    }
   }
 
   add_company(): void {
@@ -137,7 +173,12 @@ export class CreateComponent implements OnInit {
     // console.log('is_accounting', is_accounting);
     // console.log('invite_id', invite_id);
 
-    this.createService.add_company(this.company_name, this.company_handle, is_accounting, invite_id).then((res) => {
+    this.createService.add_company(
+      this.companyForm.get('company_name').value,
+      this.company_handle,
+      is_accounting,
+      invite_id
+    ).then((res) => {
       const response = res.json();
       this.localStorage.set('data', response.data);
       this.localStorage.set('company', response.company);

@@ -24,7 +24,7 @@ import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import {ToastOptions} from 'ng2-toastr';
 
 export class CustomOptions extends ToastOptions {
-  // positionClass = 'toast-top-center';
+  positionClass = 'toast-top-center';
 }
 
 @NgModule({

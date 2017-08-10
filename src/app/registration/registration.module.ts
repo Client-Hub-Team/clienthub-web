@@ -10,6 +10,7 @@ import { LocalStorageModule } from 'angular-2-local-storage';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgUploaderModule } from 'ngx-uploader';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { CreateService } from './create/create.service';
 import { LoginService } from '../login/login.service';
@@ -41,6 +42,7 @@ const routes: Routes = [
     }),
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
   ],
