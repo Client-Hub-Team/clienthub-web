@@ -250,7 +250,7 @@ hr {
 .practice-sidebar > a.active {
 	color: #fff;
 	border-left: 5px solid #0084ff;
-	padding-left: 15px;
+	padding-left: 10px;
 }
 
 @media screen and (min-width: 1600px) {
@@ -282,6 +282,12 @@ hr {
 		padding: 5px 20px;
 		margin-bottom: 25px;
 		margin-top: 14px;
+	}
+
+	.practice-sidebar > a.active {
+		color: #fff;
+		border-left: 5px solid #0084ff;
+		padding-left: 15px;
 	}
 }
 
@@ -418,4 +424,8 @@ hr {
 	.container-margin {
 		margin-left: 50px;
 	}
+}
+
+.gu-mirror {
+	transform: rotate(-4deg);
 }

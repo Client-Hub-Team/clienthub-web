@@ -12,6 +12,16 @@
     border-bottom: 1px solid #e1e4e9;
 }
 
+.modal-header .close {
+    margin: 0;
+    color: #333c48;
+    opacity: .5;
+}
+
+.modal-header .close:hover {
+    opacity: 1;
+}
+
 .modal-body {
     background: #f2f3f6;
 }
@@ -40,3 +50,5 @@
 	box-shadow: 0 15px 30px 0 rgba(0,0,0,0.2);
 	border: none;
 }
+
+
