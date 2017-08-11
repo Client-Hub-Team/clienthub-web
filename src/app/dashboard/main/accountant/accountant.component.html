@@ -7,7 +7,7 @@
 
 		<div class="client-info-header animated fadeInDown delay-2">
 			<div class="row">
-				<div class="col-xs-9"><h3>Client Namehere</h3></div>
+				<div class="col-xs-9"><h3>{{current_client.first_name}} {{current_client.last_name}}</h3></div>
 				<div class="col-xs-3 text-right">
 					<button class="btn btn-primary">Edit info</button>
 				</div>
@@ -16,7 +16,7 @@
 				<div class="col-sm-4">
 					<a href="#" class="client-info-header-content-wrapper">
 						<div class="client-info-header-icon"><i class="feather mail"></i></div>
-						<div class="client-info-header-text">client@domain.com</div>
+						<div class="client-info-header-text">{{current_client.email}}</div>
 					</a>
 				</div>
 				<div class="col-sm-5">

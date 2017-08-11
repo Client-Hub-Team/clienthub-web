@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { LoginService } from '../../../login/login.service';
 import { AccountantService } from './accountant.service';
+import { Subscription } from 'rxjs/Subscription';
 
 
 /**
@@ -17,15 +18,17 @@ export class AccountantViewComponent implements OnInit {
   user: any;
   data: any;
   company: any;
+  current_client: any = {};
+  clientSubscription: Subscription;
 
   constructor(private localStorage: LocalStorageService, private loginService: LoginService, private accountantService: AccountantService) {
 
   }
 
   ngOnInit(): void {
-    this.user = this.localStorage.get('user');
-    this.data = this.localStorage.get('data');
-    this.company = this.localStorage.get('company');
+    this.clientSubscription = this.accountantService.current_client.subscribe(sub => {
+      this.current_client = sub.client;
+    });
   }
 
   logout(): void {
