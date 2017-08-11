@@ -36,4 +36,37 @@ $(function(){
 
 	$('.scrollable').isolatedScroll();
 
+	var clientInfoHeaderWidth = $('.client-info-header').width();
+	var clientInfoHeaderHeight = $('.client-info-header').height();
+	var shouldStick = true;
+
+	$(window).scroll(function(){
+
+		var scrollPosition = $(window).scrollTop();
+
+		if(scrollPosition > 1 && shouldStick == true){
+			$('.client-info-header').before('<div class="client-info-header-placeholder" style="height:'+(clientInfoHeaderHeight+40)+'px"></div>');
+			$('.client-info-header-row').slideUp(150);
+			$('.client-info-header').css({
+				"position": "fixed",
+				"width": clientInfoHeaderWidth+30,
+			});
+			shouldStick = false;
+		} 
+
+		if(scrollPosition < 1 && shouldStick == false){
+			setTimeout(function(){
+				$('.client-info-header-placeholder').remove();
+				$('.client-info-header').css({
+					"position": "static",
+					"width": "auto",
+				});
+			},150);
+			$('.client-info-header-row').slideDown(150);
+			
+			shouldStick = true;
+		}
+
+	});
+
 });

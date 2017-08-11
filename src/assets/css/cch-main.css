@@ -22,6 +22,12 @@ html, body {
 	height: 100%;
 }
 
+/* @media screen and (min-width: 1441px) {
+    html {
+        zoom: 125%;
+    }
+}  */
+
 .fake-body {
 	height: 100%;
 }
@@ -53,7 +59,7 @@ hr {
 	padding: 20px 0;
 	position: fixed;
 	top: 0; left: 0; right: 0;
-	z-index: 2;
+	z-index: 4;
 }
 
 .welcome-user h2 {
@@ -228,7 +234,7 @@ hr {
 	background-color: #333c48;
 	/*padding: 15px;*/
 	position: fixed;
-	left: 0; top: 0; bottom: 0;
+	left: 0; top: 76px; bottom: 0;
 	z-index: 3; 
 }
 
@@ -428,4 +434,87 @@ hr {
 
 .gu-mirror {
 	transform: rotate(-4deg);
+}
+
+.client-info-header {
+	background-color: #333c48;
+
+	background: #224fa6;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(45deg, #224fa6, #187ec0);
+	background: -moz-linear-gradient(45deg, #224fa6, #187ec0);
+	background: -o-linear-gradient(45deg, #224fa6, #187ec0);
+	background: linear-gradient(45deg, #224fa6, #187ec0);
+
+	padding: 15px;
+	border-radius: 2px;
+	margin-bottom: 30px;
+	margin-top: -30px;
+	padding-top: 25px;
+	color: #fff;
+	box-shadow: 0 3px 11px 0 rgba(39,76,132,0.15);
+	z-index: 3;
+	top: 100px;
+}
+
+.client-info-header-row a {
+	color: #fff;
+	opacity: .7;
+}
+
+.client-info-header-row a:hover {
+	opacity: 1;
+}
+
+.client-info-header-fixed {
+	margin: 0;
+}
+
+.client-info-header h3 {
+	margin-top: 0;
+	color: #fff;
+}
+
+.client-info-header-tabs {
+	margin-bottom: -5px;
+	margin-top: 15px;
+	padding-top: 10px;
+	border-top: 1px solid rgba(255,255,255,.1);
+}
+
+.client-info-header-tabs a {
+	color: #fff;
+	padding: 10px 5px;
+	margin-right: 15px;
+	font-weight: 500;
+	text-transform: uppercase;
+	font-size: 11px;
+	opacity: .5;
+	border-bottom: 3px solid transparent;
+	transition: 150ms;
+	letter-spacing: 1px;
+}
+.client-info-header-tabs a.active {
+	opacity: 1;
+	border-color: #0084ff;
+}
+.client-info-header-tabs a:hover {
+	opacity: 1;
+}
+
+.client-info-header-content-wrapper {
+	display: table;
+	
+}
+.client-info-header-icon {
+	display: table-cell;
+	vertical-align: top;
+	width: 20px;
+}
+.client-info-header-text {
+	display: table-cell;
+	vertical-align: top;
+}
+.client-info-header-row {
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
