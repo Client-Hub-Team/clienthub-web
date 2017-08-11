@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/platform-server": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "@types/underscore": "^1.8.1",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
@@ -36,6 +37,7 @@
     "ngx-uploader": "^3.2.3",
     "rxjs": "^5.1.0",
     "typescript": "^2.2.1",
+    "underscore": "^1.8.3",
     "zone.js": "^0.7.6"
   },
   "devDependencies": {

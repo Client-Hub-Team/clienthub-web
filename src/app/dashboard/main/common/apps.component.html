@@ -27,7 +27,7 @@
         <h4>Selected Apps</h4>
         <p>Drag and drop the Selected Apps and choose the best order do display it to your client. Click an App to remove it from this list.</p>
         <div class="manage-apps-row scrollbars" [dragula]='"bag-one"'>
-            <div class="manage-apps-card active" *ngFor="let app of client_apps">
+            <div class="manage-apps-card active" *ngFor="let app of client_apps; let i = index" (click)="delete_client_app(app, i)">
                 <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
                 <img src="assets/img/logos/{{app.logo}}" alt="{{app.name}}" class="manage-apps-logo">
                 <div class="app-name">{{app.name}}</div>
@@ -69,7 +69,7 @@
                 <i class="feather upload-cloud x3"></i>
                 <div class="app-name">New App</div>
             </div>
-            <div class="manage-apps-card" *ngFor="let app of all_apps">
+            <div class="manage-apps-card" *ngFor="let app of all_apps; let i = index" (click)="add_client_app(app, i)">
                 <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
                 <img src="assets/img/logos/{{app.logo}}" alt="{{app.name}}" class="manage-apps-logo">
                 <div class="app-name">{{app.name}}</div>
@@ -80,6 +80,6 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
     </div>
 </ng-template>
