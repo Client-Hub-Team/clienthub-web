@@ -18,6 +18,7 @@ export class MainRegistrationComponent implements OnInit {
   invite_info: any;
   emailForm: FormGroup;
   formUtil: FormUtil;
+  emailFormSubmitAttempt = false;
 
   constructor(
     private localStorage: LocalStorageService,
@@ -38,21 +39,24 @@ export class MainRegistrationComponent implements OnInit {
   }
 
   check_email(): void {
-    this.registrationService.check_invitation(this.emailForm.get('email').value).then((res) => {
-      const response = res.json();
+    this.emailFormSubmitAttempt = true;
+      if (this.emailForm.valid) {
+        this.registrationService.check_invitation(this.emailForm.get('email').value).then((res) => {
+          const response = res.json();
 
-      console.log(response);
-      this.registrationService.email = this.emailForm.get('email').value;
-      this.registrationService.invite_info = null;
-      if (response.invites.length > 0) {
-        this.invite = true;
-        this.invite_info = response.invites[0];
-        this.registrationService.invite_info = this.invite_info;
-      } else {
-        this.invite = false;
-      }
+          console.log(response);
+          this.registrationService.email = this.emailForm.get('email').value;
+          this.registrationService.invite_info = null;
+          if (response.invites.length > 0) {
+            this.invite = true;
+            this.invite_info = response.invites[0];
+            this.registrationService.invite_info = this.invite_info;
+          } else {
+            this.invite = false;
+          }
 
-    });
+        });
+    }
   }
 
 }

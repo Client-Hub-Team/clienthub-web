@@ -33,4 +33,20 @@ export class AccountantService {
     return this.http.get(`${environment.apiUrl}/user/${user_id}`, options).toPromise();
   }
 
+  add_client_app(user_id, app_id): Promise<any> {
+    const headers = new Headers();
+    headers.set('Content-Type', 'application/json');
+    const options = new RequestOptions({ headers: headers });
+    headers.set('Authorization', 'JWT ' + this.localStorage.get('access_token'));
+    return this.http.post(`${environment.apiUrl}/user/${user_id}/apps`, {app_id: app_id}, options).toPromise();
+  }
+
+  delete_client_app(user_id, app_id): Promise<any> {
+    const headers = new Headers();
+    headers.set('Content-Type', 'application/json');
+    const options = new RequestOptions({ headers: headers });
+    headers.set('Authorization', 'JWT ' + this.localStorage.get('access_token'));
+    return this.http.patch(`${environment.apiUrl}/user/${user_id}/apps`, {app_id: app_id}, options).toPromise();
+  }
+
 }

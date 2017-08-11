@@ -4,7 +4,7 @@
 	<div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
 		<h3>Who are you?</h3>
 		<p>Perceived end knowledge certainly day sweetness why cordially.</p>
-		<div class="form-group" [ngClass]="formUtil.displayFieldCss(emailForm, 'email')">
+		<div class="form-group" [ngClass]="formUtil.displayFieldCss(emailForm, 'email', emailFormSubmitAttempt)">
 			<label for="email">Email address</label>
 			<input id="email" type="email" formControlName="email" class="form-control" placeholder="name@domain.com">
 		</div>
