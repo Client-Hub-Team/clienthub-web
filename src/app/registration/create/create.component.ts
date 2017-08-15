@@ -74,7 +74,6 @@ export class CreateComponent implements OnInit {
           // Accountant or Client
           this.user_type = this.registrationService.invite_info.type;
 
-          // Invited_to will be null if an ACCOUNTANT invited a CLIENT to create the CLIENT COMPANY
           if (this.registrationService.invite_info.invited_to !== null) {
             this.company_id = this.registrationService.invite_info.invited_to.id;
           } else {

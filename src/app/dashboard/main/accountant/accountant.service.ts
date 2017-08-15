@@ -49,4 +49,12 @@ export class AccountantService {
     return this.http.patch(`${environment.apiUrl}/user/${user_id}/apps`, {app_id: app_id}, options).toPromise();
   }
 
+  update_client_app_order(user_id, apps): Promise<any> {
+    const headers = new Headers();
+    headers.set('Content-Type', 'application/json');
+    const options = new RequestOptions({ headers: headers });
+    headers.set('Authorization', 'JWT ' + this.localStorage.get('access_token'));
+    return this.http.put(`${environment.apiUrl}/user/${user_id}/apps`, {apps: apps}, options).toPromise();
+  }
+
 }

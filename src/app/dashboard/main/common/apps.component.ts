@@ -6,6 +6,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { DashboardService } from '../../dashboard.service';
 import { AccountantService } from '../accountant/accountant.service';
 import { Subscription } from 'rxjs/Subscription';
+import { DragulaService } from 'ng2-dragula';
 import * as _ from 'underscore';
 
 /**
@@ -39,7 +40,8 @@ export class AppsWidgetComponent implements OnInit {
     private localStorage: LocalStorageService,
     private modalService: BsModalService,
     private dashboardService: DashboardService,
-    private accountantService: AccountantService
+    private accountantService: AccountantService,
+    private dragulaService: DragulaService
   ) {}
 
   ngOnInit(): void {
@@ -69,11 +71,34 @@ export class AppsWidgetComponent implements OnInit {
 
     // Subscription to get current_client changes in client list
     this.clientSubscription = this.accountantService.current_client.subscribe(sub => {
+
+      // Update client and apps variables
       this.all_apps = this.all_apps_list;
       this.current_client = sub.client;
       this.client_apps = sub.client.apps;
+
+      // Calculate the differences between the full list and the client list
+      // so it only shows in the complete list the apps that user doesnt have
       this.all_apps = _.filter(this.all_apps, (obj) => {
          return !_.findWhere(this.client_apps, obj);
+      });
+
+    });
+
+
+    // Subscription to the drop event from dragula. Used to calculate the order and update it
+    // in the backend
+    this.dragulaService.drop.subscribe((value) => {
+      let order = 0;
+      this.client_apps.forEach((v) => {
+        v.order = order;
+        order++;
+      });
+
+      this.accountantService.update_client_app_order(this.current_client.id, this.client_apps).then((res) => {
+        const response = res.json();
+      }, (err) => {
+        console.log(err);
       });
 
     });
@@ -86,6 +111,9 @@ export class AppsWidgetComponent implements OnInit {
 
   add_client_app(app, index): void {
     this.accountantService.add_client_app(this.current_client.id, app.id).then((res) => {
+        const response = res.json();
+        app.order = response.order;
+        app.user_app_id = response.user_app_id;
         this.client_apps.push(app);
         this.all_apps.splice(index, 1);
     });
