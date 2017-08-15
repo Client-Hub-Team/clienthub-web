@@ -364,7 +364,7 @@
 	position: fixed;
 	display: block;
 	top: 94px;
-	margin-left: 207px;
+	margin-left: 205px;
 	z-index: 2;
 }
 
@@ -490,6 +490,7 @@
 	cursor: pointer;
 	display: block;
 	border-bottom: 1px solid #e6e8ed;
+	padding-left: 15px;
 }
 
 .clients-list-item:last-child {
@@ -504,6 +505,8 @@
 .clients-list-item.active {
 	background: #e6e8ed;
 	border-radius: 2px;
+	border-left: 5px solid #0184ff;
+	padding-left: 10px;
 }
 /* .clients-list-item.active .clients-list-name {
 	color: #fff;

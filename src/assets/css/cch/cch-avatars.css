@@ -37,6 +37,18 @@
 	width: 32px; height: 32px;
 }
 
+.avatar-24 {
+	line-height: 25px;
+	width: 24px;
+	height: 24px;
+	font-size: 11px;
+	background: rgba(55,64,76,.5);
+}
+
+.avatar-24 > img {
+	width: 24px; height: 24px;
+}
+
 @media screen and (max-width: 767px) {
 	.avatar-64 {
 		line-height: 34px;

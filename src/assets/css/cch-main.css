@@ -470,8 +470,25 @@ hr {
 }
 
 .client-info-header h3 {
-	margin-top: 0;
+	margin-top: -5px;
 	color: #fff;
+	margin-bottom: 0;
+}
+
+.client-info-header h3 small {
+	display: inline-block;
+	margin-top: 4px;
+	cursor: pointer;
+}
+
+.client-info-header h3 small:hover * {
+	opacity: 1 !important;
+}
+
+.client-info-header h3 small span {
+	color: #fff;
+	vertical-align: middle;
+	opacity: .7;
 }
 
 .client-info-header-tabs {
@@ -501,6 +518,14 @@ hr {
 	opacity: 1;
 }
 
+.tab-template {
+	display: none;
+}
+
+.tab-template.active {
+	display: block;
+}
+
 .client-info-header-content-wrapper {
 	display: table;
 	
@@ -517,4 +542,14 @@ hr {
 .client-info-header-row {
 	margin-top: 15px;
 	margin-bottom: 15px;
+}
+
+.empty-placeholder {
+	position: fixed;
+    top:  100vh;
+	left: 0;
+	width: 100%;
+	margin-top: -65vh;
+	text-align: center;
+	transform: translate3d(0,0,0)
 }

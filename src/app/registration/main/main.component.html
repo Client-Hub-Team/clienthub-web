@@ -4,11 +4,11 @@
 	<div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
 		<h3>Who are you?</h3>
 		<p>Perceived end knowledge certainly day sweetness why cordially.</p>
-		<div class="form-group" [ngClass]="formUtil.displayFieldCss(emailForm, 'email', emailFormSubmitAttempt)">
+		<div class="form-group" >
 			<label for="email">Email address</label>
-			<input id="email" type="email" formControlName="email" class="form-control" placeholder="name@domain.com">
+			<input id="email" type="email" [ngClass]="formUtil.displayFieldCss(emailForm, 'email', emailFormSubmitAttempt)" formControlName="email" class="form-control" placeholder="name@domain.com">
 		</div>
-		<button class="btn btn-primary" [disabled]="!emailForm.valid" (click)="check_email()">That's my email address <i class="feather chevron-right"></i></button>
+		<button class="btn btn-lg btn-primary" [disabled]="!emailForm.valid" (click)="check_email()">That's my email address <i class="feather chevron-right"></i></button>
 	</div>
 </div> 
 
@@ -60,7 +60,7 @@
       <div class="modal-body">
       	<p>By Clicking "<strong>I Agree</strong>" so attention pronounce satisfied daughters. But shy tedious pressed studied opinion entered windows off. Advantage dependent <a href="#">suspicion convinced</a> provision him yet. <a href="#">Timed balls match</a> at by rooms we.</p>
       	<div class="text-center">
-      		<button data-dismiss="modal" class="btn btn-success btn-lg" style="padding-left: 30px;padding-right: 30px; margin: 10px 0;">I Agree</button>
+      		<button data-dismiss="modal" class="btn btn-lg btn-success btn-lg" style="padding-left: 30px;padding-right: 30px; margin: 10px 0;">I Agree</button>
       	</div>
       </div>
     </div>
@@ -81,7 +81,7 @@
       			<input type="text" readonly class="form-control" value="https://join.cloudclienthub.com/chicagoaccountingpros/3Muj6lPb4i9b9fkG7KvrHJKL6FkO4G7HgU7KnG8H" onfocus="this.select();">
       		</div>
       		<div class="col-md-4">
-      			<button class="btn btn-primary copy-url"><i class="feather clipboard"></i> Copy to clipboard</button>
+      			<button class="btn btn-lg btn-primary copy-url"><i class="feather clipboard"></i> Copy to clipboard</button>
       		</div>
       	</div>
       </div>
