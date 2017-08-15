@@ -8,7 +8,7 @@
 				<label for="email">Email address</label>
 				<input id="email" type="email" formControlName="email" class="form-control" placeholder="name@domain.com">
 			</div>
-			<button type="submit" class="btn btn-primary" [disabled]="!emailForm.valid" (click)="step_email()">That's my email address <i class="feather chevron-right"></i></button>
+			<button type="submit" class="btn btn-lg btn-primary" [disabled]="!emailForm.valid" (click)="step_email()">That's my email address <i class="feather chevron-right"></i></button>
 		</div>
 	</div>
 
@@ -40,15 +40,15 @@
 				<div class="form-group">
 					<label for="password">Password</label>
 					<div class="input-password">
-						<input id="password" type="password" formControlName="password" class="form-control" placeholder="Password">
-						<i class="feather eye-off" (click)="show_password()"></i>
+						<input id="password" placement="top" triggers="focus" tooltip="Must contain capital and lower-case letters, symbols and numbers" type="password" formControlName="password" class="form-control" placeholder="Password">
+						<i class="feather eye-off"></i>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12 text-center">
-				<button class="btn btn-primary" [disabled]="!infoForm.valid" (click)="step_name_and_password()">{{ invited && registrationService.invite_info.invited_to !== null ? 'Create Account and Join ' + registrationService.invite_info.invited_to.name : 'Continue to Company Info' }} <i class="feather chevron-right"></i></button>
+				<button class="btn btn-lg btn-primary" [disabled]="!infoForm.valid" (click)="step_name_and_password()">{{ invited && registrationService.invite_info.invited_to !== null ? 'Create Account and Join ' + registrationService.invite_info.invited_to.name : 'Continue to Company Info' }} <i class="feather chevron-right"></i></button>
 			</div>
 		</div>
 	</div>
@@ -66,7 +66,7 @@
 		</div>
 		<br>
 		<div class="text-center">
-			<button class="btn btn-primary" [disabled]="!companyForm.valid" (click)="add_company()">Create Company <i class="feather chevron-right"></i></button>
+			<button class="btn btn-lg btn-primary" [disabled]="!companyForm.valid" (click)="add_company()">Create Company <i class="feather chevron-right"></i></button>
 		</div>
 	</div>
 	</form>
@@ -99,10 +99,10 @@
 		<p style="margin-top: 40px; margin-bottom: 0">Or, you can <a href="#" data-toggle="modal" data-target="#modal-invite">get an invite link</a> to share with your teammates.</p>
 		<div class="row">
 			<div class="col-md-5">
-				<button class="btn btn-default btn-block" style="margin-top: 15px">Skip for now</button>
+				<button class="btn btn-lg btn-default btn-block" style="margin-top: 15px">Skip for now</button>
 			</div>
 			<div class="col-md-7">
-				<button class="btn btn-primary btn-block" style="margin-top: 15px">Send Invitations <i class="feather chevron-right"></i></button>
+				<button class="btn btn-lg btn-primary btn-block" style="margin-top: 15px">Send Invitations <i class="feather chevron-right"></i></button>
 			</div>
 		</div>
 	</div>
