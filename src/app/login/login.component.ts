@@ -30,17 +30,23 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.loginService.login(this.email, this.password).then(res => {
-      this.localStorage.set('access_token', res.json().access_token);
-      this.localStorage.set('user', res.json().user);
-      this.localStorage.set('data', res.json().data);
-      this.localStorage.set('company', res.json().company);
+    if (this.email === '' || this.password === '') {
+        this.toastr.error('Email/Password cannot be empty', 'Oops!');
+        return;
+    } else {
+      this.loginService.login(this.email, this.password).then(res => {
+        this.localStorage.set('access_token', res.json().access_token);
+        this.localStorage.set('user', res.json().user);
+        this.localStorage.set('data', res.json().data);
+        this.localStorage.set('company', res.json().company);
 
-      this.router.navigate(['/dashboard/main']);
-    }, (err) => {
-      console.log(err);
-      this.toastr.error(err.json().non_field_errors[0], 'Oops!');
-    });
+        this.router.navigate(['/dashboard/main']);
+      }, (err) => {
+        console.log(err);
+        this.toastr.error(err.json().non_field_errors[0], 'Oops!');
+        return;
+      });
+    }
   }
 
 }

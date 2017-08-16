@@ -57,4 +57,12 @@ export class AccountantService {
     return this.http.put(`${environment.apiUrl}/user/${user_id}/apps`, {apps: apps}, options).toPromise();
   }
 
+  get_company_info(): Promise<any> {
+    const headers = new Headers();
+    headers.set('Content-Type', 'application/json');
+    const options = new RequestOptions({ headers: headers });
+    headers.set('Authorization', 'JWT ' + this.localStorage.get('access_token'));
+    return this.http.get(`${environment.apiUrl}/company`, options).toPromise();
+  }
+
 }

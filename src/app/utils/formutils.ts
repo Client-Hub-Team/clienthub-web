@@ -5,7 +5,12 @@ export class FormUtil {
     constructor() {}
 
     isFieldValid(form: FormGroup, field: string, attempt: boolean) {
-        return form.get(field).valid && form.get(field).touched && attempt;
+        console.log('Triggered field validation on form', form);
+        if (attempt) {
+            return form.get(field).valid && form.get(field).touched;
+        }
+
+        return false;
     }
 
     displayFieldCss(form: FormGroup, field: string, attempt: boolean) {
@@ -16,7 +21,7 @@ export class FormUtil {
             };
         }
 
-        return {}
+        return {};
     }
 
     validatePassword(c: FormControl) {
@@ -25,5 +30,16 @@ export class FormUtil {
                 valid: false
             }
         };
+    }
+
+    validateAllFormFields(formGroup: FormGroup) {
+        Object.keys(formGroup.controls).forEach(field => {
+            const control = formGroup.get(field);
+            if (control instanceof FormControl) {
+                control.markAsTouched({ onlySelf: true });
+            } else if (control instanceof FormGroup) {
+                this.validateAllFormFields(control);
+            }
+        });
     }
 }
