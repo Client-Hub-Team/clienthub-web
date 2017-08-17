@@ -9,6 +9,15 @@
 	padding: 6px 16px;
 }
 
+.btn.disabled, .btn[disabled] {
+	background-color: #b3bac5 !important;
+	transform: translate3d(0,0,0) !important;
+}
+
+.btn.disabled:hover, .btn[disabled]:hover {
+	box-shadow: none !important;
+}
+
 /* IE only media query */
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
 	.btn {
