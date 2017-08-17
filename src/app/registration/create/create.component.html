@@ -8,14 +8,14 @@
 				<div class="form-group">
 					<label for="first_name">First name</label>
 					<input id="first_name" [ngClass]="formUtil.displayFieldCss(infoForm, 'first_name', infoFormSubmitAttempt)" formControlName="first_name" type="text" class="form-control" placeholder="Heather">
-					<div class="form-invalid-message" *ngIf="infoForm.get('first_name').valid && infoFormSubmitAttempt">This is an error message. Test2.</div>
+					<div class="form-invalid-message" *ngIf="!infoForm.get('first_name').valid && infoForm.get('first_name').dirty && infoFormSubmitAttempt">This is an error message. Test2.</div>
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="form-group">
 					<label for="last_name">Last name</label>
 					<input id="last_name" [ngClass]="formUtil.displayFieldCss(infoForm, 'last_name', infoFormSubmitAttempt)" type="text" formControlName="last_name" class="form-control" placeholder="Mason">
-					<div class="form-invalid-message" *ngIf="infoForm.get('last_name').valid && infoFormSubmitAttempt">This is an error message. Test1.</div>
+					<div class="form-invalid-message" *ngIf="!infoForm.get('last_name').valid && infoForm.get('last_name').dirty && infoFormSubmitAttempt">This is an error message. Test1.</div>
 				</div>
 			</div>
 		</div>
@@ -26,16 +26,16 @@
 				<div class="form-group">
 					<label for="password">Password</label>
 					<div class="input-password">
-						<input id="password" type="password" [ngClass]="formUtil.displayFieldCss(infoForm, 'password', infoFormSubmitAttempt)" formControlName="password" class="form-control" placeholder="Password">
-						<i class="feather eye-off" (click)="show_password()"></i>
+						<input id="password" placement="top" [ngClass]="formUtil.displayFieldCss(infoForm, 'password', infoFormSubmitAttempt)" triggers="focus" tooltip="Must contain capital and lower-case letters, symbols and numbers" type="password" formControlName="password" class="form-control" placeholder="Password">
+						<i class="feather eye-off"></i>
 					</div>
-					<div class="form-invalid-message" *ngIf="formUtil.isFieldValid(infoForm, 'password', infoFormSubmitAttempt)">This is an error message. Please fix it.</div>
+					<div class="form-invalid-message" *ngIf="!infoForm.get('password').valid && infoForm.get('password').dirty && infoFormSubmitAttempt">This is an error message. Please fix it.</div>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12 text-center">
-				<button class="btn btn-primary" (click)="step_name_and_password()">{{ invited && registrationService.invite_info.invited_to !== null ? 'Create Account and Join ' + registrationService.invite_info.invited_to.name : 'Continue to Company Info' }} <i class="feather chevron-right"></i></button>
+				<button class="btn btn-lg btn-primary" (click)="step_name_and_password()">{{ invited && registrationService.invite_info.invited_to !== null ? 'Create Account and Join ' + registrationService.invite_info.invited_to.name : 'Continue to Company Info' }} <i class="feather chevron-right"></i></button>
 			</div>
 		</div>
 	</div>
@@ -53,7 +53,7 @@
 		</div>
 		<br>
 		<div class="text-center">
-			<button class="btn btn-primary" [disabled]="!companyForm.valid" (click)="add_company()">Create Company <i class="feather chevron-right"></i></button>
+			<button class="btn btn-lg btn-primary" [disabled]="!companyForm.valid" (click)="add_company()">Create Company <i class="feather chevron-right"></i></button>
 		</div>
 	</div>
 	</form>
@@ -86,10 +86,10 @@
 		<p style="margin-top: 40px; margin-bottom: 0">Or, you can <a href="#" data-toggle="modal" data-target="#modal-invite">get an invite link</a> to share with your teammates.</p>
 		<div class="row">
 			<div class="col-md-5">
-				<button class="btn btn-default btn-block" style="margin-top: 15px">Skip for now</button>
+				<button class="btn btn-lg btn-default btn-block" style="margin-top: 15px">Skip for now</button>
 			</div>
 			<div class="col-md-7">
-				<button class="btn btn-primary btn-block" style="margin-top: 15px">Send Invitations <i class="feather chevron-right"></i></button>
+				<button class="btn btn-lg btn-primary btn-block" style="margin-top: 15px">Send Invitations <i class="feather chevron-right"></i></button>
 			</div>
 		</div>
 	</div>

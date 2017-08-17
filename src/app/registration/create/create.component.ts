@@ -57,7 +57,7 @@ export class CreateComponent implements OnInit {
       ],
       password: [
         null,
-        [Validators.required, this.formUtil.validatePassword]
+        [Validators.required, this.formUtil.validatePassword, Validators.minLength(8)]
       ]
     });
 

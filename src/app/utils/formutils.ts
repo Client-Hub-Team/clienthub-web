@@ -5,7 +5,6 @@ export class FormUtil {
     constructor() {}
 
     isFieldValid(form: FormGroup, field: string, attempt: boolean) {
-        console.log('Triggered field validation on form', form);
         if (attempt) {
             return form.get(field).valid && form.get(field).touched;
         }

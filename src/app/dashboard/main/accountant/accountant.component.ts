@@ -20,6 +20,7 @@ export class AccountantViewComponent implements OnInit {
   company: any;
   current_client: any = {};
   clientSubscription: Subscription;
+  clients: any;
 
   constructor(private localStorage: LocalStorageService, private loginService: LoginService, private accountantService: AccountantService) {
 
@@ -28,6 +29,20 @@ export class AccountantViewComponent implements OnInit {
   ngOnInit(): void {
     this.clientSubscription = this.accountantService.current_client.subscribe(sub => {
       this.current_client = sub.client;
+    });
+
+    this.accountantService.get_clients().then((res) => {
+      this.clients = res.json();
+
+      console.log(this.clients);
+
+      if (this.clients.length > 0) {
+        this.accountantService.get_client_info(this.clients[0].id).then(info => {
+          this.accountantService.current_client.next({client: info.json().client});
+          this.clients[0].active = true;
+        });
+      }
+
     });
   }
 

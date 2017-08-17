@@ -8,6 +8,7 @@ import { MainRegistrationComponent } from './main/main.component';
 import { CreateComponent } from './create/create.component';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NgUploaderModule } from 'ngx-uploader';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -44,6 +45,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    TooltipModule.forRoot(),
     RouterModule.forRoot(routes),
   ],
   providers: [CreateService, LoginService, RegistrationService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
