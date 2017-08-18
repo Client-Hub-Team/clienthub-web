@@ -162,39 +162,18 @@
 				</div>
 				<div class="panel-body">
 					<table class="table table-borderless table-striped">
-						<tr>
+						<tr *ngFor="let user of current_company.users">
 							<td>
 								<div class="avatar avatar-32">
 									<img src="http://via.placeholder.com/32x32/b3bac5">
 									<div class="avatar-inicitials">CG</div>
 								</div>
 							</td>
-							<td>User Name</td>
-							<td><strong>Owner</strong></td>
-							<td class="text-right"><a href="#"><i class="feather edit visible-xs"></i><span class="hidden-xs">Edit info</span></a></td>
-							<td class="text-right"><a href="#" class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
-						</tr>
-						<tr>
+							<td>{{user.user.first_name}} {{user.user.last_name}}</td>
 							<td>
-								<div class="avatar avatar-32">
-									<img src="http://via.placeholder.com/32x32/b3bac5">
-									<div class="avatar-inicitials">CG</div>
-								</div>
+								<strong *ngIf="user.user.id == current_company.owner.id">Owner</strong>
+								<strong *ngIf="user.user.id != current_company.owner.id">User</strong>
 							</td>
-							<td>User Name</td>
-							<td>User</td>
-							<td class="text-right"><a href="#"><i class="feather edit visible-xs"></i><span class="hidden-xs">Edit info</span></a></td>
-							<td class="text-right"><a href="#" class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
-						</tr>
-						<tr>
-							<td>
-								<div class="avatar avatar-32">
-									<img src="http://via.placeholder.com/32x32/b3bac5">
-									<div class="avatar-inicitials">CG</div>
-								</div>
-							</td>
-							<td>User Name</td>
-							<td>User</td>
 							<td class="text-right"><a href="#"><i class="feather edit visible-xs"></i><span class="hidden-xs">Edit info</span></a></td>
 							<td class="text-right"><a href="#" class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
 						</tr>
