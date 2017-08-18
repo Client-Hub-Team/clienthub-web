@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { AccountantService } from './accountant.service';
+import { NgPlural } from '@angular/common';
 
 /**
  * Dashboard main page component. It's empty for now

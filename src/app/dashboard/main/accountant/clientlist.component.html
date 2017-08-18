@@ -8,7 +8,11 @@
         <div class="clients-list scrollable">
             <a class="clients-list-item" [ngClass]="{'active': c.active}" *ngFor="let c of clients" (click)="get_client_info(c)">
                 <div class="clients-list-name">{{c.name}}</div>
-                <div class="clients-list-description">X clients</div>
+                <div class="clients-list-description" [ngPlural]="c.users.length">
+                    <ng-template ngPluralCase="=0">No Clients</ng-template>
+                    <ng-template ngPluralCase="=1">{{c.users.length}} client</ng-template>
+                    <ng-template ngPluralCase="other">{{c.users.length}} clients</ng-template>
+                </div>
             </a>
         </div>
     </div>
