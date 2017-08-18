@@ -1,4 +1,4 @@
-<div class="empty-placeholder" *ngIf="clients.length == 0">
+<div class="empty-placeholder" *ngIf="clients.length == 0 && current_company == undefined">
 	<div class="container animated fadeInUp delay-2">
 			<img src="assets/img/team-illustration.png" alt="Team" width="280">
 			<h3>Start by adding a client</h3>
@@ -19,7 +19,10 @@
 					<h3>
 						{{current_company.name}} <br>
 						<small class="client-info-header-owner" data-tab="2">
-							<div class="avatar avatar-24">PN</div> <span>Primary Client Name</span>
+							<div class="avatar avatar-24">PN</div> 
+							<span>
+								{{current_company.owner != null ? current_company.owner.first_name : 'No Owner' }} {{current_company.owner != null ? current_company.owner.last_name : ''}}
+							</span>
 						</small>
 					</h3>
 				</div>
@@ -58,19 +61,19 @@
 				<div class="col-sm-3">
 					<a href="#" class="client-info-header-content-wrapper">
 						<div class="client-info-header-icon"><i class="fa fa-facebook-official"></i></div>
-						<div class="client-info-header-text">Facebook</div>
+						<div class="client-info-header-text">{{current_company.facebook}}</div>
 					</a>
 				</div>
 				<div class="col-sm-3">
 					<a href="#" class="client-info-header-content-wrapper">
 						<div class="client-info-header-icon"><i class="fa fa-linkedin"></i></div>
-						<div class="client-info-header-text">LinkedIn</div>
+						<div class="client-info-header-text">{{current_company.linkedin}}</div>
 					</a>
 				</div>
 				<div class="col-sm-2">
 					<a href="#" class="client-info-header-content-wrapper pull-right">
 						<div class="client-info-header-icon"><i class="fa fa-twitter"></i></div>
-						<div class="client-info-header-text">Twitter</div>
+						<div class="client-info-header-text">{{current_company.twitter}}</div>
 					</a>
 				</div>
 			</div>

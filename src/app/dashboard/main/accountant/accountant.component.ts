@@ -28,12 +28,10 @@ export class AccountantViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.clientSubscription = this.accountantService.current_company.subscribe(sub => {
-      console.log('Subscription to current client', sub);
       this.current_company = sub.company;
     });
 
     const test = this.accountantService.clients.subscribe(sub => {
-      console.log('Subscription to client list', sub);
       this.clients = sub.clients;
     });
   }

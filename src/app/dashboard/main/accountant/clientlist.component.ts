@@ -22,7 +22,6 @@ export class ClientlistWidgetComponent implements OnInit {
     this.accountantService.get_clients().then((res) => {
       this.clients = res.json();
 
-      console.log('Clients', this.clients);
       this.accountantService.clients.next({clients: this.clients});
 
       if (this.clients.length > 0) {
@@ -44,7 +43,7 @@ export class ClientlistWidgetComponent implements OnInit {
     company.active = true;
 
     this.accountantService.get_client_info(company.id).then(info => {
-      this.accountantService.current_company.next({company: info.json().client});
+      this.accountantService.current_company.next({company: info.json().company});
     });
   }
 

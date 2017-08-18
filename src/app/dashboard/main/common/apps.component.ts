@@ -24,7 +24,7 @@ export class AppsWidgetComponent implements OnInit {
   data: any;
   company: any;
   all_apps: any;
-  client_apps: any = [];
+  company_apps: any = [];
   innerWidth: any;
   current_client: any;
   all_apps_list: any;
@@ -64,7 +64,7 @@ export class AppsWidgetComponent implements OnInit {
     this.dashboardService.get_apps().then((res) => {
       const response = res.json();
       this.all_apps_list = response.all_apps;
-      this.client_apps = response.client_apps;
+      this.company_apps = response.company_apps;
       this.all_apps = response.all_apps;
     });
 
@@ -72,15 +72,17 @@ export class AppsWidgetComponent implements OnInit {
     // Subscription to get current_client changes in client list
     this.clientSubscription = this.accountantService.current_company.subscribe(sub => {
 
+      console.log('Changed company', sub);
+
       // Update client and apps variables
       this.all_apps = this.all_apps_list;
       this.current_client = sub.company;
-      this.client_apps = sub.company.apps;
+      this.company_apps = sub.company.apps;
 
       // Calculate the differences between the full list and the client list
       // so it only shows in the complete list the apps that user doesnt have
       this.all_apps = _.filter(this.all_apps, (obj) => {
-         return !_.findWhere(this.client_apps, obj);
+         return !_.findWhere(this.company_apps, obj);
       });
 
     });
@@ -90,12 +92,12 @@ export class AppsWidgetComponent implements OnInit {
     // in the backend
     this.dragulaService.drop.subscribe((value) => {
       let order = 0;
-      this.client_apps.forEach((v) => {
+      this.company_apps.forEach((v) => {
         v.order = order;
         order++;
       });
 
-      this.accountantService.update_client_app_order(this.current_client.id, this.client_apps).then((res) => {
+      this.accountantService.update_company_app_order(this.current_client.id, this.company_apps).then((res) => {
         const response = res.json();
       }, (err) => {
         console.log(err);
@@ -109,20 +111,20 @@ export class AppsWidgetComponent implements OnInit {
     this.modalRef = this.modalService.show(template, {class: 'modal-lg'});
   }
 
-  add_client_app(app, index): void {
-    this.accountantService.add_client_app(this.current_client.id, app.id).then((res) => {
+  add_company_app(app, index): void {
+    this.accountantService.add_company_app(this.current_client.id, app.id).then((res) => {
         const response = res.json();
         app.order = response.order;
-        app.user_app_id = response.user_app_id;
-        this.client_apps.push(app);
+        app.company_app_id = response.company_app_id;
+        this.company_apps.push(app);
         this.all_apps.splice(index, 1);
     });
   }
 
-  delete_client_app(app, index): void {
-    this.accountantService.delete_client_app(this.current_client.id, app.id).then((res) => {
+  delete_company_app(app, index): void {
+    this.accountantService.delete_company_app(this.current_client.id, app.id).then((res) => {
         this.all_apps.push(app);
-        this.client_apps.splice(index, 1);
+        this.company_apps.splice(index, 1);
     });
   }
 
