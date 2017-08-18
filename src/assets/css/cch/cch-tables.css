@@ -13,8 +13,14 @@
 
 .table-borderless td:last-child {
     border-radius: 0 3px 3px 0 !important;
+    padding-right: 15px;
 }
 
 .table-striped>tbody>tr:nth-of-type(odd) {
     background-color: #f6f7fa;
+}
+
+.table a {
+    padding: 6px;
+    display: inline-block;
 }

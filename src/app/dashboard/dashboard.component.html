@@ -1,17 +1,17 @@
- <div class="fake-body"> 
+ <!-- <div class="fake-body">  -->
 
 	  
-	<div class="main">
+	<!-- <div class="main"> -->
 
-	<!-- End practice -->
+	<!-- Start practice -->
 	 <div class="practice-sidebar animated fadeInLeft" *ngIf="data.user_type == 1">
-		<a href="#" placement="right" tooltip="Dashboard"><i class="feather compass"></i> <span>Dashboard</span></a>
-		<a href="#" placement="right" tooltip="Practice"><i class="feather briefcase"></i> <span>Practice</span></a>
-		<a class="active" href="#" placement="right" tooltip="Clients"><i class="feather users"></i> <span>Clients</span></a>
-		<a href="#" placement="right" tooltip="Apps"><i class="feather package"></i> <span>Apps</span></a>
-		<a href="#" placement="right" tooltip="Resources"><i class="feather folder"></i> <span>Resources</span></a>
-		<a href="#" placement="right" tooltip="Messages"><i class="feather message-square"></i> <span>Messages</span></a>
-		<a href="#" placement="right" tooltip="Settings"><i class="feather settings"></i> <span>Settings</span></a>
+		<a routerLink="#" routerLinkActive="active" placement="right" tooltip="Dashboard"><i class="feather compass"></i> <span>Dashboard</span></a>
+		<a routerLink="/dashboard/practice-info" routerLinkActive="active" placement="right" tooltip="Practice"><i class="feather briefcase"></i> <span>Practice</span></a>
+		<a routerLink="/dashboard/main" routerLinkActive="active" placement="right" tooltip="Clients"><i class="feather users"></i> <span>Clients</span></a>
+		<a routerLink="#" routerLinkActive="active" placement="right" tooltip="Apps"><i class="feather package"></i> <span>Apps</span></a>
+		<a routerLink="#" routerLinkActive="active" placement="right" tooltip="Resources"><i class="feather folder"></i> <span>Resources</span></a>
+		<a routerLink="#" routerLinkActive="active" placement="right" tooltip="Messages"><i class="feather message-square"></i> <span>Messages</span></a>
+		<a routerLink="#" routerLinkActive="active" placement="right" tooltip="Settings"><i class="feather settings"></i> <span>Settings</span></a>
 	</div>
 	<div class="mobile-menu" style="display: none;" *ngIf="data.user_type == 1">
 		<a href="#"><i class="feather compass"></i> <span>Dashboard</span></a>
@@ -26,7 +26,7 @@
 			<div class="row">
 				<div class="col-xs-8 col-sm-5">
 					<i class="feather menu menu-icon animated fadeIn"></i>
-					<img class="cch-logo" src="assets/img/logo-default.png" width="150" alt="Cloud Client Hub">
+					<img class="cch-logo" src="assets/img/logo-default.svg" width="150" alt="Cloud Client Hub">
 				</div>
 				<div class="col-xs-4 col-sm-7 text-right">
 					<span class="dropdown pull-right">
@@ -107,14 +107,27 @@
 	</div>
 	<!-- End client -->
 
-	</div><!-- Close .main div for both components -->
+	<!-- </div> -->
+	<!-- Close .main div for both components -->
 	  
 
-	<div class="container text-center animated fadeIn delay-5">
+	<!-- <div class="container text-center animated fadeIn delay-5" *ngIf="data.user_type == 1">
+		<div class="row">
+			<div class="col-sm-offset-4 col-sm-8">
+				<footer class="privacy-terms">
+					<a href="#" (click)="logout()">Privacy Policy</a>
+					<a href="#">Terms & Conditions</a>
+				</footer>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container text-center animated fadeIn delay-5" *ngIf="data.user_type == 2">
 		<footer class="privacy-terms">
 			<a href="#" (click)="logout()">Privacy Policy</a>
 			<a href="#">Terms & Conditions</a>
 		</footer>
-	</div> 
+	</div>  -->
 
- </div> 
+ <!-- </div>  -->
+ <!-- .main -->

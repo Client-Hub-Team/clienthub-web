@@ -9,7 +9,7 @@
 }
 
 .modal-header {
-    border-bottom: 1px solid #e1e4e9;
+    border-bottom: 1px solid rgba(229, 232, 239, 0.71);
 }
 
 .modal-header .close {
@@ -27,7 +27,7 @@
 }
 
 .modal-footer {
-    border-top: 1px solid #e1e4e9;
+    border-top: 1px solid rgba(229, 232, 239, 0.71);
 }
 
 .modal.fade .modal-dialog {

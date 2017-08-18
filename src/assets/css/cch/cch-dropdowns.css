@@ -1,17 +1,20 @@
 .dropdown-menu {
 	background-color: #fff;
     box-shadow: 0 6px 11px 0 rgba(39,76,132,0.2);
-    border: none;
+    border-color: #e5e8ef;
 }
 
 .dropdown-menu>li>a {
 	color: #7e8692;
+	margin: 0 -1px;
+	border: 1px solid transparent;
 }
 
 .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
     color: #fff;
     text-decoration: none;
-    background-color: #0084ff;
+	background-color: #0084ff;
+	border: 1px solid rgba(0, 105, 203, 0.53);
 }
 
 .filter .dropdown-menu {

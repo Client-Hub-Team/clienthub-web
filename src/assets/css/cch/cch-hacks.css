@@ -1,0 +1,7 @@
+/* @-moz-document url-prefix() {
+
+    .widgets-wrapper-for-firefox, .animated, .fadeInUp, .fadeInDown {
+        transform: none !important;
+    }
+
+} */

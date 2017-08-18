@@ -24,11 +24,14 @@ export class AppsWidgetComponent implements OnInit {
   data: any;
   company: any;
   all_apps: any;
-  client_apps: any;
+  client_apps: any = [];
   innerWidth: any;
   current_client: any;
   all_apps_list: any;
   clientSubscription: Subscription;
+  dragulaOptions: any = {
+    direction: 'horizontal'
+  };
 
   slideConfig = {
     'slidesToShow': 3,
@@ -47,7 +50,6 @@ export class AppsWidgetComponent implements OnInit {
   ngOnInit(): void {
 
     this.innerWidth = (window.screen.width);
-    console.log(this.innerWidth);
 
     this.user = this.localStorage.get('user');
     this.data = this.localStorage.get('data');

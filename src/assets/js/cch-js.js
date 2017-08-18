@@ -41,9 +41,9 @@ $(function(){
 	shouldStick = true;
 	$(document).on('scroll', $(window), function(){
 		scrollPosition = $(window).scrollTop();
-		if(scrollPosition > 1 && shouldStick == true){
+		if(scrollPosition > 0 && shouldStick == true){
 			clientInfoHeaderWidth = $('.client-info-header').outerWidth();
-			clientInfoHeaderHeight = $('.client-info-header').outerHeight();
+			clientInfoHeaderHeight = $('.client-info-header').outerHeight()-15;
 			$('.client-info-header').before('<div class="client-info-header-placeholder" style="height:'+(clientInfoHeaderHeight)+'px"></div>');
 			$('.client-info-header-row').slideUp(150);
 			$('.client-info-header').css({
@@ -52,7 +52,7 @@ $(function(){
 			});
 			shouldStick = false;
 		} 
-		if(scrollPosition < 1 && shouldStick == false){
+		if(scrollPosition == 0 && shouldStick == false){
 			setTimeout(function(){
 				$('.client-info-header-placeholder').remove();
 				$('.client-info-header').css({
@@ -75,6 +75,7 @@ $(function(){
 
 		$('.tab-template').stop(true,true).fadeOut(0);
 		$('.tab-template[data-tab='+selectedTabIndex+']').stop(true,true).fadeIn(0);
+		$('body').animate({scrollTop:0},0);
 	});
 	$(document).on('click', '.clients-list-item', function(){
 		$('.client-info-header-tabs a').removeClass('active');

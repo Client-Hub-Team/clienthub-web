@@ -4,14 +4,28 @@
         <button class="btn btn-success" *ngIf="data.user_type == 1" (click)="openModal(appsModal)">Manage</button>
     </div>
     <div class="panel-body">
-         <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
+        <!-- Placeholder for Accountant -->
+        <div *ngIf="client_apps.length == 0 && data.user_type == 1" class="text-center">
+            <img src="assets/img/apps-illustration.svg" alt="Apps" width="130" style="margin-top:15px">
+            <h3>Choose the Apps</h3>
+            <p>Click on "Manage" to select the Apps to use with this client.</p>
+        </div>
+
+        <!-- Placeholder for Client -->
+        <div *ngIf="client_apps.length == 0 && data.user_type == 2" class="text-center">
+            <img src="assets/img/apps-illustration.svg" alt="Apps" width="130" style="margin-top:15px">
+            <h3>Your Apps</h3>
+            <p>Your accountant has not selected the Apps yet, please try again later.</p>
+        </div>
+
+         <ngx-slick *ngIf="client_apps.length > 0" class="carousel" #slickModal="slick-modal" [config]="slideConfig">
             <div ngxSlickItem *ngFor="let app of client_apps" class="slide">
                 <a href="{{app.url}}" target="_blank">
                     <img src="assets/img/logos/{{ app.logo }}">
                     <div class="app-name">{{ app.name }}</div>
                 </a>
                 <div class="app-description">{{ app.category }}</div>
-                <a class="interesting-data" href="#">Interesting data?</a>
+                <!-- <a class="interesting-data" href="#">Interesting data?</a> -->
             </div>
         </ngx-slick> 
     </div>
@@ -26,7 +40,7 @@
     <div class="manage-apps-list">
         <h4>Selected Apps</h4>
         <p>Drag and drop the Selected Apps and choose the best order do display it to your client. Click an App to remove it from this list.</p>
-        <div class="manage-apps-row selected-apps scrollbars" [dragula]='"bag-client"' [dragulaModel]='client_apps'>
+        <div class="manage-apps-row selected-apps scrollbars" [dragula]='"bag-client"' [dragulaModel]='client_apps' [dragulaOptions]='dragulaOptions'>
             <div class="manage-apps-card active" *ngFor="let app of client_apps; let i = index" (click)="delete_client_app(app, i)">
                 <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
                 <img src="assets/img/logos/{{app.logo}}" alt="{{app.name}}" class="manage-apps-logo">

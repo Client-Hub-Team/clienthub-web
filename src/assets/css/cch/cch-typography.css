@@ -27,3 +27,11 @@ a:hover, a:focus {
 	color: #006acd;
 	text-decoration: none !important;
 }
+
+.color-red-hover {
+	color: #f72239;
+}
+
+.color-red-hover:hover, .color-red-hover:focus {
+	color: #c91428;
+}

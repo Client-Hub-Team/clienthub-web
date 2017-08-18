@@ -1,6 +1,6 @@
 <div class="empty-placeholder" *ngIf="clients.length == 0">
 	<div class="container animated fadeInUp delay-2">
-			<img src="assets/img/team-illustration.png" alt="Team" width="280">
+			<img src="assets/img/team-illustration.svg" alt="Team" width="280">
 			<h3>Start by adding a client</h3>
 			<p>You need to do something about it.</p>
 			<button class="btn btn-primary btn-lg"><i class="feather user-plus"></i> Add your first client</button>
@@ -8,14 +8,15 @@
 </div>
 
 <div class="row" *ngIf="clients.length > 0">
+
 	
 	<app-clientlist-widget></app-clientlist-widget>
-
-	<div class="col-sm-8 animated fadeInUp delay-3">
-
+	
+	<div class="col-sm-8 animated fadeInUp delay-3 widgets-wrapper-for-firefox">
+		
 		<div class="client-info-header animated fadeInDown delay-2">
 			<div class="row">
-				<div class="col-xs-9">
+				<div class="col-xs-9 col-sm-8 col-md-9">
 					<h3>
 						{{current_client.first_name}} {{current_client.last_name}} <br>
 						<small class="client-info-header-owner" data-tab="2">
@@ -23,8 +24,8 @@
 						</small>
 					</h3>
 				</div>
-				<div class="col-xs-3 text-right">
-					<button class="btn btn-primary">Edit info</button>
+				<div class="col-xs-3 col-sm-4 col-md-3 text-right">
+					<button class="btn btn-primary"><i class="feather edit visible-xs"></i><span class="hidden-xs"> Edit info</span></button>
 				</div>
 			</div>
 			<div class="row client-info-header-row">
@@ -82,6 +83,8 @@
 		</div>
 
 		<div class="tab-template active" data-tab="1">
+			<app-apps-widget></app-apps-widget>
+			<app-resources-widget></app-resources-widget>
 			<div class="panel panel-default communications-widget coming-soon">
 				<div class="panel-heading">
 					Communications <span class="badge">1</span>
@@ -147,21 +150,100 @@
 					</div>
 				</div>
 			</div>
-			<app-apps-widget></app-apps-widget>
-			<app-resources-widget></app-resources-widget>
 		</div>
 
 		<div class="tab-template" data-tab="2">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					Clients Users
-					<!-- <button class="btn btn-success">Ask something</button> -->
+					Client Users
+					<button class="btn btn-success"><i class="feather plus visible-xs"></i><span class="hidden-xs">Invite a user</span></button>
 				</div>
 				<div class="panel-body">
-					Users list
+					<table class="table table-borderless table-striped">
+						<tr>
+							<td>
+								<div class="avatar avatar-32">
+									<img src="http://via.placeholder.com/32x32/b3bac5">
+									<div class="avatar-inicitials">CG</div>
+								</div>
+							</td>
+							<td>User Name</td>
+							<td><strong>Owner</strong></td>
+							<td class="text-right"><a href="#"><i class="feather edit visible-xs"></i><span class="hidden-xs">Edit info</span></a></td>
+							<td class="text-right"><a href="#" class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
+						</tr>
+						<tr>
+							<td>
+								<div class="avatar avatar-32">
+									<img src="http://via.placeholder.com/32x32/b3bac5">
+									<div class="avatar-inicitials">CG</div>
+								</div>
+							</td>
+							<td>User Name</td>
+							<td>User</td>
+							<td class="text-right"><a href="#"><i class="feather edit visible-xs"></i><span class="hidden-xs">Edit info</span></a></td>
+							<td class="text-right"><a href="#" class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
+						</tr>
+						<tr>
+							<td>
+								<div class="avatar avatar-32">
+									<img src="http://via.placeholder.com/32x32/b3bac5">
+									<div class="avatar-inicitials">CG</div>
+								</div>
+							</td>
+							<td>User Name</td>
+							<td>User</td>
+							<td class="text-right"><a href="#"><i class="feather edit visible-xs"></i><span class="hidden-xs">Edit info</span></a></td>
+							<td class="text-right"><a href="#" class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
+						</tr>
+					</table>
 				</div>
 			</div>
+
+			<div class="panel panel-default">
+					<div class="panel-heading">
+						Assigned Accountants
+						<button class="btn btn-success"><i class="feather plus visible-xs"></i><span class="hidden-xs">Assign a new accountant</span></button>
+					</div>
+					<div class="panel-body">
+						<table class="table table-borderless table-striped">
+							<tr>
+								<td>
+									<div class="avatar avatar-32">
+										<img src="http://via.placeholder.com/32x32/b3bac5">
+										<div class="avatar-inicitials">CG</div>
+									</div>
+								</td>
+								<td>Accountant Name</td>
+								<td class="text-right"><a href="#"><i class="feather edit visible-xs"></i><span class="hidden-xs">Manage Assignments</span></a></td>
+								<td class="text-right"><a href="#" class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
+							</tr>
+							<tr>
+								<td>
+									<div class="avatar avatar-32">
+										<img src="http://via.placeholder.com/32x32/b3bac5">
+										<div class="avatar-inicitials">CG</div>
+									</div>
+								</td>
+								<td>Accountant Name</td>
+								<td class="text-right"><a href="#"><i class="feather edit visible-xs"></i><span class="hidden-xs">Manage Assignments</span></a></td>
+								<td class="text-right"><a href="#" class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
+							</tr>
+							<tr>
+								<td>
+									<div class="avatar avatar-32">
+										<img src="http://via.placeholder.com/32x32/b3bac5">
+										<div class="avatar-inicitials">CG</div>
+									</div>
+								</td>
+								<td>Accountant Name</td>
+								<td class="text-right"><a href="#"><i class="feather edit visible-xs"></i><span class="hidden-xs">Manage Assignments</span></a></td>
+								<td class="text-right"><a href="#" class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
+							</tr>
+						</table>
+					</div>
+				</div>
 		</div>
 
 	</div>
-</div> 
+</div>

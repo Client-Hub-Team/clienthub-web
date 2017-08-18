@@ -6,6 +6,7 @@
 @import url(cch/cch-feather-icons.css);
 @import url(cch/cch-forms.css);
 @import url(cch/cch-modals.css);
+@import url(cch/cch-hacks.css);
 @import url(cch/cch-panels.css);
 @import url(cch/cch-tooltips.css);
 @import url(cch/cch-slick.css);
@@ -41,6 +42,12 @@ html, body {
 
 body {
 	background-color: #f2f3f6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
 }
 
 hr {
@@ -50,7 +57,7 @@ hr {
 /* Background top bar */
 .header-bar {
 	background-color: #fff;
-	box-shadow: 0 3px 11px 0 rgba(39,76,132,0.15);
+	border: 1px solid #e5e8ef;
 	padding: 40px 0;
 	padding-bottom: 85px;
 }
@@ -231,11 +238,14 @@ hr {
 }
 
 .practice-sidebar {
-	background-color: #333c48;
+	/* background-color: #333c48; */
 	/*padding: 15px;*/
 	position: fixed;
-	left: 0; top: 76px; bottom: 0;
+	left: 0;
+	top: 76px;
+	bottom: 0;
 	z-index: 3; 
+	border-right: 1px solid #eceef2;
 }
 
 .practice-sidebar span {
@@ -244,22 +254,39 @@ hr {
 
 .practice-sidebar > a {
 	display: block;
-	color: #7f8ea4;
+	color: #7e8692;
 	font-size: 24px;
-	padding: 5px 15px;
-	margin-bottom: 25px;
-	margin-top: 14px;
+	padding: 8px 20px;
+	margin: 14px 0;
+	border: 1px solid transparent;
 }
 .practice-sidebar > a:hover {
-	color: #b7c6dd;
+	color: #343d49;
 }
 .practice-sidebar > a.active {
-	color: #fff;
-	border-left: 5px solid #0084ff;
-	padding-left: 10px;
+	color: #333c48;
+	font-weight: 500;
+	border: 1px solid #e5e8ef;
+	border-left: 3px solid #0084ff;
+	padding-left: 18px;
+	background:rgba(255,255,255,.7);
+}
+.practice-sidebar > a.active i {
+	color: #0084ff;
 }
 
-@media screen and (min-width: 1600px) {
+@media screen and (max-width: 767px) {
+	.practice-sidebar {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 1540px) {
+	.practice-sidebar {
+		left: 0px;
+		border: none;
+	}
+
 	.practice-sidebar span {
 		font-size: 14px;
 		margin-left: 10px;
@@ -267,10 +294,6 @@ hr {
 		vertical-align: 2px;
 		display: inline-block;
 		/*font-weight: 500;*/
-	}
-
-	.practice-sidebar {
-		box-shadow: 0 0 11px 0 rgba(39,76,132,0.55)
 	}
 
 	.practice-sidebar .tooltip {
@@ -285,30 +308,80 @@ hr {
 		display: block;
 		color: #7f8ea4;
 		font-size: 24px;
-		padding: 5px 20px;
-		margin-bottom: 25px;
-		margin-top: 14px;
+		padding: 8px 20px;
+		padding-bottom: 10px;
+		margin: 10px 0;
+	}
+
+}
+
+@media screen and (min-width: 1600px) {
+	.practice-sidebar {
+		left: 30px;
 	}
 
 	.practice-sidebar > a.active {
-		color: #fff;
-		border-left: 5px solid #0084ff;
-		padding-left: 15px;
+		border-radius: 2px;
 	}
 }
 
-
-@media screen and (max-width: 1200px) {
-	
-}
-
-@media screen and (max-width: 992px) {
-	
-}
-
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 1700px) {
 	.practice-sidebar {
-		display: none;
+		left: 90px;
+	}
+}
+
+@media screen and (min-width: 1800px) {
+	.practice-sidebar {
+		left: 130px;
+	}
+}
+
+@media screen and (min-width: 1920px) {
+	.practice-sidebar {
+		left: 195px;
+	}
+}
+
+@media screen and (min-width: 2000px) {
+	.practice-sidebar {
+		left: 230px;
+	}
+}
+
+@media screen and (min-width: 2100px) {
+	.practice-sidebar {
+		left: 280px;
+	}
+}
+
+@media screen and (min-width: 2200px) {
+	.practice-sidebar {
+		left: 330px;
+	}
+}
+
+@media screen and (min-width: 2300px) {
+	.practice-sidebar {
+		left: 380px;
+	}
+}
+
+@media screen and (min-width: 2400px) {
+	.practice-sidebar {
+		left: 430px;
+	}
+}
+
+@media screen and (min-width: 2500px) {
+	.practice-sidebar {
+		left: 480px;
+	}
+}
+
+@media screen and (min-width: 2560px) {
+	.practice-sidebar {
+		left: 510px;
 	}
 }
 
@@ -447,11 +520,10 @@ hr {
 
 	padding: 15px;
 	border-radius: 2px;
-	margin-bottom: 30px;
+	margin-bottom: 15px;
 	margin-top: -30px;
 	padding-top: 25px;
 	color: #fff;
-	box-shadow: 0 3px 11px 0 rgba(39,76,132,0.15);
 	z-index: 3;
 	top: 100px;
 }
@@ -479,6 +551,7 @@ hr {
 	display: inline-block;
 	margin-top: 4px;
 	cursor: pointer;
+	font-size: 14px;
 }
 
 .client-info-header h3 small:hover * {
@@ -489,6 +562,25 @@ hr {
 	color: #fff;
 	vertical-align: middle;
 	opacity: .7;
+}
+
+@media screen and (max-width:768px){
+	.client-info-header-content-wrapper {
+		float: none !important;
+	}
+	
+	.client-info-header-row {
+		display: none !important;
+	}
+
+	/* .client-info-header {
+		padding: 15px;
+		border-radius: 2px;
+		margin-bottom: 15px;
+		margin-top: -30px;
+		padding-top: 55px;
+		top: 100px;
+	} */
 }
 
 .client-info-header-tabs {

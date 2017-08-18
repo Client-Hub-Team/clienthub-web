@@ -1,5 +1,5 @@
 .widgets {
-	margin-top: -50px;
+	margin-top: -52px;
 	position: relative;
 }
 
@@ -16,7 +16,7 @@
 /* Apps */
 .apps-widget .panel-body {
 	padding: 15px;
-	min-height: 246px;
+	min-height: 226px;
 }
 
 .app-name {
@@ -37,6 +37,10 @@
 
 .slick-slide a:hover .app-name {
     color: #0084ff;
+}
+
+.slick-slide a {
+	outline: none !important;
 }
 
 @media screen and (max-width: 600px) {
@@ -284,7 +288,7 @@
 
 /* Resources */
 .resources-widget .panel-body {
-	height: 185px;
+	height: 205px;
 	overflow: auto;
 	padding-bottom: 0;
 }
@@ -374,8 +378,11 @@
 	display: block;
 	width: 360px;
 	top: 150px;
-	bottom: 30px;
-	/*border: 1px solid #fff;*/
+	bottom: 0px;
+	padding: 5px;
+	border-radius: 2px;
+	background: #fff;
+    border: 1px solid #e5e8ef;
 }
 
 .clients-list-search {
@@ -486,11 +493,11 @@
 
 .clients-list-item {
 	background: transparent;
-	padding: 10px;
+	padding: 13px 10px;
 	cursor: pointer;
 	display: block;
-	border-bottom: 1px solid #e6e8ed;
-	padding-left: 15px;
+	border-bottom: 1px solid #f0f1f3;
+	padding-left: 20px;
 }
 
 .clients-list-item:last-child {
@@ -498,29 +505,29 @@
 }
 
 .clients-list-item:hover {
-	background: #e6e8ed;
+	background: rgba(240, 241, 243, 0.76);
 	border-radius: 2px;
 }
 
 .clients-list-item.active {
-	background: #e6e8ed;
+	background: rgba(240, 241, 243, 0.76);
 	border-radius: 2px;
-	border-left: 5px solid #0184ff;
-	padding-left: 10px;
+	border-left: 3px solid #0184ff;
+	padding-left: 17px;
+	border-bottom: none;
+	padding-bottom: 14px;
 }
-/* .clients-list-item.active .clients-list-name {
-	color: #fff;
+.clients-list-item.active .clients-list-name {
+	font-weight: 500;
 }
-.clients-list-item.active .clients-list-description {
-	color: #9ec6eb;
-} */
 
 .clients-list-name {
-	font-weight: 500;
+	/* font-weight: 500; */
 	color: #333c48;
 }
 
 .clients-list-description {
-	color: #b3bac5;
+	color: #7e8692;
+	font-size: 13px;
 }
 /* Clients list */
