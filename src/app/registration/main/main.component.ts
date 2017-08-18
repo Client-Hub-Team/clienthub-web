@@ -18,7 +18,7 @@ export class MainRegistrationComponent implements OnInit {
   invite_info: any;
   emailForm: FormGroup;
   formUtil: FormUtil;
-  emailFormSubmitAttempt = false;
+  emailFormSubmitAttempt: boolean;
 
   constructor(
     private localStorage: LocalStorageService,
@@ -31,7 +31,7 @@ export class MainRegistrationComponent implements OnInit {
   ngOnInit(): void {
 
     this.formUtil = new FormUtil();
-
+    this.emailFormSubmitAttempt = false;
     this.emailForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
     });

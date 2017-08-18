@@ -18,7 +18,7 @@ export class AccountantViewComponent implements OnInit {
   user: any;
   data: any;
   company: any;
-  current_client: any = {};
+  current_company: any = {};
   clientSubscription: Subscription;
   clients: any = [];
 
@@ -27,12 +27,12 @@ export class AccountantViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.clientSubscription = this.accountantService.current_client.subscribe(sub => {
-      this.current_client = sub.client;
+    this.clientSubscription = this.accountantService.current_company.subscribe(sub => {
+      this.current_company = sub.company;
     });
 
-    this.accountantService.get_clients().then((res) => {
-      this.clients = res.json();
+    const test = this.accountantService.clients.subscribe(sub => {
+      this.clients = sub.clients;
     });
   }
 

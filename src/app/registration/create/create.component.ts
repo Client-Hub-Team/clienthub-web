@@ -44,6 +44,30 @@ export class CreateComponent implements OnInit {
     private formBuilder: FormBuilder,
   ) {
 
+    this.formUtil = new FormUtil();
+
+    this.infoForm = this.formBuilder.group({
+      first_name: [
+        null,
+        [Validators.required],
+      ],
+      last_name: [
+        null,
+        [Validators.required],
+      ],
+      password: [
+        null,
+        [Validators.required, this.formUtil.validatePassword, Validators.minLength(8)]
+      ]
+    });
+
+    this.companyForm = this.formBuilder.group({
+      company_name: [
+        null,
+        [Validators.required],
+      ]
+    });
+
   }
 
 
@@ -91,29 +115,9 @@ export class CreateComponent implements OnInit {
       this.step = 2;
     }
 
-    this.formUtil = new FormUtil();
-
-    this.infoForm = this.formBuilder.group({
-      first_name: [
-        null,
-        [Validators.required],
-      ],
-      last_name: [
-        null,
-        [Validators.required],
-      ],
-      password: [
-        null,
-        [Validators.required, this.formUtil.validatePassword]
-      ]
-    });
-
-    this.companyForm = this.formBuilder.group({
-      company_name: [
-        null,
-        [Validators.required],
-      ]
-    });
+    
+    this.infoFormSubmitAttempt = false;
+    
   }
 
   step_name_and_password(): void {
@@ -156,6 +160,8 @@ export class CreateComponent implements OnInit {
           }
         });
       });
+    } else {
+      this.formUtil.validateAllFormFields(this.infoForm);
     }
   }
 
