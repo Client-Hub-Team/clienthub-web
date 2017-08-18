@@ -24,7 +24,7 @@ export class AppsWidgetComponent implements OnInit {
   data: any;
   company: any;
   all_apps: any;
-  client_apps: any;
+  client_apps: any = [];
   innerWidth: any;
   current_client: any;
   all_apps_list: any;
@@ -70,12 +70,12 @@ export class AppsWidgetComponent implements OnInit {
 
 
     // Subscription to get current_client changes in client list
-    this.clientSubscription = this.accountantService.current_client.subscribe(sub => {
+    this.clientSubscription = this.accountantService.current_company.subscribe(sub => {
 
       // Update client and apps variables
       this.all_apps = this.all_apps_list;
-      this.current_client = sub.client;
-      this.client_apps = sub.client.apps;
+      this.current_client = sub.company;
+      this.client_apps = sub.company.apps;
 
       // Calculate the differences between the full list and the client list
       // so it only shows in the complete list the apps that user doesnt have

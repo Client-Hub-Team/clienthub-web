@@ -7,7 +7,7 @@
 	</div>
 </div>
 
-<div class="row" *ngIf="clients.length > 0">
+<div class="row" [hidden]="clients.length == 0" *ngIf="current_company !== undefined">
 	
 	<app-clientlist-widget></app-clientlist-widget>
 
@@ -17,7 +17,7 @@
 			<div class="row">
 				<div class="col-xs-9">
 					<h3>
-						{{current_client.first_name}} {{current_client.last_name}} <br>
+						{{current_company.name}} <br>
 						<small class="client-info-header-owner" data-tab="2">
 							<div class="avatar avatar-24">PN</div> <span>Primary Client Name</span>
 						</small>
@@ -31,7 +31,7 @@
 				<div class="col-sm-4">
 					<a href="#" class="client-info-header-content-wrapper">
 						<div class="client-info-header-icon"><i class="feather mail"></i></div>
-						<div class="client-info-header-text">{{current_client.email}}</div>
+						<div class="client-info-header-text">{{current_company.email}}</div>
 					</a>
 				</div>
 				<div class="col-sm-5">

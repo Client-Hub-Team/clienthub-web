@@ -11,7 +11,8 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class AccountantService {
 
-  current_client = new Subject<any>();
+  current_company = new Subject<any>();
+  clients = new Subject<any>();
 
   constructor(private http: Http, private localStorage: LocalStorageService, private router: Router) {
 
@@ -25,12 +26,12 @@ export class AccountantService {
     return this.http.get(`${environment.apiUrl}/user/accountant.client.list`, options).toPromise();
   }
 
-  get_client_info(user_id): Promise<any> {
+  get_client_info(company_id): Promise<any> {
     const headers = new Headers();
     headers.set('Content-Type', 'application/json');
     const options = new RequestOptions({ headers: headers });
     headers.set('Authorization', 'JWT ' + this.localStorage.get('access_token'));
-    return this.http.get(`${environment.apiUrl}/user/${user_id}`, options).toPromise();
+    return this.http.get(`${environment.apiUrl}/company/${company_id}`, options).toPromise();
   }
 
   add_client_app(user_id, app_id): Promise<any> {

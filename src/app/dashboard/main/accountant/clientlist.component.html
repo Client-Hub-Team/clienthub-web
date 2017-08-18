@@ -7,8 +7,8 @@
         </label>
         <div class="clients-list scrollable">
             <a class="clients-list-item" [ngClass]="{'active': c.active}" *ngFor="let c of clients" (click)="get_client_info(c)">
-                <div class="clients-list-name">{{c.user.first_name}} {{c.user.last_name}}</div>
-                <div class="clients-list-description">{{c.user.email}}</div>
+                <div class="clients-list-name">{{c.name}}</div>
+                <div class="clients-list-description">X clients</div>
             </a>
         </div>
     </div>

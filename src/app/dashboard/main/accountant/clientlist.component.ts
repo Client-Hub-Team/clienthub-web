@@ -12,7 +12,7 @@ import { AccountantService } from './accountant.service';
 })
 export class ClientlistWidgetComponent implements OnInit {
 
-  clients: any;
+  clients: any = [];
 
   constructor(private localStorage: LocalStorageService, private accountantService: AccountantService) {
 
@@ -22,9 +22,13 @@ export class ClientlistWidgetComponent implements OnInit {
     this.accountantService.get_clients().then((res) => {
       this.clients = res.json();
 
+      console.log('Clients', this.clients);
+      this.accountantService.clients.next({clients: this.clients});
+
       if (this.clients.length > 0) {
         this.accountantService.get_client_info(this.clients[0].id).then(info => {
-          this.accountantService.current_client.next({client: info.json().client});
+          console.log('info', info.json());
+          this.accountantService.current_company.next({company: info.json().company});
           this.clients[0].active = true;
         });
       }
@@ -32,15 +36,15 @@ export class ClientlistWidgetComponent implements OnInit {
     });
   }
 
-  get_client_info(client): any {
+  get_client_info(company): any {
     this.clients.forEach(e => {
       e.active = false;
     });
 
-    client.active = true;
+    company.active = true;
 
-    this.accountantService.get_client_info(client.id).then(info => {
-      this.accountantService.current_client.next({client: info.json().client});
+    this.accountantService.get_client_info(company.id).then(info => {
+      this.accountantService.current_company.next({company: info.json().client});
     });
   }
 

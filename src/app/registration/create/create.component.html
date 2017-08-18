@@ -1,6 +1,6 @@
 <form [formGroup]="infoForm">
 <div class="row" *ngIf="step == 2">
-	<div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+	<div class="col-sm-6 col-sm-offset-3">
 		<h3>What is your name?</h3>
 		<p>Your name will be used to identify you in your team and client conversations.</p>
 		<div class="row">
@@ -8,14 +8,14 @@
 				<div class="form-group">
 					<label for="first_name">First name</label>
 					<input id="first_name" [ngClass]="formUtil.displayFieldCss(infoForm, 'first_name', infoFormSubmitAttempt)" formControlName="first_name" type="text" class="form-control" placeholder="Heather">
-					<div class="form-invalid-message" *ngIf="!infoForm.get('first_name').valid && infoForm.get('first_name').dirty && infoFormSubmitAttempt">This is an error message. Test2.</div>
+					<div class="form-invalid-message" *ngIf="!infoForm.get('first_name').valid && infoForm.get('first_name').dirty && infoFormSubmitAttempt">Cannot be empty.</div>
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="form-group">
 					<label for="last_name">Last name</label>
 					<input id="last_name" [ngClass]="formUtil.displayFieldCss(infoForm, 'last_name', infoFormSubmitAttempt)" type="text" formControlName="last_name" class="form-control" placeholder="Mason">
-					<div class="form-invalid-message" *ngIf="!infoForm.get('last_name').valid && infoForm.get('last_name').dirty && infoFormSubmitAttempt">This is an error message. Test1.</div>
+					<div class="form-invalid-message" *ngIf="!infoForm.get('last_name').valid && infoForm.get('last_name').dirty && infoFormSubmitAttempt">Cannot be empty.</div>
 				</div>
 			</div>
 		</div>
@@ -23,13 +23,15 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h3>Set your password</h3>
+				<p>Your password must contain capital and lower-case letters, symbols and numbers.</p>
+				<p>Minimum of 8 characters.</p>
 				<div class="form-group">
 					<label for="password">Password</label>
 					<div class="input-password">
-						<input id="password" placement="top" [ngClass]="formUtil.displayFieldCss(infoForm, 'password', infoFormSubmitAttempt)" triggers="focus" tooltip="Must contain capital and lower-case letters, symbols and numbers" type="password" formControlName="password" class="form-control" placeholder="Password">
+						<input id="password" type="password" [ngClass]="formUtil.displayFieldCss(infoForm, 'password', infoFormSubmitAttempt)" formControlName="password" class="form-control" placeholder="Password">
 						<i class="feather eye-off"></i>
 					</div>
-					<div class="form-invalid-message" *ngIf="!infoForm.get('password').valid && infoForm.get('password').dirty && infoFormSubmitAttempt">This is an error message. Please fix it.</div>
+					<div class="form-invalid-message" *ngIf="!infoForm.get('password').valid && infoForm.get('password').dirty && infoFormSubmitAttempt">Password must match the specified conditions</div>
 				</div>
 			</div>
 		</div>
@@ -44,7 +46,7 @@
 
 <div class="row" *ngIf="step == 3">
 	<form [formGroup]="companyForm">
-	<div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+	<div class="col-sm-6 col-sm-offset-3">
 		<h3>Company info</h3>
 		<p>Perceived end knowledge certainly day sweetness why cordially.</p>
 		<div class="form-group">
