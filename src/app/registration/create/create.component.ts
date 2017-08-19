@@ -28,6 +28,7 @@ export class CreateComponent implements OnInit {
   company_name: string;
   company_handle: string;
   invited: boolean;
+  invite_id: any = null;
   infoForm: FormGroup;
   companyForm: FormGroup;
   formUtil: FormUtil;
@@ -94,7 +95,7 @@ export class CreateComponent implements OnInit {
         if (this.registrationService.invite_info != null && this.registrationService.invite_info !== undefined) {
           console.log('User was invited');
           this.invited = true;
-
+          this.invite_id = this.registrationService.invite_info.id;
           // Accountant or Client
           this.user_type = this.registrationService.invite_info.type;
 
@@ -114,10 +115,7 @@ export class CreateComponent implements OnInit {
 
       this.step = 2;
     }
-
-    
     this.infoFormSubmitAttempt = false;
-    
   }
 
   step_name_and_password(): void {
@@ -136,7 +134,8 @@ export class CreateComponent implements OnInit {
         this.infoForm.get('password').value,
         this.user_type,
         this.access_level,
-        this.company_id
+        this.company_id,
+        this.invite_id
       ).then(res => {
         const response = res.json();
         this.localStorage.set('data', response.data);
@@ -174,9 +173,6 @@ export class CreateComponent implements OnInit {
         is_accounting = false;
       }
     }
-
-    // console.log('is_accounting', is_accounting);
-    // console.log('invite_id', invite_id);
 
     this.createService.add_company(
       this.companyForm.get('company_name').value,

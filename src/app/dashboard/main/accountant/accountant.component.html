@@ -1,4 +1,4 @@
-<div class="empty-placeholder" *ngIf="clients.length == 0 && current_company == undefined">
+<div class="empty-placeholder" *ngIf="clients.length == 0">
 	<div class="container animated fadeInUp delay-2">
 			<img src="assets/img/team-illustration.svg" alt="Team" width="280">
 			<h3>Start by adding a client</h3>
@@ -184,40 +184,18 @@
 			<div class="panel panel-default">
 					<div class="panel-heading">
 						Assigned Accountants
-						<button class="btn btn-success"><i class="feather plus visible-xs"></i><span class="hidden-xs">Assign a new accountant</span></button>
+						<button class="btn btn-success" *ngIf="data.access_level == 1"><i class="feather plus visible-xs"></i><span class="hidden-xs">Assign a new accountant</span></button>
 					</div>
 					<div class="panel-body">
 						<table class="table table-borderless table-striped">
-							<tr>
+							<tr *ngFor="let accountant of current_company.accountants">
 								<td>
 									<div class="avatar avatar-32">
 										<img src="http://via.placeholder.com/32x32/b3bac5">
 										<div class="avatar-inicitials">CG</div>
 									</div>
 								</td>
-								<td>Accountant Name</td>
-								<td class="text-right"><a href="#"><i class="feather edit visible-xs"></i><span class="hidden-xs">Manage Assignments</span></a></td>
-								<td class="text-right"><a href="#" class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
-							</tr>
-							<tr>
-								<td>
-									<div class="avatar avatar-32">
-										<img src="http://via.placeholder.com/32x32/b3bac5">
-										<div class="avatar-inicitials">CG</div>
-									</div>
-								</td>
-								<td>Accountant Name</td>
-								<td class="text-right"><a href="#"><i class="feather edit visible-xs"></i><span class="hidden-xs">Manage Assignments</span></a></td>
-								<td class="text-right"><a href="#" class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
-							</tr>
-							<tr>
-								<td>
-									<div class="avatar avatar-32">
-										<img src="http://via.placeholder.com/32x32/b3bac5">
-										<div class="avatar-inicitials">CG</div>
-									</div>
-								</td>
-								<td>Accountant Name</td>
+								<td>{{accountant.user.first_name}} {{accountant.user.last_name}}</td>
 								<td class="text-right"><a href="#"><i class="feather edit visible-xs"></i><span class="hidden-xs">Manage Assignments</span></a></td>
 								<td class="text-right"><a href="#" class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
 							</tr>

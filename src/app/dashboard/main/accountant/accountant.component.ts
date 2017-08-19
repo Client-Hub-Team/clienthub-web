@@ -27,6 +27,11 @@ export class AccountantViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.user = this.localStorage.get('user');
+    this.data = this.localStorage.get('data');
+    this.company = this.localStorage.get('company');
+
     this.clientSubscription = this.accountantService.current_company.subscribe(sub => {
       this.current_company = sub.company;
     });
