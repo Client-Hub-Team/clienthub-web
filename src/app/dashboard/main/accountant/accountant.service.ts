@@ -95,7 +95,7 @@ export class AccountantService {
     headers.set('Content-Type', 'application/json');
     const options = new RequestOptions({ headers: headers });
     headers.set('Authorization', 'JWT ' + this.localStorage.get('access_token'));
-    return this.http.patch(`${environment.apiUrl}/company/`, {company: company}, options).toPromise();
+    return this.http.patch(`${environment.apiUrl}/company/`, company, options).toPromise();
   }
 
 }

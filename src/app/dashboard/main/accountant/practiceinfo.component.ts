@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { AccountantService } from './accountant.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormUtil } from '../../../utils/formutils';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 
 
@@ -23,8 +24,11 @@ export class PracticeinfoComponent implements OnInit {
   constructor(
     private localStorage: LocalStorageService,
     private accountantService: AccountantService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public toastr: ToastsManager,
+    vcr: ViewContainerRef
   ) {
+    this.toastr.setRootViewContainerRef(vcr);
     this.formUtil = new FormUtil();
 
     this.practiceInfoForm = this.formBuilder.group({
@@ -70,6 +74,23 @@ export class PracticeinfoComponent implements OnInit {
       );
 
       this.practiceInfoForm.get('name').markAsTouched();
+    });
+  }
+
+  saveCompany(): void {
+    const data = {
+      name: this.practiceInfoForm.get('name').value,
+      url: this.practiceInfoForm.get('website').value,
+      twitter: this.practiceInfoForm.get('twitter').value,
+      facebook: this.practiceInfoForm.get('facebook').value,
+      linkedin: this.practiceInfoForm.get('linkedin').value,
+    };
+
+    this.accountantService.update_company_info(data).then((res) => {
+      this.toastr.success('Company info updated successfully!', 'Success!');
+    }, (err) => {
+      console.log(err);
+      this.toastr.error(err.json().message, 'Oops!');
     });
   }
 
