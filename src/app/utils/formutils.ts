@@ -15,7 +15,7 @@ export class FormUtil {
     displayFieldCss(form: FormGroup, field: string, attempt: boolean) {
         if (attempt) {
             return {
-                'form-valid': this.isFieldValid(form, field, attempt),
+                // 'form-valid': this.isFieldValid(form, field, attempt),
                 'form-invalid': !this.isFieldValid(form, field, attempt)
             };
         }

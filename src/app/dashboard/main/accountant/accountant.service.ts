@@ -87,7 +87,15 @@ export class AccountantService {
     headers.set('Content-Type', 'application/json');
     const options = new RequestOptions({ headers: headers });
     headers.set('Authorization', 'JWT ' + this.localStorage.get('access_token'));
-    return this.http.get(`${environment.apiUrl}/company`, options).toPromise();
+    return this.http.get(`${environment.apiUrl}/company/`, options).toPromise();
+  }
+
+  update_company_info(company): Promise<any> {
+    const headers = new Headers();
+    headers.set('Content-Type', 'application/json');
+    const options = new RequestOptions({ headers: headers });
+    headers.set('Authorization', 'JWT ' + this.localStorage.get('access_token'));
+    return this.http.patch(`${environment.apiUrl}/company/`, {company: company}, options).toPromise();
   }
 
 }

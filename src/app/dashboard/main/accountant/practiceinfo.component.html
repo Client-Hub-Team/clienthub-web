@@ -58,20 +58,21 @@
                 <div class="panel-body">
 
                     <h4>Practice Info</h4>
+                    <form [formGroup]="practiceInfoForm">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nameInput01">Name</label>
-                                <input id="nameInput01" type="text" class="form-control form-invalid" placeholder="World’s Best Bookkeepers">
-                                <div class="form-invalid-message">This is an error message. Please fix it.</div>
+                                <input id="nameInput01" formControlName="name" [ngClass]="formUtil.displayFieldCss(practiceInfoForm, 'name', true)" type="text" class="form-control" placeholder="World’s Best Bookkeepers">
+                                <div class="form-invalid-message" *ngIf="!practiceInfoForm.get('name').valid">Company name cannot be empty.</div>
                             </div>
                             <div class="form-group">
                                 <label for="logoInput01">Logo</label>
-                                <input id="logoInput01" type="file" class="form-control">
+                                <input id="logoInput01" type="file" class="form-control" formControlName="logo">
                             </div>
                             <div class="form-group">
                                 <label for="siteInput01">Website</label>
-                                <input id="siteInput01" type="text" class="form-control form-valid" placeholder="domain.com">
+                                <input id="siteInput01" type="text" class="form-control" placeholder="domain.com" formControlName="website">
                             </div>
                         </div>
                     </div>
@@ -81,18 +82,19 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="twitterInput01">Twitter</label>
-                                <input id="twitterInput01" type="text" class="form-control" placeholder="twitter.com/user">
+                                <input id="twitterInput01" type="text" class="form-control" placeholder="twitter.com/user" formControlName="twitter">
                             </div>
                             <div class="form-group">
                                 <label for="facebookInput01">Facebook</label>
-                                <input id="facebookInput01" type="text" class="form-control" placeholder="facebook.com/user">
+                                <input id="facebookInput01" type="text" class="form-control" placeholder="facebook.com/user" formControlName="facebook">
                             </div>
                             <div class="form-group">
                                 <label for="linkedInInput01">LinkedIn</label>
-                                <input id="linkedInInput01" type="text" class="form-control" placeholder="linkedin.com/company-beta/0000000/">
+                                <input id="linkedInInput01" type="text" class="form-control" placeholder="linkedin.com/company-beta/0000000/" formControlName="linkedin">
                             </div>
                         </div>
                     </div>
+                    </form>
 
                     <h4>Reviews Widget</h4>
                     <div class="row">
@@ -119,7 +121,7 @@
                 </div>
 
                 <div class="panel-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary" (click)="saveCompany()">Save changes</button>
                 </div>
             </div>
         </div>

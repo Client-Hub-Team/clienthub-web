@@ -45,7 +45,7 @@ export class CreateService {
     };
 
     console.log(data);
-    return this.http.post(`${environment.apiUrl}/company/create`, data, options).toPromise();
+    return this.http.post(`${environment.apiUrl}/company/`, data, options).toPromise();
   }
 
 }
