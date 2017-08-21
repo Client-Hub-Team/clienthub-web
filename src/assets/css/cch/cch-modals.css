@@ -8,6 +8,15 @@
 
 }
 
+.modal-body > h3 {
+    margin-top: 40px;
+} 
+
+
+.modal-body > h3:first-child {
+    margin-top: 0;
+} 
+
 .modal-header {
     border-bottom: 1px solid rgba(229, 232, 239, 0.71);
 }
@@ -48,7 +57,8 @@
 
 .modal-content {
 	box-shadow: 0 15px 30px 0 rgba(0,0,0,0.2);
-	border: none;
+    border: none;
+    border-radius: 3px;
 }
 
 

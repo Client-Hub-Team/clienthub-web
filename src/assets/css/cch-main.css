@@ -245,7 +245,7 @@ hr {
 	top: 76px;
 	bottom: 0;
 	z-index: 3; 
-	border-right: 1px solid #eceef2;
+	/* border-right: 1px solid #eceef2; */
 }
 
 .practice-sidebar span {
@@ -259,6 +259,7 @@ hr {
 	padding: 8px 20px;
 	margin: 14px 0;
 	border: 1px solid transparent;
+	border-radius: 2px;
 }
 .practice-sidebar > a:hover {
 	color: #343d49;

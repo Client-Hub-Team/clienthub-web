@@ -21,6 +21,9 @@ import { ClientViewComponent } from './main/client/client.component';
 import { ClientlistWidgetComponent } from './main/accountant/clientlist.component';
 import { PracticeinfoComponent } from './main/accountant/practiceinfo.component';
 
+// Modals Components
+import { AddClientModalComponent } from './main/accountant/modals/addClientModal.component';
+
 // Services
 import { DashboardService } from './dashboard.service';
 import { AccountantService } from './main/accountant/accountant.service';
@@ -47,7 +50,8 @@ const routes: Routes = [
     AccountantViewComponent,
     ClientViewComponent,
     ClientlistWidgetComponent,
-    PracticeinfoComponent
+    PracticeinfoComponent,
+    AddClientModalComponent
   ],
   exports: [
     DashboardComponent,
@@ -55,7 +59,7 @@ const routes: Routes = [
     AppsWidgetComponent,
     ResourcesWidgetComponent,
     AccountantViewComponent,
-    ClientViewComponent
+    ClientViewComponent,
   ],
   imports: [
     LocalStorageModule.withConfig({
@@ -75,5 +79,6 @@ const routes: Routes = [
     DragulaModule
   ],
   providers: [LoginService, DashboardService, AccountantService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  entryComponents: [AddClientModalComponent],
 })
 export class DashboardModule {  }

@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <button type="button" class="close" (click)="bsModalRef.hide()" aria-label="Close"><i class="feather x"></i></button>
+    <h4 class="modal-title" id="myModalLabel">Add a client</h4>
+</div>
+<div class="modal-body">
+    <p>Provide the basic information to create this client. The user will receive an email invitation to join as the company owner.</p>
+    <div class="form-group">
+        <label for="inputCompanyName">Company Name</label>
+        <input id="inputCompanyName" autofocus type="text" class="form-control" placeholder="Will's Windsurf Shop">
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="inputCompanyOwner">Company Owner Name</label>
+                <input id="inputCompanyOwner" type="text" class="form-control" placeholder="William Hurst">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="inputCompanyEmail">Company Owner Email</label>
+                <input id="inputCompanyEmail" type="text" class="form-control" placeholder="william@willswindsurf.com">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="row">
+        <div class="col-sm-6 text-left">
+            <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Cancel</button>
+        </div>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-primary">Add client</button>
+        </div>
+    </div>
+</div>

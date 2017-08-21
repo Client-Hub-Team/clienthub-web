@@ -1,9 +1,9 @@
-<div class="empty-placeholder" *ngIf="clients.length == 0">
+<div class="empty-placeholder" [hidden]="clients.length != 0" *ngIf="current_company !== undefined">
 	<div class="container animated fadeInUp delay-2">
 			<img src="assets/img/team-illustration.svg" alt="Team" width="280">
 			<h3>Start by adding a client</h3>
 			<p>You need to do something about it.</p>
-			<button class="btn btn-primary btn-lg"><i class="feather user-plus"></i> Add your first client</button>
+			<button class="btn btn-primary btn-lg" (click)="openAddClientModal()"><i class="feather user-plus"></i> Add your first client</button>
 	</div>
 </div>
 
