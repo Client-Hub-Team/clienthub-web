@@ -23,11 +23,10 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h3>Set your password</h3>
-				<p>Your password must contain capital and lower-case letters, symbols and numbers.</p>
-				<p>Minimum of 8 characters.</p>
+				<p>Your password must contain capital and lower-case letters, symbols, numbers and at least 8 characters.</p>
 				<div class="form-group">
 					<label for="password">Password</label>
-					<div class="input-password">
+					<div class="input-password" [ngClass]="formUtil.displayFieldCss(infoForm, 'password', infoFormSubmitAttempt)">
 						<input id="password" type="password" [ngClass]="formUtil.displayFieldCss(infoForm, 'password', infoFormSubmitAttempt)" formControlName="password" class="form-control" placeholder="Password">
 						<i class="feather eye-off"></i>
 					</div>

@@ -1,8 +1,11 @@
+import { AddClientModalComponent } from './modals/addClientModal.component';
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { LoginService } from '../../../login/login.service';
 import { AccountantService } from './accountant.service';
 import { Subscription } from 'rxjs/Subscription';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
 
 /**
@@ -15,6 +18,7 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class AccountantViewComponent implements OnInit {
 
+  bsModalRef: BsModalRef;
   user: any;
   data: any;
   company: any;
@@ -22,8 +26,15 @@ export class AccountantViewComponent implements OnInit {
   clientSubscription: Subscription;
   clients: any = [];
 
-  constructor(private localStorage: LocalStorageService, private loginService: LoginService, private accountantService: AccountantService) {
+  constructor(
+    private localStorage: LocalStorageService,
+    private loginService: LoginService,
+    private accountantService: AccountantService,
+    private modalService: BsModalService
+  ) {}
 
+  public openAddClientModal() {
+      this.bsModalRef = this.modalService.show(AddClientModalComponent);
   }
 
   ngOnInit(): void {

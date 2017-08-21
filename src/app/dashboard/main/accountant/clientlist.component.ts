@@ -1,7 +1,10 @@
+import { AddClientModalComponent } from './modals/addClientModal.component';
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { AccountantService } from './accountant.service';
 import { NgPlural } from '@angular/common';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
 /**
  * Dashboard main page component. It's empty for now
@@ -13,10 +16,17 @@ import { NgPlural } from '@angular/common';
 })
 export class ClientlistWidgetComponent implements OnInit {
 
+  bsModalRef: BsModalRef;
   clients: any = [];
 
-  constructor(private localStorage: LocalStorageService, private accountantService: AccountantService) {
-
+  constructor(
+    private localStorage: LocalStorageService,
+    private accountantService: AccountantService,
+    private modalService: BsModalService
+  ){}
+  
+  public openAddClientModal() {
+      this.bsModalRef = this.modalService.show(AddClientModalComponent);
   }
 
   ngOnInit(): void {
