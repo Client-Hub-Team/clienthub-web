@@ -87,10 +87,10 @@ $(function(){
 
 
 	// Apps management horizontal scrolling
-	$(document).on('mousewheel', '.manage-apps-row', function(event, delta) {
-      this.scrollLeft -= (delta * 60);
-      event.preventDefault();
-   });
+	// $(document).on('mousewheel', '.manage-apps-row', function(event, delta) {
+	// 	this.scrollLeft -= (delta * 60);
+	// 	event.preventDefault();
+	// });
 	
 
 

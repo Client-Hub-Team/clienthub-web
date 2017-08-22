@@ -9,9 +9,9 @@
             <a class="clients-list-item" [ngClass]="{'active': c.active}" *ngFor="let c of clients" (click)="get_client_info(c)">
                 <div class="clients-list-name">{{c.name}}</div>
                 <div class="clients-list-description" [ngPlural]="c.users.length">
-                    <ng-template ngPluralCase="=0">No Clients - <span style="color:#0084ff;" (click)="openAddClientModal(c)">Add more</span></ng-template>
-                    <ng-template ngPluralCase="=1">{{c.users.length}} client - <span style="color:#0084ff;" (click)="openAddClientModal(c)">Add more</span></ng-template>
-                    <ng-template ngPluralCase="other">{{c.users.length}} clients - <span style="color:#0084ff;" (click)="openAddClientModal(c)">Add more</span></ng-template>
+                    <ng-template ngPluralCase="=0">No users <a href="javascript:;" class="btn btn-primary-o btn-sm" (click)="openAddClientModal(c)"><i class="feather plus"></i> Invite Users</a></ng-template>
+                    <ng-template ngPluralCase="=1">{{c.users.length}} user <a href="javascript:;" class="btn btn-primary-o btn-sm" (click)="openAddClientModal(c)"><i class="feather plus"></i> Invite Users</a></ng-template>
+                    <ng-template ngPluralCase="other">{{c.users.length}} users <a href="javascript:;" class="btn btn-primary-o btn-sm" (click)="openAddClientModal(c)"><i class="feather plus"></i> Invite Users</a></ng-template>
                 </div>
             </a>
         </div>

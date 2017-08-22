@@ -529,5 +529,10 @@
 .clients-list-description {
 	color: #7e8692;
 	font-size: 13px;
+	vertical-align: middle;
+}
+
+.clients-list-description .btn {
+	margin-left: 5px;
 }
 /* Clients list */

@@ -31,6 +31,7 @@ html, body {
 
 .fake-body {
 	height: 100%;
+	
 }
 
 .fake-body.white {
@@ -47,7 +48,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    overflow: auto;
+	overflow: auto;
 }
 
 hr {

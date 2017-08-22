@@ -1,9 +1,11 @@
 <div class="modal-header">
     <button type="button" class="close" (click)="bsModalRef.hide()" aria-label="Close"><i class="feather x"></i></button>
-    <h4 class="modal-title" id="myModalLabel">Add a client</h4>
+    <h4 class="modal-title" *ngIf="name == null" id="myModalLabel">Add a client</h4>
+    <h4 class="modal-title" *ngIf="name != null" id="myModalLabel">Invite Users</h4>
 </div>
 <div class="modal-body">
-    <p>Provide the basic information to create this client. The user will receive an email invitation to join as the company owner.</p>
+    <p *ngIf="name == null">Provide the basic information to add this client. The user will receive an email invitation to join as the company owner.</p>
+    <p *ngIf="name != null">Provide the basic information to invite a user. The user will receive an email invitation to join the company.</p>
     <form [formGroup]="inviteForm">
     <div class="form-group" *ngIf="name == null || name == undefined">
         <label for="inputCompanyName">Company Name</label>
@@ -34,7 +36,7 @@
         </div>
         <div class="col-sm-6">
             <button type="button" class="btn btn-primary" (click)="inviteClient()">
-                Invite client 
+                Invite user<span *ngIf="name != null">s</span> 
                 <span *ngIf="name != null">to {{name}}</span>
                 <span *ngIf="name == null">and create company</span>
             </button>

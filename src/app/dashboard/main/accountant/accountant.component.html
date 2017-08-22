@@ -80,7 +80,7 @@
 
 			<nav class="client-info-header-tabs">
 				<a href="#" data-tab="1" class="active">Gateway</a>
-				<a href="#" data-tab="2">Client users</a>
+				<a href="#" data-tab="2">Users</a>
 			</nav>
 		</div>
 
@@ -89,24 +89,23 @@
 			<!-- Next Steps -->
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					Next Step
-					<button class="btn btn-success"><i class="feather plus visible-xs"></i><span class="hidden-xs">Invite users</span></button>
+					Next Steps
 				</div>
 				<div class="panel-body text-center">
-					<img src="assets/img/team-illustration.svg" alt="Team" width="250" style="margin-top:15px">
-					<h3>Invite users for this client</h3>
-					<p>You need to invite at least a user (that will be the company owner).</p>
-				</div>
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					Next Step
-					<button class="btn btn-success"><i class="feather plus visible-xs"></i><span class="hidden-xs">Assign Accountants</span></button>
-				</div>
-				<div class="panel-body text-center">
-					<img src="assets/img/team-illustration.svg" alt="Team" width="250" style="margin-top:15px">
-					<h3>Assign accountants for this client</h3>
-					<p>You need to assign at least an accountant.</p>
+					<div class="row">
+						<div class="col-sm-6">
+							<img src="assets/img/team-illustration.svg" alt="Team" width="180" style="margin-top:15px">
+							<h4>1. Invite Users</h4>
+							<p>Invite at least a user.</p>
+							<button class="btn btn-primary" style="margin-bottom:15px"><i class="feather plus"></i> Invite Users</button>
+						</div>
+						<div class="col-sm-6">
+							<img src="assets/img/practice-team-illustration.svg" alt="Team" width="180" style="margin-top:15px">
+							<h4>2. Assign Accountants</h4>
+							<p>Assign at least an accountant.</p>
+							<button class="btn btn-primary" style="margin-bottom:15px"><i class="feather plus"></i> Assign Accountants</button>
+						</div>
+					</div>
 				</div>
 			</div>
 			<!-- Next Steps -->
@@ -183,8 +182,8 @@
 		<div class="tab-template" data-tab="2">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					Client Users
-					<button class="btn btn-success"><i class="feather plus visible-xs"></i><span class="hidden-xs">Invite users</span></button>
+					Users
+					<button class="btn btn-success"><i class="feather plus visible-xs"></i><span class="hidden-xs">Invite Users</span></button>
 				</div>
 				<div class="panel-body">
 					<table class="table table-borderless table-striped">
@@ -210,7 +209,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					Assigned Accountants
-					<button class="btn btn-success" *ngIf="data.access_level == 1"><i class="feather plus visible-xs"></i><span class="hidden-xs">Assign accountants</span></button>
+					<button class="btn btn-success" *ngIf="data.access_level == 1"><i class="feather plus visible-xs"></i><span class="hidden-xs">Assign Accountants</span></button>
 				</div>
 				<div class="panel-body">
 					<table class="table table-borderless table-striped">
