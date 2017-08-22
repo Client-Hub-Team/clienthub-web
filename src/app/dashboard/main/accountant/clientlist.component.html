@@ -1,7 +1,7 @@
 
 <div class="col-sm-4 animated fadeIn delay-2 hidden-xs">
     <div class="clients-list-wrapper">
-        <button class="btn btn-primary btn-new-client btn-lg" (click)="openAddClientModal()"><i class="feather user-plus"></i> Add a new client</button>
+        <button class="btn btn-primary btn-new-client btn-lg" (click)="openAddClientModal(null)"><i class="feather user-plus"></i> Add a new client</button>
         <label class="clients-list-search">
             <i class="feather search"></i> <input type="text" placeholder="Search by client name">
         </label>
@@ -9,9 +9,9 @@
             <a class="clients-list-item" [ngClass]="{'active': c.active}" *ngFor="let c of clients" (click)="get_client_info(c)">
                 <div class="clients-list-name">{{c.name}}</div>
                 <div class="clients-list-description" [ngPlural]="c.users.length">
-                    <ng-template ngPluralCase="=0">No Clients</ng-template>
-                    <ng-template ngPluralCase="=1">{{c.users.length}} client</ng-template>
-                    <ng-template ngPluralCase="other">{{c.users.length}} clients</ng-template>
+                    <ng-template ngPluralCase="=0">No Clients - <span (click)="openAddClientModal(c)">Add more</span></ng-template>
+                    <ng-template ngPluralCase="=1">{{c.users.length}} client - <span (click)="openAddClientModal(c)">Add more</span></ng-template>
+                    <ng-template ngPluralCase="other">{{c.users.length}} clients - <span (click)="openAddClientModal(c)">Add more</span></ng-template>
                 </div>
             </a>
         </div>

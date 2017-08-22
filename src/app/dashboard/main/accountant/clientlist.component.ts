@@ -1,10 +1,11 @@
 import { AddClientModalComponent } from './modals/addClientModal.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { AccountantService } from './accountant.service';
 import { NgPlural } from '@angular/common';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 /**
  * Dashboard main page component. It's empty for now
@@ -22,11 +23,21 @@ export class ClientlistWidgetComponent implements OnInit {
   constructor(
     private localStorage: LocalStorageService,
     private accountantService: AccountantService,
-    private modalService: BsModalService
-  ){}
-  
-  public openAddClientModal() {
+    private modalService: BsModalService,
+    public toastr: ToastsManager,
+    vcr: ViewContainerRef
+  ) {
+
+    this.toastr.setRootViewContainerRef(vcr);
+
+  }
+
+  public openAddClientModal(company) {
       this.bsModalRef = this.modalService.show(AddClientModalComponent);
+      if (company != null) {
+        this.bsModalRef.content.invited_to = company.id;
+        this.bsModalRef.content.name = company.name;
+      }
   }
 
   ngOnInit(): void {
@@ -43,6 +54,10 @@ export class ClientlistWidgetComponent implements OnInit {
         });
       }
 
+    });
+
+    this.accountantService.clients.subscribe((sub) => {
+      this.clients = sub.clients;
     });
   }
 

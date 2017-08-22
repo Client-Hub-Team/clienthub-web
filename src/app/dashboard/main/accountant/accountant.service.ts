@@ -13,9 +13,13 @@ export class AccountantService {
 
   current_company = new Subject<any>();
   clients = new Subject<any>();
+  headers = new Headers();
+  options: RequestOptions;
 
   constructor(private http: Http, private localStorage: LocalStorageService, private router: Router) {
-
+    this.headers.set('Content-Type', 'application/json');
+    this.headers.set('Authorization', 'JWT ' + this.localStorage.get('access_token'));
+    this.options = new RequestOptions({ headers: this.headers });
   }
 
   get_clients(): Promise<any> {
@@ -96,6 +100,11 @@ export class AccountantService {
     const options = new RequestOptions({ headers: headers });
     headers.set('Authorization', 'JWT ' + this.localStorage.get('access_token'));
     return this.http.patch(`${environment.apiUrl}/company/`, company, options).toPromise();
+  }
+
+  invite_client(name, email, company_name, type, invited_to): Promise<any> {
+    const data = {name: name, email: email, company_name: company_name, type: type, invited_to: invited_to};
+    return this.http.post(`${environment.apiUrl}/user/invite`, data, this.options).toPromise();
   }
 
 }
