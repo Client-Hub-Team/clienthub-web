@@ -12,13 +12,15 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="inputCompanyOwner">User Name</label>
+                <label for="inputCompanyOwner" *ngIf="name == null">Owner Name</label>
+                <label for="inputCompanyOwner" *ngIf="name != null">User Name</label>
                 <input id="inputCompanyOwner" type="text" class="form-control" formControlName="name" placeholder="William Hurst" [ngClass]="formUtil.displayFieldCss(inviteForm, 'name', inviteFormSubmitAttempt)">
             </div>
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="inputCompanyEmail">User Email</label>
+                <label for="inputCompanyEmail" *ngIf="name != null">User Email</label>
+                <label for="inputCompanyEmail" *ngIf="name == null">Owner Email</label>
                 <input id="inputCompanyEmail" type="text" class="form-control" formControlName="email" [ngClass]="formUtil.displayFieldCss(inviteForm, 'email', inviteFormSubmitAttempt)" placeholder="william@willswindsurf.com">
             </div>
         </div>
@@ -31,7 +33,11 @@
             <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Cancel</button>
         </div>
         <div class="col-sm-6">
-            <button type="button" class="btn btn-primary" (click)="inviteClient()">Invite client <span *ngIf="name != null">to {{name}}</span></button>
+            <button type="button" class="btn btn-primary" (click)="inviteClient()">
+                Invite client 
+                <span *ngIf="name != null">to {{name}}</span>
+                <span *ngIf="name == null">and create company</span>
+            </button>
         </div>
     </div>
 </div>
