@@ -105,6 +105,7 @@
 	border-radius: 2px;
 }
 
+
 .manage-apps-card:last-child {
 	margin: 0;
 }
@@ -128,6 +129,10 @@
 
 .manage-apps-card.active * {
 	color: #fff !important;
+}
+
+.manage-apps-card.active.gu-mirror {
+	transform: rotate(-4deg);
 }
 
 .manage-apps-icon {

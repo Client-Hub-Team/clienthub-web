@@ -34,7 +34,7 @@ $(function(){
 	    });
 	    return this;
 	};
-	$('.scrollable').isolatedScroll();
+	// $('.scrollable').isolatedScroll();
 
 
 	// Sticky Client Info Header
