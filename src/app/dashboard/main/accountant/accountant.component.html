@@ -8,7 +8,7 @@
 </div>
 
 <div class="row" [hidden]="clients.length == 0" *ngIf="current_company !== undefined">
-	
+
 	<app-clientlist-widget></app-clientlist-widget>
 	
 	<div class="col-sm-8 animated fadeInUp delay-3 widgets-wrapper-for-firefox">
@@ -85,6 +85,32 @@
 		</div>
 
 		<div class="tab-template active" data-tab="1">
+			
+			<!-- Next Steps -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Next Step
+					<button class="btn btn-success"><i class="feather plus visible-xs"></i><span class="hidden-xs">Invite users</span></button>
+				</div>
+				<div class="panel-body text-center">
+					<img src="assets/img/team-illustration.svg" alt="Team" width="250" style="margin-top:15px">
+					<h3>Invite users for this client</h3>
+					<p>You need to invite at least a user (that will be the company owner).</p>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Next Step
+					<button class="btn btn-success"><i class="feather plus visible-xs"></i><span class="hidden-xs">Assign Accountants</span></button>
+				</div>
+				<div class="panel-body text-center">
+					<img src="assets/img/team-illustration.svg" alt="Team" width="250" style="margin-top:15px">
+					<h3>Assign accountants for this client</h3>
+					<p>You need to assign at least an accountant.</p>
+				</div>
+			</div>
+			<!-- Next Steps -->
+
 			<app-apps-widget></app-apps-widget>
 			<app-resources-widget></app-resources-widget>
 			<div class="panel panel-default communications-widget coming-soon">
@@ -158,12 +184,12 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					Client Users
-					<button class="btn btn-success"><i class="feather plus visible-xs"></i><span class="hidden-xs">Invite a user</span></button>
+					<button class="btn btn-success"><i class="feather plus visible-xs"></i><span class="hidden-xs">Invite users</span></button>
 				</div>
 				<div class="panel-body">
 					<table class="table table-borderless table-striped">
 						<tr *ngFor="let user of current_company.users">
-							<td>
+							<td width="42">
 								<div class="avatar avatar-32">
 									<img src="http://via.placeholder.com/32x32/b3bac5">
 									<div class="avatar-inicitials">CG</div>
@@ -182,26 +208,26 @@
 			</div>
 
 			<div class="panel panel-default">
-					<div class="panel-heading">
-						Assigned Accountants
-						<button class="btn btn-success" *ngIf="data.access_level == 1"><i class="feather plus visible-xs"></i><span class="hidden-xs">Assign a new accountant</span></button>
-					</div>
-					<div class="panel-body">
-						<table class="table table-borderless table-striped">
-							<tr *ngFor="let accountant of current_company.accountants">
-								<td>
-									<div class="avatar avatar-32">
-										<img src="http://via.placeholder.com/32x32/b3bac5">
-										<div class="avatar-inicitials">CG</div>
-									</div>
-								</td>
-								<td>{{accountant.user.first_name}} {{accountant.user.last_name}}</td>
-								<td class="text-right"><a href="#"><i class="feather edit visible-xs"></i><span class="hidden-xs">Manage Assignments</span></a></td>
-								<td class="text-right"><a href="#" class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
-							</tr>
-						</table>
-					</div>
+				<div class="panel-heading">
+					Assigned Accountants
+					<button class="btn btn-success" *ngIf="data.access_level == 1"><i class="feather plus visible-xs"></i><span class="hidden-xs">Assign accountants</span></button>
 				</div>
+				<div class="panel-body">
+					<table class="table table-borderless table-striped">
+						<tr *ngFor="let accountant of current_company.accountants">
+							<td>
+								<div class="avatar avatar-32">
+									<img src="http://via.placeholder.com/32x32/b3bac5">
+									<div class="avatar-inicitials">CG</div>
+								</div>
+							</td>
+							<td>{{accountant.user.first_name}} {{accountant.user.last_name}}</td>
+							<td class="text-right"><a href="#"><i class="feather edit visible-xs"></i><span class="hidden-xs">Manage Assignments</span></a></td>
+							<td class="text-right"><a href="#" class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
+						</tr>
+					</table>
+				</div>
+			</div>
 		</div>
 
 	</div>
