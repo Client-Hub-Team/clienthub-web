@@ -3,6 +3,7 @@ import { LocalStorageService } from 'angular-2-local-storage';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
+declare var jQuery: any;
 
 /**
  * Dashboard component. It's the main header after the user is logged in
@@ -30,6 +31,10 @@ export class DashboardComponent implements OnInit {
     this.user = this.localStorage.get('user');
     this.data = this.localStorage.get('data');
     this.company = this.localStorage.get('company');
+  }
+
+  ngAfterViewInit() {
+      jQuery(document).trigger('exec'); // Execute jQuery code on "cch-js.js" (tell jQuery that the DOM is ready)
   }
 
 
