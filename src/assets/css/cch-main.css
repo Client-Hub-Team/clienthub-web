@@ -643,3 +643,28 @@ hr {
 	text-align: center;
 	transform: translate3d(0,0,0)
 }
+
+/* Contrasting header text colors based on brand color background */
+.bg-dark a {
+	color: #fff;
+	opacity: .7;
+}
+.bg-dark a:hover {
+	opacity: 1;
+}
+.bg-dark .welcome-user-name-wrapper h2,
+.bg-dark .practice-logo-name {
+    color: #fff;
+}
+
+.bg-light a {
+	color: #333c48;
+	opacity: .7;
+}
+.bg-light a:hover {
+	opacity: 1;
+}
+.bg-light .welcome-user-name-wrapper h2,
+.bg-light .practice-logo-name {
+    color: #333c48;
+}

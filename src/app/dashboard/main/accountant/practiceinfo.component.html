@@ -57,10 +57,11 @@
                 <div class="panel-heading">Gateway Parameters</div>
                 <div class="panel-body">
 
-                    <h4>Practice Info</h4>
+                    
                     <form [formGroup]="practiceInfoForm">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-sm-5 col-md-6">
+                            <h4>Practice Info</h4>
                             <div class="form-group">
                                 <label for="nameInput01">Name</label>
                                 <input id="nameInput01" formControlName="name" [ngClass]="formUtil.displayFieldCss(practiceInfoForm, 'name', true)" type="text" class="form-control" placeholder="World’s Best Bookkeepers">
@@ -73,6 +74,49 @@
                             <div class="form-group">
                                 <label for="siteInput01">Website</label>
                                 <input id="siteInput01" type="text" class="form-control" placeholder="domain.com" formControlName="website">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-7 col-md-6 hidden-xs">
+                            <h4 class="fix-preview-title">Client View Preview</h4>
+                            <div class="fix-preview">
+                                <header class="header-bar header-bar-client-view animated fadeIn delay-1" style="background-color:#fff">
+                                    <div class="container-fluid">
+                                        <div class="practice-header">
+                                            <div class="practice-logo-name">
+                                                <!-- Company Name -->
+                                                <img src="assets/img/logo-default.png" alt="Company Name">
+                                            </div>
+                                            <div class="practice-logo-urls">
+                                                <a target="_blank" href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                                                <a target="_blank" href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                                                <a target="_blank" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                                <a target="_blank" href="#">domain.com</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </header>
+                                <div class="container-fluid">
+                                    <div class="panel panel-default" style="margin-top:-52px; margin-bottom:-100px; z-index:2; position:relative">
+                                        <div class="panel-heading">Leave a review</div>
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-xs-4 col-sm-3 col-md-3">
+                                                    <a href="#"><img src="http://placehold.it/64x64/111"></a>
+                                                </div>
+                                                <div class="col-xs-4 col-sm-3 col-md-3">
+                                                    <a href="#"><img src="http://placehold.it/64x64/444"></a>
+                                                </div>
+                                                <div class="col-xs-4 col-sm-3 col-md-3">
+                                                    <a href="#"><img src="http://placehold.it/64x64/888"></a>
+                                                </div>
+                                                <div class="col-xs-4 col-sm-3 col-md-3">
+                                                    <a href="#"><img src="http://placehold.it/64x64/666"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
