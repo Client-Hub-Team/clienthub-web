@@ -6,7 +6,7 @@ import { AccountantService } from './accountant.service';
 import { Subscription } from 'rxjs/Subscription';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-
+import { ClientlistWidgetComponent } from './clientlist.component';
 
 /**
  * Dashboard main page component. It's empty for now
@@ -22,7 +22,7 @@ export class AccountantViewComponent implements OnInit {
   user: any;
   data: any;
   company: any;
-  current_company: any = {};
+  current_company: any = {users: [], accountants: []};
   clientSubscription: Subscription;
   clients: any = [];
 
@@ -33,8 +33,12 @@ export class AccountantViewComponent implements OnInit {
     private modalService: BsModalService
   ) {}
 
-  public openAddClientModal() {
+  public openAddClientModal(company) {
       this.bsModalRef = this.modalService.show(AddClientModalComponent);
+      if (company != null) {
+        this.bsModalRef.content.invited_to = company.id;
+        this.bsModalRef.content.name = company.name;
+      }
   }
 
   ngOnInit(): void {
@@ -44,6 +48,7 @@ export class AccountantViewComponent implements OnInit {
     this.company = this.localStorage.get('company');
 
     this.clientSubscription = this.accountantService.current_company.subscribe(sub => {
+      console.log(sub.company);
       this.current_company = sub.company;
     });
 

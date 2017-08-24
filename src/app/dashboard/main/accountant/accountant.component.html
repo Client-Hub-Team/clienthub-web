@@ -87,19 +87,19 @@
 		<div class="tab-template active" data-tab="1">
 			
 			<!-- Next Steps -->
-			<div class="panel panel-default">
+			<!-- <div class="panel panel-default" *ngIf="current_company.users.length == 0 || current_company.accountants.length == 0">
 				<div class="panel-heading">
 					Next Steps
 				</div>
 				<div class="panel-body text-center">
 					<div class="row">
-						<div class="col-sm-6">
+						<div class="col-sm-6" *ngIf="current_company.users.length == 0">
 							<img src="assets/img/team-illustration.svg" alt="Team" height="90" style="margin-top:15px">
 							<h4>Invite Users</h4>
 							<p>Invite at least a user.</p>
-							<button class="btn btn-primary" style="margin-bottom:15px"><i class="feather plus"></i> Invite Users</button>
+							<button class="btn btn-primary" style="margin-bottom:15px" (click)="openAddClientModal(current_company.id)"><i class="feather plus"></i> Invite Users</button>
 						</div>
-						<div class="col-sm-6">
+						<div class="col-sm-6" *ngIf="current_company.accountants.length == 0">
 							<img src="assets/img/practice-team-illustration.svg" alt="Team" height="90" style="margin-top:15px">
 							<h4>Assign Accountants</h4>
 							<p>Assign at least an accountant.</p>
@@ -107,11 +107,12 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- Next Steps -->
 
 			<app-apps-widget></app-apps-widget>
 			<app-resources-widget></app-resources-widget>
+
 			<div class="panel panel-default communications-widget coming-soon">
 				<div class="panel-heading">
 					Communications <span class="badge">1</span>
@@ -180,6 +181,28 @@
 		</div>
 
 		<div class="tab-template" data-tab="2">
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Pending Invites
+					<!-- <button class="btn btn-success" *ngIf="data.access_level == 1"><i class="feather plus visible-xs"></i><span class="hidden-xs">Assign Accountants</span></button> -->
+				</div>
+				<div class="panel-body">
+					<table class="table table-borderless table-striped">
+						<tr *ngFor="let invite of current_company.pending_invites">
+							<td>
+								<div class="avatar avatar-32">
+									<img src="http://via.placeholder.com/32x32/b3bac5">
+									<div class="avatar-inicitials">CG</div>
+								</div>
+							</td>
+							<td>{{invite.name}} {{invite.email}}</td>
+							<td class="text-right"><a href="#" class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					Users
@@ -227,6 +250,7 @@
 					</table>
 				</div>
 			</div>
+
 		</div>
 
 	</div>
