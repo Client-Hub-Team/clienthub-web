@@ -609,11 +609,13 @@ hr {
 }
 
 .tab-template {
-	display: none;
+	height: 0; overflow: hidden;
 }
 
 .tab-template.active {
-	display: block;
+	/* display: block; */
+	height: auto;
+	overflow: auto;
 }
 
 .client-info-header-content-wrapper {

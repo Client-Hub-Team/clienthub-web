@@ -6,10 +6,10 @@
             <i class="feather search"></i> <input type="text" placeholder="Search by client name">
         </label>
         <div class="clients-list scrollable">
-            <a class="clients-list-item" [ngClass]="{'active': c.active}" *ngFor="let c of clients" (click)="get_client_info(c)">
+            <a class="clients-list-item" [ngClass]="{'active': c.active}" *ngFor="let c of clients" (click)="get_client_info(c)" data-tab="1">
                 <div class="clients-list-name">{{c.name}}</div>
                 <div class="clients-list-description" [ngPlural]="c.users.length">
-                    <ng-template ngPluralCase="=0">No users <a class="btn btn-primary-o btn-sm" data-tab="2"><i class="feather plus"></i> Invite Users</a></ng-template>
+                    <ng-template ngPluralCase="=0">No users <a class="btn btn-primary-o btn-sm clients-list-invite" data-tab="2"><i class="feather plus"></i> Invite Users</a></ng-template>
                     <ng-template ngPluralCase="=1">{{c.users.length}} user</ng-template>
                     <ng-template ngPluralCase="other">{{c.users.length}} users</ng-template>
                 </div>
