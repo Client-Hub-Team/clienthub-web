@@ -4,7 +4,7 @@
     <h4 class="modal-title" *ngIf="name != null" id="myModalLabel">Invite Users</h4>
 </div>
 <div class="modal-body">
-    <p *ngIf="name == null">Provide the basic information to add this client. The user will receive an email invitation to join as the company owner.</p>
+    <p *ngIf="name == null">Provide the main contact information now. You can decide to email and invite them when you are ready.</p>
     <p *ngIf="name != null">Provide the basic information to invite a user. The user will receive an email invitation to join the company.</p>
     <form [formGroup]="inviteForm">
     <div class="form-group" *ngIf="name == null || name == undefined">
@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="inputCompanyOwner" *ngIf="name == null">Owner Name</label>
+                <label for="inputCompanyOwner" *ngIf="name == null">Main Contact Name</label>
                 <label for="inputCompanyOwner" *ngIf="name != null">User Name</label>
                 <input id="inputCompanyOwner" type="text" class="form-control" formControlName="name" placeholder="William Hurst" [ngClass]="formUtil.displayFieldCss(inviteForm, 'name', inviteFormSubmitAttempt)">
             </div>
@@ -22,7 +22,7 @@
         <div class="col-sm-6">
             <div class="form-group">
                 <label for="inputCompanyEmail" *ngIf="name != null">User Email</label>
-                <label for="inputCompanyEmail" *ngIf="name == null">Owner Email</label>
+                <label for="inputCompanyEmail" *ngIf="name == null">Main Contact Email</label>
                 <input id="inputCompanyEmail" type="text" class="form-control" formControlName="email" [ngClass]="formUtil.displayFieldCss(inviteForm, 'email', inviteFormSubmitAttempt)" placeholder="william@willswindsurf.com">
             </div>
         </div>
@@ -36,9 +36,8 @@
         </div>
         <div class="col-sm-6">
             <button type="button" class="btn btn-primary" (click)="inviteClient()">
-                Invite user<span *ngIf="name != null">s</span> 
-                <span *ngIf="name != null">to {{name}}</span>
-                <span *ngIf="name == null">and create company</span>
+                <span *ngIf="name != null">Invite user to {{name}}</span>
+                <span *ngIf="name == null">Create Client Company</span>
             </button>
         </div>
     </div>

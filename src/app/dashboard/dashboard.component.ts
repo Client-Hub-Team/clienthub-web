@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { GeneralUtil } from '../utils/general';
 
 declare var jQuery: any;
 
@@ -15,10 +16,11 @@ declare var jQuery: any;
   templateUrl: './dashboard.component.html',
   styleUrls: [ './dashboard.component.css' ]
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, AfterViewInit {
 
   user: any;
   data: any;
+  generalUtil = new GeneralUtil();
   company: any;
 
   constructor(private localStorage: LocalStorageService, private router: Router) {}
