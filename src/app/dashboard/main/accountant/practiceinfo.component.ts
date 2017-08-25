@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { FormUtil } from '../../../utils/formutils';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
-
+declare var jQuery: any;
 
 /**
  * Dashboard main page component. It's empty for now
@@ -106,6 +106,7 @@ export class PracticeinfoComponent implements OnInit {
     this.practiceInfoForm.patchValue({
       color: color
     });
+    jQuery(document).trigger('refreshColorContrast');
   }
 
 }

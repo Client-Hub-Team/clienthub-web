@@ -130,7 +130,7 @@ $(function(){
  *  "exec" is called on ngAfterViewInit()
  */
 
-$(document).on('exec', function(){
+$(document).on('exec refreshColorContrast', function(){
 
 	function contrastingColor(color){
 		return (luma(color) >= 165) ? 'dark' : 'light';
@@ -148,8 +148,10 @@ $(document).on('exec', function(){
 		var bgColor = $('.header-bar-client-view').css('background-color'); // Get rgb(0,0,0) value
 		var bgColorArray = bgColor.substring(4, bgColor.length-1).replace(/ /g, '').split(',');  // Convert to rgba array [0,0,0]
 		if( contrastingColor(bgColorArray) == "dark" ) {
+			$('.header-bar-client-view').removeClass('bg-dark');
 			$('.header-bar-client-view').addClass('bg-light');
 		} else {
+			$('.header-bar-client-view').removeClass('bg-light');
 			$('.header-bar-client-view').addClass('bg-dark');
 		}
 	}
