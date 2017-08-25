@@ -6,7 +6,6 @@ import { AccountantService } from './accountant.service';
 import { Subscription } from 'rxjs/Subscription';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { ClientlistWidgetComponent } from './clientlist.component';
 
 /**
  * Dashboard main page component. It's empty for now

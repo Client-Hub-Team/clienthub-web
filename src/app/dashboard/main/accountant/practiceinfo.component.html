@@ -75,12 +75,18 @@
                                 <label for="siteInput01">Website</label>
                                 <input id="siteInput01" type="text" class="form-control" placeholder="domain.com" formControlName="website">
                             </div>
+                            <div class="form-group">
+                                <label for="siteInput01">Header Color</label>
+                                <br>
+                                <input [(colorPicker)]="color" (colorPickerChange)="changeColor($event)"  [style.background]="color"/>
+                            </div>
+                            
                         </div>
 
                         <div class="col-sm-7 col-md-6 hidden-xs">
                             <h4 class="fix-preview-title">Client View Preview</h4>
                             <div class="fix-preview">
-                                <header class="header-bar header-bar-client-view animated fadeIn delay-1" style="background-color:#fff">
+                                <header class="header-bar header-bar-client-view animated fadeIn delay-1" [style.background-color]="practiceInfoForm.get('color').value">
                                     <div class="container-fluid">
                                         <div class="practice-header">
                                             <div class="practice-logo-name">
@@ -88,10 +94,10 @@
                                                 <img src="assets/img/logo-default.png" alt="Company Name">
                                             </div>
                                             <div class="practice-logo-urls">
-                                                <a target="_blank" href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                                                <a target="_blank" href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-                                                <a target="_blank" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                                <a target="_blank" href="#">domain.com</a>
+                                                <a target="_blank" href="http://{{practiceInfoForm.get('facebook').value}}"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                                                <a target="_blank" href="http://{{practiceInfoForm.get('linkedin').value}}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                                                <a target="_blank" href="http://{{practiceInfoForm.get('twitter').value}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                                <a target="_blank" href="{{practiceInfoForm.get('website').value}}">{{practiceInfoForm.get('website').value}}</a>
                                             </div>
                                         </div>
                                     </div>

@@ -20,6 +20,7 @@ export class PracticeinfoComponent implements OnInit {
   company: any;
   practiceInfoForm: FormGroup;
   formUtil: FormUtil;
+  color: any;
 
   constructor(
     private localStorage: LocalStorageService,
@@ -55,6 +56,10 @@ export class PracticeinfoComponent implements OnInit {
       linkedin: [
         null,
         [],
+      ],
+      color: [
+        null,
+        []
       ]
     });
   }
@@ -69,10 +74,12 @@ export class PracticeinfoComponent implements OnInit {
           website: this.company.url,
           twitter: this.company.twitter,
           facebook: this.company.facebook,
-          linkedin: this.company.linkedin
+          linkedin: this.company.linkedin,
+          color: this.company.color
         }
       );
 
+      this.color = this.company.color;
       this.practiceInfoForm.get('name').markAsTouched();
     });
   }
@@ -84,6 +91,7 @@ export class PracticeinfoComponent implements OnInit {
       twitter: this.practiceInfoForm.get('twitter').value,
       facebook: this.practiceInfoForm.get('facebook').value,
       linkedin: this.practiceInfoForm.get('linkedin').value,
+      color: this.practiceInfoForm.get('color').value
     };
 
     this.accountantService.update_company_info(data).then((res) => {
@@ -91,6 +99,12 @@ export class PracticeinfoComponent implements OnInit {
     }, (err) => {
       console.log(err);
       this.toastr.error(err.json().message, 'Oops!');
+    });
+  }
+
+  changeColor(color): void {
+    this.practiceInfoForm.patchValue({
+      color: color
     });
   }
 

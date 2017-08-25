@@ -9,6 +9,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { DragulaModule } from 'ng2-dragula/ng2-dragula';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 // Components
 import { LoginService } from '../login/login.service';
@@ -76,7 +77,8 @@ const routes: Routes = [
     TooltipModule.forRoot(),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
-    DragulaModule
+    DragulaModule,
+    ColorPickerModule
   ],
   providers: [LoginService, DashboardService, AccountantService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   entryComponents: [AddClientModalComponent],
