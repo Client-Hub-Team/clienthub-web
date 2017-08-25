@@ -68,16 +68,16 @@
                                 <div class="form-invalid-message" *ngIf="!practiceInfoForm.get('name').valid">Company name cannot be empty.</div>
                             </div>
                             <div class="row">
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        <label for="siteInput01">Header Color</label>
+                                        <input style="cursor:pointer" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="color" (colorPickerChange)="changeColor($event)"  [style.background]="color"/>
+                                    </div>
+                                </div>
                                 <div class="col-xs-8">
                                     <div class="form-group">
                                         <label for="logoInput01">Logo</label>
                                         <input id="logoInput01" type="file" class="form-control" formControlName="logo">
-                                    </div>
-                                </div>
-                                <div class="col-xs-4">
-                                    <div class="form-group">
-                                        <label for="siteInput01">Header Color</label>
-                                        <input style="cursor:pointer" class="form-control" [(colorPicker)]="color" (colorPickerChange)="changeColor($event)"  [style.background]="color"/>
                                     </div>
                                 </div>
                             </div>
