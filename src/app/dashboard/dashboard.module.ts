@@ -24,6 +24,7 @@ import { PracticeinfoComponent } from './main/accountant/practiceinfo.component'
 
 // Modals Components
 import { AddClientModalComponent } from './main/accountant/modals/addClientModal.component';
+import { AddAccountantModalComponent } from './main/accountant/modals/addAccountantModal.component';
 
 // Services
 import { DashboardService } from './dashboard.service';
@@ -52,7 +53,8 @@ const routes: Routes = [
     ClientViewComponent,
     ClientlistWidgetComponent,
     PracticeinfoComponent,
-    AddClientModalComponent
+    AddClientModalComponent,
+    AddAccountantModalComponent
   ],
   exports: [
     DashboardComponent,
@@ -81,6 +83,6 @@ const routes: Routes = [
     ColorPickerModule
   ],
   providers: [LoginService, DashboardService, AccountantService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
-  entryComponents: [AddClientModalComponent],
+  entryComponents: [AddClientModalComponent, AddAccountantModalComponent],
 })
 export class DashboardModule {  }

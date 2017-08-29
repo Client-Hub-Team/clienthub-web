@@ -15,7 +15,7 @@
                 </ul>
             </span>
         </span>
-        <button *ngIf="data.user_type == 1" class="btn btn-success">Manage</button>
+        <button *ngIf="data.user_type == 1" class="btn btn-success" (click)="openModal(resourcesModal)">Manage</button>
     </div>
     <div class="panel-body scrollable">
         <!-- Placeholder -->
@@ -26,7 +26,7 @@
         </div>
         <!-- Placeholder -->
 
-        <!-- <div class="row">
+         <!-- <div class="row">
             <div class="col-md-6">
                 <a href="#" class="resources-item">
                     <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
@@ -99,6 +99,73 @@
                     </div>
                 </a>
             </div>
-        </div> -->
+        </div>  -->
     </div>
 </div>
+
+<ng-template #resourcesModal class="modal-lg">
+    <div class="modal-header">
+    <button type="button" class="close" (click)="modalRef.hide()" aria-label="Close"><i class="feather x"></i></button>
+    <h4 class="modal-title" id="myModalLabel">Manage Apps for <strong>Client Name</strong></h4>
+    </div>
+    <div class="modal-body">
+    <div class="manage-apps-list">
+        <h4>Selected Apps</h4>
+        <p>Drag and drop the Selected Apps and choose the best order do display it to your client. Click an App to remove it from this list.</p>
+        <div class="manage-apps-row selected-apps scrollbars" [dragula]='"bag-client"' [dragulaModel]='company_apps' [dragulaOptions]='dragulaOptions'>
+            <div class="manage-apps-card active" *ngFor="let app of company_apps; let i = index" (click)="delete_company_app(app, i)">
+                <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
+                <img src="assets/img/logos/{{app.logo}}" alt="{{app.name}}" class="manage-apps-logo">
+                <div class="app-name">{{app.name}}</div>
+                <div class="app-description">{{app.category}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="manage-apps-list">
+        <div class="row">
+            <div class="col-xs-6">
+                <div dropdown style="display:inline-block">
+                    <span dropdownToggle>
+                        <h4 class="manage-apps-filter"><span class="library-name">All Libraries</span> <i class="feather chevron-down"></i></h4>
+                    </span>
+                    <ul *dropdownMenu class="dropdown-menu" role="menu" style="left:15px;top:30px">
+                        <li role="menuitem"><a class="dropdown-item" href="#">Global Library</a></li>
+                        <li role="menuitem"><a class="dropdown-item" href="#">Practice Library</a></li>
+                    </ul>
+                </div>
+                <div class="manage-apps-search">
+                    <i class="feather search"></i> <input type="text" placeholder="Search in Apps">
+                </div>
+            </div>
+            <div class="col-xs-6 text-right">
+                <div class="manage-apps-order" dropdown placement="bottom right">
+                    <span dropdownToggle>
+                        Sort by <span class="sort-by">Recently Used</span> <i class="feather chevron-down"></i>
+                    </span>
+                    <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li role="menuitem"><a class="dropdown-item" href="#">Recently Used</a></li>
+                        <li role="menuitem"><a class="dropdown-item" href="#">Alphabetical Order</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <p>Simply click an App to add it to the Selected Apps.</p>
+        <div class="manage-apps-row library scrollbars">
+            <!-- <div class="manage-apps-card new-app">
+                <i class="feather upload-cloud x3"></i>
+                <div class="app-name">New App</div>
+            </div> -->
+            <div class="manage-apps-card" *ngFor="let app of all_apps; let i = index" (click)="add_company_app(app, i)">
+                <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
+                <img src="assets/img/logos/{{app.logo}}" alt="{{app.name}}" class="manage-apps-logo">
+                <div class="app-name">{{app.name}}</div>
+                <div class="app-description">{{app.category}}</div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+    </div>
+</ng-template>

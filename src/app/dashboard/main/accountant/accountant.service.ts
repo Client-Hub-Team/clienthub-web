@@ -86,6 +86,30 @@ export class AccountantService {
     return this.http.put(`${environment.apiUrl}/company/${company_id}/apps`, {apps: apps}, options).toPromise();
   }
 
+  add_company_resource(company_id, resource_id): Promise<any> {
+    const headers = new Headers();
+    headers.set('Content-Type', 'application/json');
+    const options = new RequestOptions({ headers: headers });
+    headers.set('Authorization', 'JWT ' + this.localStorage.get('access_token'));
+    return this.http.post(`${environment.apiUrl}/company/${company_id}/resources`, {resource_id: resource_id}, options).toPromise();
+  }
+
+  delete_company_resource(company_id, resource_id): Promise<any> {
+    const headers = new Headers();
+    headers.set('Content-Type', 'application/json');
+    const options = new RequestOptions({ headers: headers });
+    headers.set('Authorization', 'JWT ' + this.localStorage.get('access_token'));
+    return this.http.patch(`${environment.apiUrl}/company/${company_id}/resource`, {resource_id: resource_id}, options).toPromise();
+  }
+
+  update_company_resource_order(company_id, resources): Promise<any> {
+    const headers = new Headers();
+    headers.set('Content-Type', 'application/json');
+    const options = new RequestOptions({ headers: headers });
+    headers.set('Authorization', 'JWT ' + this.localStorage.get('access_token'));
+    return this.http.put(`${environment.apiUrl}/company/${company_id}/resource`, {resources: resources}, options).toPromise();
+  }
+
   get_company_info(): Promise<any> {
     const headers = new Headers();
     headers.set('Content-Type', 'application/json');
@@ -96,9 +120,9 @@ export class AccountantService {
 
   update_company_info(company): Promise<any> {
     const headers = new Headers();
-    headers.set('Content-Type', 'application/json');
-    const options = new RequestOptions({ headers: headers });
+    // headers.set('Content-Type', 'multipart/form-data');
     headers.set('Authorization', 'JWT ' + this.localStorage.get('access_token'));
+    const options = new RequestOptions({ headers: headers });
     return this.http.patch(`${environment.apiUrl}/company/`, company, options).toPromise();
   }
 
