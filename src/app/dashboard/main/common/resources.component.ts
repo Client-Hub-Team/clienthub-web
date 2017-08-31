@@ -117,6 +117,7 @@ export class ResourcesWidgetComponent implements OnInit {
   }
 
   public openModal(template: TemplateRef<any>) {
+    this.showAddResource = false;
     this.modalRef = this.modalService.show(template, {class: 'modal-lg'});
   }
 
