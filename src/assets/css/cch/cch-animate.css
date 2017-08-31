@@ -39,6 +39,10 @@ animation-delay: 900ms;
 animation-delay: 1000ms;
 }
 
+.animated-300 {
+	animation-duration: 300ms;
+}
+
 .animated {
   animation-duration: 1s;
   animation-fill-mode: both;

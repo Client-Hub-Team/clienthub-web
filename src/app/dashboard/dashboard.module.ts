@@ -21,6 +21,7 @@ import { AccountantViewComponent } from './main/accountant/accountant.component'
 import { ClientViewComponent } from './main/client/client.component';
 import { ClientlistWidgetComponent } from './main/accountant/clientlist.component';
 import { PracticeinfoComponent } from './main/accountant/practiceinfo.component';
+import { ResourcesItemComponent } from './main/common/resources-item.component';
 
 // Modals Components
 import { AddClientModalComponent } from './main/accountant/modals/addClientModal.component';
@@ -54,7 +55,8 @@ const routes: Routes = [
     ClientlistWidgetComponent,
     PracticeinfoComponent,
     AddClientModalComponent,
-    AddAccountantModalComponent
+    AddAccountantModalComponent,
+    ResourcesItemComponent
   ],
   exports: [
     DashboardComponent,

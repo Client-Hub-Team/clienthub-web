@@ -27,6 +27,7 @@ export class ResourcesWidgetComponent implements OnInit {
   company_resources: any = [];
   innerWidth: any;
   current_client: any;
+  showAddResource: any;
   all_resources_list: any;
   clientSubscription: Subscription;
   dragulaOptions: any = {
@@ -48,6 +49,8 @@ export class ResourcesWidgetComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    this.showAddResource = false;
 
     this.innerWidth = (window.screen.width);
 
@@ -109,6 +112,10 @@ export class ResourcesWidgetComponent implements OnInit {
 
   }
 
+  public addResourceScreen(value) {
+    this.showAddResource = value;
+  }
+
   public openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, {class: 'modal-lg'});
   }
@@ -117,7 +124,7 @@ export class ResourcesWidgetComponent implements OnInit {
     this.accountantService.add_company_resource(this.current_client.id, resource.id).then((res) => {
         const response = res.json();
         resource.order = response.order;
-        resource.company_app_id = response.company_app_id;
+        resource.company_resource_id = response.company_resource_id;
         this.company_resources.push(resource);
         this.all_resources.splice(index, 1);
     });
