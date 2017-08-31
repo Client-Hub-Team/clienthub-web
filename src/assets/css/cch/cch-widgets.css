@@ -94,7 +94,7 @@
 
 .manage-apps-card {
 	background: #fff;
-	box-shadow: 0 2px 4px 0 rgba(39,76,132,0.15);
+	box-shadow: 0 1px 2px 0 rgba(39,76,132,0.15);
 	display: inline-block;
 	width: 125px;
 	padding: 8px 10px 10px;
@@ -115,7 +115,7 @@
 }
 
 .manage-apps-card:hover .app-name {
-	color: #0084ff;
+	/* color: #0084ff; */
 }
 
 .manage-apps-card {
@@ -187,6 +187,8 @@
 	box-shadow: none;
 	transition: 300ms;
 }
+
+
 /* Apps */
 
 /* Communications */
@@ -347,6 +349,54 @@
 	color: #7e8692;
 	font-size: 12px;
 }
+
+
+.manage-resources-list .resources-item {
+	padding: 10px;
+    padding-bottom: 1px;
+	border-radius: 2px;
+	background: #fff;
+	transition: 150ms;
+	border: 1px solid transparent;
+	box-shadow: 0 1px 2px 0 rgba(39,76,132,0.15);
+}
+
+.manage-resources-list .resources-item:hover .resources-title {
+	color: #333c48
+}
+
+.resources-item-add {
+	border: 1px dashed #929eb3;
+	box-shadow: none;
+	transition: 300ms;
+}
+
+.manage-resources-list .resources-item:hover {
+	border-color: #0084ff;
+}
+
+.selected-resources-list .resources-item {
+	background: #0084ff;
+	border: transparent !important;
+}
+
+.selected-resources-list .resources-item .resources-type,
+.selected-resources-list .resources-item .resources-title,
+.selected-resources-list .resources-item .resources-description {
+	color: #fff !important;
+	opacity: .8;
+}
+
+.selected-resources-list .resources-item .resources-title {
+	opacity: 1;
+}
+
+.selected-resources-list,
+.not-selected-resources-list {
+	max-height: 300px;
+	overflow: auto;
+}
+
 /* Resources */
 
 /* Review */

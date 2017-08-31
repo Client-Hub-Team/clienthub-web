@@ -106,66 +106,304 @@
 <ng-template #resourcesModal class="modal-lg">
     <div class="modal-header">
     <button type="button" class="close" (click)="modalRef.hide()" aria-label="Close"><i class="feather x"></i></button>
-    <h4 class="modal-title" id="myModalLabel">Manage Apps for <strong>Client Name</strong></h4>
+    <h4 class="modal-title" id="myModalLabel">Manage Resources</h4>
     </div>
-    <div class="modal-body">
-    <div class="manage-apps-list">
-        <h4>Selected Apps</h4>
-        <p>Drag and drop the Selected Apps and choose the best order do display it to your client. Click an App to remove it from this list.</p>
-        <div class="manage-apps-row selected-apps scrollbars" [dragula]='"bag-client"' [dragulaModel]='company_apps' [dragulaOptions]='dragulaOptions'>
-            <div class="manage-apps-card active" *ngFor="let app of company_apps; let i = index" (click)="delete_company_app(app, i)">
-                <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
-                <img src="assets/img/logos/{{app.logo}}" alt="{{app.name}}" class="manage-apps-logo">
-                <div class="app-name">{{app.name}}</div>
-                <div class="app-description">{{app.category}}</div>
+    <div class="modal-body" *ngIf="showAddResource == false">
+        <div class="manage-resources-list">
+            <h4>Selected Resources</h4>
+            <p>You can click on a Resource to remove it from this list.</p>
+            <div class="row selected-resources-list">
+                <div class="col-md-6">
+                    <a href="#" class="resources-item">
+                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
+                        <div class="resources-content">
+                            <div class="resources-content-wrapper">
+                                <div class="resources-type"><i class="feather film"></i> Video</div>
+                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
+                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#" class="resources-item">
+                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
+                        <div class="resources-content">
+                            <div class="resources-content-wrapper">
+                                <div class="resources-type"><i class="feather link"></i> Link</div>
+                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
+                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#" class="resources-item">
+                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
+                        <div class="resources-content">
+                            <div class="resources-content-wrapper">
+                                <div class="resources-type"><i class="feather file-text"></i> Document</div>
+                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
+                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#" class="resources-item">
+                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
+                        <div class="resources-content">
+                            <div class="resources-content-wrapper">
+                                <div class="resources-type"><i class="feather file-text"></i> Document</div>
+                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
+                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="manage-resources-list">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div dropdown style="display:inline-block">
+                        <span dropdownToggle>
+                            <h4 class="manage-apps-filter"><span class="library-name">All Libraries</span> <i class="feather chevron-down"></i></h4>
+                        </span>
+                        <ul *dropdownMenu class="dropdown-menu" role="menu" style="left:15px;top:30px">
+                            <li role="menuitem"><a class="dropdown-item" href="#">Global Library</a></li>
+                            <li role="menuitem"><a class="dropdown-item" href="#">Practice Library</a></li>
+                        </ul>
+                    </div>
+                    <div class="manage-apps-search">
+                        <i class="feather search"></i> <input type="text" placeholder="Search in Resources">
+                    </div>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <div class="manage-apps-order" dropdown placement="bottom right">
+                        <span dropdownToggle>
+                            Sort by <span class="sort-by">Recently Used</span> <i class="feather chevron-down"></i>
+                        </span>
+                        <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+                            <li role="menuitem"><a class="dropdown-item" href="#">Recently Used</a></li>
+                            <li role="menuitem"><a class="dropdown-item" href="#">Alphabetical Order</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <p>Simply click on a Resource to add it to the Selected Resources.</p>
+            <div class="row not-selected-resources-list scrollbars">
+                <div class="col-md-6">
+                    <a href="javascript:" (click)="addResourceScreen(true)" class="resources-item resources-item-add">
+                        <div class="resources-thumb">
+                            <i class="feather plus x3" style="margin-left: 14px;margin-top: 9px;display: inline-block;color:#7e8692!important"></i>
+                        </div>
+                        <div class="resources-content">
+                            <div class="resources-content-wrapper">
+                                <div class="resources-type">&nbsp;</div>
+                                <div class="resources-title">New Resource</div>
+                                <div class="resources-description">Click to add a new resource</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#" class="resources-item">
+                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
+                        <div class="resources-content">
+                            <div class="resources-content-wrapper">
+                                <div class="resources-type"><i class="feather image"></i> Image</div>
+                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
+                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#" class="resources-item">
+                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
+                        <div class="resources-content">
+                            <div class="resources-content-wrapper">
+                                <div class="resources-type"><i class="feather file-text"></i> Document</div>
+                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
+                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#" class="resources-item">
+                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
+                        <div class="resources-content">
+                            <div class="resources-content-wrapper">
+                                <div class="resources-type"><i class="feather film"></i> Video</div>
+                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
+                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#" class="resources-item">
+                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
+                        <div class="resources-content">
+                            <div class="resources-content-wrapper">
+                                <div class="resources-type"><i class="feather link"></i> Link</div>
+                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
+                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#" class="resources-item">
+                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
+                        <div class="resources-content">
+                            <div class="resources-content-wrapper">
+                                <div class="resources-type"><i class="feather file-text"></i> Document</div>
+                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
+                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#" class="resources-item">
+                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
+                        <div class="resources-content">
+                            <div class="resources-content-wrapper">
+                                <div class="resources-type"><i class="feather file-text"></i> Document</div>
+                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
+                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#" class="resources-item">
+                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
+                        <div class="resources-content">
+                            <div class="resources-content-wrapper">
+                                <div class="resources-type"><i class="feather image"></i> Image</div>
+                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
+                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#" class="resources-item">
+                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
+                        <div class="resources-content">
+                            <div class="resources-content-wrapper">
+                                <div class="resources-type"><i class="feather file-text"></i> Document</div>
+                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
+                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#" class="resources-item">
+                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
+                        <div class="resources-content">
+                            <div class="resources-content-wrapper">
+                                <div class="resources-type"><i class="feather film"></i> Video</div>
+                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
+                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#" class="resources-item">
+                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
+                        <div class="resources-content">
+                            <div class="resources-content-wrapper">
+                                <div class="resources-type"><i class="feather link"></i> Link</div>
+                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
+                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#" class="resources-item">
+                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
+                        <div class="resources-content">
+                            <div class="resources-content-wrapper">
+                                <div class="resources-type"><i class="feather file-text"></i> Document</div>
+                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
+                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#" class="resources-item">
+                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
+                        <div class="resources-content">
+                            <div class="resources-content-wrapper">
+                                <div class="resources-type"><i class="feather file-text"></i> Document</div>
+                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
+                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-    <div class="manage-apps-list">
-        <div class="row">
-            <div class="col-xs-6">
-                <div dropdown style="display:inline-block">
-                    <span dropdownToggle>
-                        <h4 class="manage-apps-filter"><span class="library-name">All Libraries</span> <i class="feather chevron-down"></i></h4>
-                    </span>
-                    <ul *dropdownMenu class="dropdown-menu" role="menu" style="left:15px;top:30px">
-                        <li role="menuitem"><a class="dropdown-item" href="#">Global Library</a></li>
-                        <li role="menuitem"><a class="dropdown-item" href="#">Practice Library</a></li>
-                    </ul>
+    <div class="modal-body" *ngIf="showAddResource == true">
+        <a href="javascript:" (click)="addResourceScreen(false)" style="display:inline-block;padding:10px 0; margin-bottom:0px"><i class="feather arrow-left"></i> Back</a>
+        <h4>Add a new Resource</h4>
+        <p>Provide the information to add a new Resource.</p>
+        <form>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="ResourceTitleInput01">Resource title</label>
+                        <input id="ResourceTitleInput01" type="text" autofocus class="form-control" placeholder="QuickBooks">
+                    </div>
                 </div>
-                <div class="manage-apps-search">
-                    <i class="feather search"></i> <input type="text" placeholder="Search in Apps">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="ResourceCategory01">Resource category</label>
+                        <select id="ResourceCategory01" class="form-control">
+                        <option value="" selected disabled>Choose a category</option>
+                        <option value="Link">Link</option>
+                        <option value="Video">Video</option>
+                        <option value="Document">Document</option>
+                        <option value="Image">Image</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-6 text-right">
-                <div class="manage-apps-order" dropdown placement="bottom right">
-                    <span dropdownToggle>
-                        Sort by <span class="sort-by">Recently Used</span> <i class="feather chevron-down"></i>
-                    </span>
-                    <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
-                        <li role="menuitem"><a class="dropdown-item" href="#">Recently Used</a></li>
-                        <li role="menuitem"><a class="dropdown-item" href="#">Alphabetical Order</a></li>
-                    </ul>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="ResourceDesc01">Resource description</label>
+                        <textarea id="ResourceDesc01" class="form-control" placeholder="Describe this resource"></textarea>
+                    </div>
                 </div>
+                <!-- SHOW IF CHOOSES DOCUMENT/IMG/ETC
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="ResourceAttachment01">Resource attachment</label>
+                        <input id="ResourceAttachment01" type="file" class="form-control">
+                    </div>
+                </div> -->
+                <!-- SHOWS IF CHOOSE VIDEO/LINK/ETC
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="ResourceURL01">Resource URL</label>
+                        <input id="ResourceURL01" type="text" class="form-control" placeholder="https://domain.com/resource">
+                    </div>
+                </div> -->
             </div>
-        </div>
-        <p>Simply click an App to add it to the Selected Apps.</p>
-        <div class="manage-apps-row library scrollbars">
-            <!-- <div class="manage-apps-card new-app">
-                <i class="feather upload-cloud x3"></i>
-                <div class="app-name">New App</div>
-            </div> -->
-            <div class="manage-apps-card" *ngFor="let app of all_apps; let i = index" (click)="add_company_app(app, i)">
-                <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
-                <img src="assets/img/logos/{{app.logo}}" alt="{{app.name}}" class="manage-apps-logo">
-                <div class="app-name">{{app.name}}</div>
-                <div class="app-description">{{app.category}}</div>
-            </div>
-        </div>
-    </div>
+        </form>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
-        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        <button class="btn btn-primary pull-left" *ngIf="showAddResource == true"><i class="feather plus"></i> Add Resource</button>
+        <button type="button" class="btn btn-default" *ngIf="showAddResource == true" (click)="addResourceScreen(false)">Cancel</button>
+        <button type="button" class="btn btn-default" *ngIf="showAddResource == false" (click)="modalRef.hide()">Close</button>
     </div>
 </ng-template>

@@ -28,6 +28,7 @@ export class AppsWidgetComponent implements OnInit {
   innerWidth: any;
   current_client: any;
   all_apps_list: any;
+  showAddApp: any;
   clientSubscription: Subscription;
   dragulaOptions: any = {
     direction: 'horizontal'
@@ -48,6 +49,8 @@ export class AppsWidgetComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    this.showAddApp = false;
 
     this.innerWidth = (window.screen.width);
 
@@ -107,6 +110,10 @@ export class AppsWidgetComponent implements OnInit {
 
     });
 
+  }
+
+  public addAppScreen(value) {
+    this.showAddApp = value;
   }
 
   public openModal(template: TemplateRef<any>) {
