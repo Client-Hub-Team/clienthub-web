@@ -117,6 +117,7 @@ export class AppsWidgetComponent implements OnInit {
   }
 
   public openModal(template: TemplateRef<any>) {
+    this.showAddApp = false;
     this.modalRef = this.modalService.show(template, {class: 'modal-lg'});
   }
 
