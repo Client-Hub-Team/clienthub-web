@@ -99,7 +99,7 @@ export class AccountantService {
     headers.set('Content-Type', 'application/json');
     const options = new RequestOptions({ headers: headers });
     headers.set('Authorization', 'JWT ' + this.localStorage.get('access_token'));
-    return this.http.patch(`${environment.apiUrl}/company/${company_id}/resource`, {resource_id: resource_id}, options).toPromise();
+    return this.http.patch(`${environment.apiUrl}/company/${company_id}/resources`, {resource_id: resource_id}, options).toPromise();
   }
 
   update_company_resource_order(company_id, resources): Promise<any> {
@@ -107,7 +107,7 @@ export class AccountantService {
     headers.set('Content-Type', 'application/json');
     const options = new RequestOptions({ headers: headers });
     headers.set('Authorization', 'JWT ' + this.localStorage.get('access_token'));
-    return this.http.put(`${environment.apiUrl}/company/${company_id}/resource`, {resources: resources}, options).toPromise();
+    return this.http.put(`${environment.apiUrl}/company/${company_id}/resources`, {resources: resources}, options).toPromise();
   }
 
   get_company_info(): Promise<any> {
