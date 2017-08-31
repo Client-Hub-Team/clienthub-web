@@ -21,6 +21,7 @@ import { AccountantViewComponent } from './main/accountant/accountant.component'
 import { ClientViewComponent } from './main/client/client.component';
 import { ClientlistWidgetComponent } from './main/accountant/clientlist.component';
 import { PracticeinfoComponent } from './main/accountant/practiceinfo.component';
+import { AppsPageComponent } from './main/accountant/apps-page.component';
 
 // Modals Components
 import { AddClientModalComponent } from './main/accountant/modals/addClientModal.component';
@@ -39,6 +40,7 @@ const routes: Routes = [
     children: [
      { path: 'main', component: MainDashboardComponent },
      { path: 'practice-info', component: PracticeinfoComponent },
+     { path: 'manage-apps', component: AppsPageComponent },
     ]
   }
 ];
@@ -54,7 +56,8 @@ const routes: Routes = [
     ClientlistWidgetComponent,
     PracticeinfoComponent,
     AddClientModalComponent,
-    AddAccountantModalComponent
+    AddAccountantModalComponent,
+    AppsPageComponent
   ],
   exports: [
     DashboardComponent,

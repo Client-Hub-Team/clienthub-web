@@ -98,6 +98,10 @@ export class PracticeinfoComponent implements OnInit {
     });
   }
 
+  ngAfterViewChecked() {
+      jQuery(document).trigger('refreshColorContrast');
+  }
+
   public openAddAccountantModal(company) {
       this.bsModalRef = this.modalService.show(AddAccountantModalComponent);
       if (company != null) {
@@ -141,7 +145,6 @@ export class PracticeinfoComponent implements OnInit {
     this.practiceInfoForm.patchValue({
       color: color
     });
-    jQuery(document).trigger('refreshColorContrast');
   }
 
 }
