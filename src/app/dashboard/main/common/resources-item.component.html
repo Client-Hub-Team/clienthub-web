@@ -1,0 +1,20 @@
+<a class="resources-item">
+    <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
+    <div class="resources-content">
+        <div class="resources-content-wrapper">
+            <div class="resources-type">
+                <i class="feather" [ngClass]="{
+                    'image': resource.file_type == 4,
+                    'video': resource.file_type == 3,
+                    'file_text': resource.file_type == 1,
+                    'file_text': resource.file_type == 2
+                }"></i>
+                <span *ngIf="resource.file_type == 4">Image</span>
+                <span *ngIf="resource.file_type == 3">Video</span>
+                <span *ngIf="resource.file_type == 2 || resource.file_type == 1">Document</span>
+            </div>
+            <div class="resources-title">{{resource.name}}</div>
+            <div class="resources-description">{{resource.description}}</div>
+        </div>
+    </div>
+</a>

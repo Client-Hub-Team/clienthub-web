@@ -22,6 +22,7 @@ import { ClientViewComponent } from './main/client/client.component';
 import { ClientlistWidgetComponent } from './main/accountant/clientlist.component';
 import { PracticeinfoComponent } from './main/accountant/practiceinfo.component';
 import { AppsPageComponent } from './main/accountant/apps-page.component';
+import { ResourcesItemComponent } from './main/common/resources-item.component';
 
 // Modals Components
 import { AddClientModalComponent } from './main/accountant/modals/addClientModal.component';
@@ -57,7 +58,8 @@ const routes: Routes = [
     PracticeinfoComponent,
     AddClientModalComponent,
     AddAccountantModalComponent,
-    AppsPageComponent
+    AppsPageComponent,
+    ResourcesItemComponent
   ],
   exports: [
     DashboardComponent,

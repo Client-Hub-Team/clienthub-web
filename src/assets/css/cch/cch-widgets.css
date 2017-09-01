@@ -365,14 +365,18 @@
 	color: #333c48
 }
 
-.resources-item-add {
+.manage-resources-list .resources-item-add {
 	border: 1px dashed #929eb3;
 	box-shadow: none;
 	transition: 300ms;
 }
 
+.manage-resources-list .resources-item-add .resources-type {
+	height: 14px;
+}
+
 .manage-resources-list .resources-item:hover {
-	border-color: #0084ff;
+	border:1px solid #0084ff;
 }
 
 .selected-resources-list .resources-item {
@@ -395,6 +399,23 @@
 .not-selected-resources-list {
 	max-height: 300px;
 	overflow: auto;
+}
+
+.col-sort-resource.gu-mirror {
+	transform: rotate(-2deg);
+	border-radius: 2px;
+}
+.col-sort-resource.gu-mirror * {
+	color: #fff !important;
+	/* background: #0084ff; */
+}
+
+.col-sort-resource.gu-mirror .resources-item {
+	color: #fff !important;
+	background: #0084ff;
+	padding: 10px;
+	padding-bottom: 1px;
+	border-radius: 2px;
 }
 
 /* Resources */

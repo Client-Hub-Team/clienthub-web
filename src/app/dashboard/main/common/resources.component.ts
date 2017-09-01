@@ -125,7 +125,7 @@ export class ResourcesWidgetComponent implements OnInit {
     this.accountantService.add_company_resource(this.current_client.id, resource.id).then((res) => {
         const response = res.json();
         resource.order = response.order;
-        resource.company_app_id = response.company_app_id;
+        resource.company_resource_id = response.company_resource_id;
         this.company_resources.push(resource);
         this.all_resources.splice(index, 1);
     });

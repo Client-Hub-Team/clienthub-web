@@ -19,150 +19,47 @@
     </div>
     <div class="panel-body scrollable">
         <!-- Placeholder -->
-        <div class="text-center">
+        <div class="text-center" *ngIf="company_resources.length == 0 && data.user_type == 1">
             <img src="assets/img/resources-illustration.svg" alt="Apps" width="130" style="margin-top:10px">
             <h4>Choose the Resources</h4>
             <p>Click on "Manage" to select the Resources to use with this client.</p>
         </div>
         <!-- Placeholder -->
 
-         <!-- <div class="row">
-            <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-6" *ngFor="let resource of company_resources; let i = index">
                 <a href="#" class="resources-item">
                     <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
                     <div class="resources-content">
                         <div class="resources-content-wrapper">
                             <div class="resources-type"><i class="feather image"></i> Image</div>
-                            <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                            <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
+                            <div class="resources-title">{{resource.name}}</div>
+                            <div class="resources-description">{{resource.description}}</div>
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="col-md-6">
-                <a href="#" class="resources-item">
-                    <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                    <div class="resources-content">
-                        <div class="resources-content-wrapper">
-                            <div class="resources-type"><i class="feather file-text"></i> Document</div>
-                            <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                            <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6">
-                <a href="#" class="resources-item">
-                    <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                    <div class="resources-content">
-                        <div class="resources-content-wrapper">
-                            <div class="resources-type"><i class="feather film"></i> Video</div>
-                            <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                            <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6">
-                <a href="#" class="resources-item">
-                    <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                    <div class="resources-content">
-                        <div class="resources-content-wrapper">
-                            <div class="resources-type"><i class="feather link"></i> Link</div>
-                            <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                            <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6">
-                <a href="#" class="resources-item">
-                    <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                    <div class="resources-content">
-                        <div class="resources-content-wrapper">
-                            <div class="resources-type"><i class="feather file-text"></i> Document</div>
-                            <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                            <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6">
-                <a href="#" class="resources-item">
-                    <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                    <div class="resources-content">
-                        <div class="resources-content-wrapper">
-                            <div class="resources-type"><i class="feather file-text"></i> Document</div>
-                            <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                            <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>  -->
+        </div>  
     </div>
 </div>
 
 <ng-template #resourcesModal class="modal-lg">
     <div class="modal-header">
-    <button type="button" class="close" (click)="modalRef.hide()" aria-label="Close"><i class="feather x"></i></button>
-    <h4 class="modal-title" id="myModalLabel">Manage Resources</h4>
+        <button type="button" class="close" (click)="modalRef.hide()" aria-label="Close"><i class="feather x"></i></button>
+        <h4 class="modal-title" id="myModalLabel">Manage Resources</h4>
     </div>
+
     <div class="modal-body" *ngIf="showAddResource == false">
         <div class="manage-resources-list">
             <h4>Selected Resources</h4>
             <p>You can click on a Resource to remove it from this list.</p>
-            <div class="row selected-resources-list">
-                <div class="col-md-6">
-                    <a href="#" class="resources-item">
-                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                        <div class="resources-content">
-                            <div class="resources-content-wrapper">
-                                <div class="resources-type"><i class="feather film"></i> Video</div>
-                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="#" class="resources-item">
-                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                        <div class="resources-content">
-                            <div class="resources-content-wrapper">
-                                <div class="resources-type"><i class="feather link"></i> Link</div>
-                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="#" class="resources-item">
-                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                        <div class="resources-content">
-                            <div class="resources-content-wrapper">
-                                <div class="resources-type"><i class="feather file-text"></i> Document</div>
-                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="#" class="resources-item">
-                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                        <div class="resources-content">
-                            <div class="resources-content-wrapper">
-                                <div class="resources-type"><i class="feather file-text"></i> Document</div>
-                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                            </div>
-                        </div>
-                    </a>
+            <div class="row selected-resources-list" [dragula]='"bag-client"' [dragulaModel]='company_resources' [dragulaOptions]='dragulaOptions'>
+                <div class="col-md-6 col-sort-resource" *ngFor="let resource of company_resources; let i = index" (click)="delete_company_resource(resource, i)">
+                    <app-resources-item [resource]="resource"></app-resources-item>
                 </div>
             </div>
         </div>
+
         <div class="manage-resources-list">
             <div class="row">
                 <div class="col-xs-6">
@@ -191,8 +88,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div>
             <p>Simply click on a Resource to add it to the Selected Resources.</p>
-            <div class="row not-selected-resources-list scrollbars">
+            <div class="row not-selected-resources-list manage-resources-list scrollbars">
                 <div class="col-md-6">
                     <a href="javascript:" (click)="addResourceScreen(true)" class="resources-item resources-item-add">
                         <div class="resources-thumb">
@@ -207,153 +107,13 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-md-6">
-                    <a href="#" class="resources-item">
-                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                        <div class="resources-content">
-                            <div class="resources-content-wrapper">
-                                <div class="resources-type"><i class="feather image"></i> Image</div>
-                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="#" class="resources-item">
-                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                        <div class="resources-content">
-                            <div class="resources-content-wrapper">
-                                <div class="resources-type"><i class="feather file-text"></i> Document</div>
-                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="#" class="resources-item">
-                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                        <div class="resources-content">
-                            <div class="resources-content-wrapper">
-                                <div class="resources-type"><i class="feather film"></i> Video</div>
-                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="#" class="resources-item">
-                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                        <div class="resources-content">
-                            <div class="resources-content-wrapper">
-                                <div class="resources-type"><i class="feather link"></i> Link</div>
-                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="#" class="resources-item">
-                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                        <div class="resources-content">
-                            <div class="resources-content-wrapper">
-                                <div class="resources-type"><i class="feather file-text"></i> Document</div>
-                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="#" class="resources-item">
-                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                        <div class="resources-content">
-                            <div class="resources-content-wrapper">
-                                <div class="resources-type"><i class="feather file-text"></i> Document</div>
-                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="#" class="resources-item">
-                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                        <div class="resources-content">
-                            <div class="resources-content-wrapper">
-                                <div class="resources-type"><i class="feather image"></i> Image</div>
-                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="#" class="resources-item">
-                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                        <div class="resources-content">
-                            <div class="resources-content-wrapper">
-                                <div class="resources-type"><i class="feather file-text"></i> Document</div>
-                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="#" class="resources-item">
-                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                        <div class="resources-content">
-                            <div class="resources-content-wrapper">
-                                <div class="resources-type"><i class="feather film"></i> Video</div>
-                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="#" class="resources-item">
-                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                        <div class="resources-content">
-                            <div class="resources-content-wrapper">
-                                <div class="resources-type"><i class="feather link"></i> Link</div>
-                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="#" class="resources-item">
-                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                        <div class="resources-content">
-                            <div class="resources-content-wrapper">
-                                <div class="resources-type"><i class="feather file-text"></i> Document</div>
-                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="#" class="resources-item">
-                        <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                        <div class="resources-content">
-                            <div class="resources-content-wrapper">
-                                <div class="resources-type"><i class="feather file-text"></i> Document</div>
-                                <div class="resources-title">Pellentesque eu turpis rutrum</div>
-                                <div class="resources-description">Vivamus vestibulum vestibulum est cursus venenatis.</div>
-                            </div>
-                        </div>
-                    </a>
+                <div class="col-md-6" *ngFor="let resource of all_resources; let i = index" (click)="add_company_resource(resource, i)">
+                    <app-resources-item [resource]="resource"></app-resources-item>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="modal-body" *ngIf="showAddResource == true">
         <a href="javascript:" (click)="addResourceScreen(false)" style="display:inline-block;padding:10px 0; margin-bottom:0px"><i class="feather arrow-left"></i> Back</a>
         <h4>Add a new Resource</h4>

@@ -20,6 +20,7 @@ strong {
 
 a {
 	color: #0084ff;
+	cursor: pointer;
 	text-decoration: none !important;
 }
 
