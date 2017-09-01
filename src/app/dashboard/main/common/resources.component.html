@@ -52,7 +52,7 @@
     <div class="modal-body" *ngIf="showAddResource == false">
         <div class="manage-resources-list">
             <h4>Selected Resources</h4>
-            <p>You can click on a Resource to remove it from this list.</p>
+            <p>Drag and drop the Selected Apps and choose the best order do display it to your client. Click on a Resource to remove it from this list.</p>
             <div class="row selected-resources-list" [dragula]='"bag-client"' [dragulaModel]='company_resources' [dragulaOptions]='dragulaOptions'>
                 <div class="col-md-6 col-sort-resource" *ngFor="let resource of company_resources; let i = index" (click)="delete_company_resource(resource, i)">
                     <app-resources-item [resource]="resource"></app-resources-item>
