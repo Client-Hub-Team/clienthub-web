@@ -110,14 +110,13 @@ $(function(){
 		var selectedTabIndex = $(this).attr('data-tab');
 
 		if(!$(this).closest('.tab-template').length) {
-			$('.client-info-header-tabs a').removeClass('active');
-			$('.client-info-header-tabs a[data-tab='+selectedTabIndex+']').addClass('active');
+			$('.tabs a').removeClass('active');
+			$('.tabs a[data-tab='+selectedTabIndex+']').addClass('active');
 	
 			$('.tab-template').removeClass('active');
 			$('.tab-template[data-tab='+selectedTabIndex+']').addClass('active');
 
 			$('body').animate({scrollTop:0},0);
-			console.log('outros: '+selectedTabIndex);
 		}
 	});
 

@@ -43,37 +43,83 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Gateway Parameters</div>
+                <div class="panel-heading">
+                    Gateway Parameters
+                    <nav class="default-tabs tabs">
+                        <a data-tab="1" class="active">Practice Info</a>
+                        <a data-tab="2">Social</a>
+                        <a data-tab="3">Reviews Widget</a>
+                    </nav>
+                </div>
                 <div class="panel-body">
-
-                    
-                    <form [formGroup]="practiceInfoForm">
                     <div class="row">
                         <div class="col-sm-5 col-md-6">
-                            <h4>Practice Info</h4>
-                            <div class="form-group">
-                                <label for="nameInput01">Name</label>
-                                <input id="nameInput01" formControlName="name" [ngClass]="formUtil.displayFieldCss(practiceInfoForm, 'name', true)" type="text" class="form-control" placeholder="World’s Best Bookkeepers">
-                                <div class="form-invalid-message" *ngIf="!practiceInfoForm.get('name').valid">Company name cannot be empty.</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-4">
-                                    <div class="form-group">
-                                        <label for="siteInput01">Header Color</label>
-                                        <input style="cursor:pointer" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="color" (colorPickerChange)="changeColor($event)"  [style.background]="color"/>
+                            <form [formGroup]="practiceInfoForm">
+
+                            <div class="tab-template active" data-tab="1">
+                                <!-- <h4>Practice Info</h4> -->
+                                <div class="form-group">
+                                    <label for="nameInput01">Name</label>
+                                    <input id="nameInput01" formControlName="name" [ngClass]="formUtil.displayFieldCss(practiceInfoForm, 'name', true)" type="text" class="form-control" placeholder="World’s Best Bookkeepers">
+                                    <div class="form-invalid-message" *ngIf="!practiceInfoForm.get('name').valid">Company name cannot be empty.</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <div class="form-group">
+                                            <label for="siteInput01">Header Color</label>
+                                            <input style="cursor:pointer" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="color" (colorPickerChange)="changeColor($event)"  [style.background]="color"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-8">
+                                        <div class="form-group">
+                                            <label for="logoInput01">Logo</label>
+                                            <input id="logoInput01" #logoInput type="file" class="form-control" (change)="fileChange($event)" [(ngModel)]="file" formControlName="logo">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-8">
-                                    <div class="form-group">
-                                        <label for="logoInput01">Logo</label>
-                                        <input id="logoInput01" #logoInput type="file" class="form-control" (change)="fileChange($event)" [(ngModel)]="file" formControlName="logo">
-                                    </div>
+                                <div class="form-group">
+                                    <label for="siteInput01">Website</label>
+                                    <input id="siteInput01" type="text" class="form-control" placeholder="domain.com" formControlName="website">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="siteInput01">Website</label>
-                                <input id="siteInput01" type="text" class="form-control" placeholder="domain.com" formControlName="website">
+
+                            <div class="tab-template" data-tab="2">
+                                <!-- <h4>Social</h4> -->
+                                <div class="form-group">
+                                    <label for="twitterInput01">Twitter</label>
+                                    <input id="twitterInput01" type="text" class="form-control" placeholder="twitter.com/user" formControlName="twitter">
+                                </div>
+                                <div class="form-group">
+                                    <label for="facebookInput01">Facebook</label>
+                                    <input id="facebookInput01" type="text" class="form-control" placeholder="facebook.com/user" formControlName="facebook">
+                                </div>
+                                <div class="form-group">
+                                    <label for="linkedInInput01">LinkedIn</label>
+                                    <input id="linkedInInput01" type="text" class="form-control" placeholder="linkedin.com/company-beta/0000000/" formControlName="linkedin">
+                                </div>
+                            </div>    
+
+                            <div class="tab-template" data-tab="3">
+                                <!-- <h4>Reviews Widget</h4> -->
+                                <div class="form-group">
+                                    <label for="proAdvisorInput01">Find a ProAdvisor</label>
+                                    <input id="proAdvisorInput01" type="text" class="form-control" placeholder="...">
+                                </div>
+                                <div class="form-group">
+                                    <label for="xeroInput01">Xero</label>
+                                    <input id="xeroInput01" type="text" class="form-control" placeholder="...">
+                                </div>
+                                <div class="form-group">
+                                    <label for="yelpInput01">Yelp</label>
+                                    <input id="yelpInput01" type="text" class="form-control" placeholder="...">
+                                </div>
+                                <div class="form-group">
+                                    <label for="linkedInInput02">LinkedIn</label>
+                                    <input id="linkedInInput02" type="text" class="form-control" placeholder="...">
+                                </div>
                             </div>
+
+                            </form>
                         </div>
 
                         <div class="col-sm-7 col-md-6 hidden-xs">
@@ -96,7 +142,7 @@
                                     </div>
                                 </header>
                                 <div class="container-fluid">
-                                    <div class="panel panel-default" style="margin-top:-52px; margin-bottom:-100px; z-index:2; position:relative">
+                                    <div class="panel panel-default" style="margin-top:-52px; z-index:2; position:relative">
                                         <div class="panel-heading">Leave a review</div>
                                         <div class="panel-body">
                                             <div class="row">
@@ -118,49 +164,8 @@
                                 </div>
                             </div>
                         </div>
+                
                     </div>
-
-                    <h4>Social</h4>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="twitterInput01">Twitter</label>
-                                <input id="twitterInput01" type="text" class="form-control" placeholder="twitter.com/user" formControlName="twitter">
-                            </div>
-                            <div class="form-group">
-                                <label for="facebookInput01">Facebook</label>
-                                <input id="facebookInput01" type="text" class="form-control" placeholder="facebook.com/user" formControlName="facebook">
-                            </div>
-                            <div class="form-group">
-                                <label for="linkedInInput01">LinkedIn</label>
-                                <input id="linkedInInput01" type="text" class="form-control" placeholder="linkedin.com/company-beta/0000000/" formControlName="linkedin">
-                            </div>
-                        </div>
-                    </div>
-                    </form>
-
-                    <h4>Reviews Widget</h4>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="proAdvisorInput01">Find a ProAdvisor</label>
-                                <input id="proAdvisorInput01" type="text" class="form-control" placeholder="...">
-                            </div>
-                            <div class="form-group">
-                                <label for="xeroInput01">Xero</label>
-                                <input id="xeroInput01" type="text" class="form-control" placeholder="...">
-                            </div>
-                            <div class="form-group">
-                                <label for="yelpInput01">Yelp</label>
-                                <input id="yelpInput01" type="text" class="form-control" placeholder="...">
-                            </div>
-                            <div class="form-group">
-                                <label for="linkedInInput02">LinkedIn</label>
-                                <input id="linkedInInput02" type="text" class="form-control" placeholder="...">
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
                 <div class="panel-footer">
