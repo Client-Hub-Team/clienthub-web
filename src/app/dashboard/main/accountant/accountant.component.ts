@@ -26,6 +26,7 @@ export class AccountantViewComponent implements OnInit {
   clientSubscription: Subscription;
   generalUtil = new GeneralUtil();
   clients: any = [];
+  loading: boolean = true;
 
   constructor(
     private localStorage: LocalStorageService,
@@ -55,6 +56,7 @@ export class AccountantViewComponent implements OnInit {
 
     const test = this.accountantService.clients.subscribe(sub => {
       this.clients = sub.clients;
+      this.loading = false;
     });
   }
 

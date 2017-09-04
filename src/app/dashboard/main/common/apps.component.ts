@@ -77,8 +77,6 @@ export class AppsWidgetComponent implements OnInit {
     // Subscription to get current_client changes in client list
     this.clientSubscription = this.accountantService.current_company.subscribe(sub => {
 
-      console.log('Changed company', sub);
-
       // Update client and apps variables
       this.all_apps = this.all_apps_list;
       this.current_client = sub.company;
@@ -96,17 +94,20 @@ export class AppsWidgetComponent implements OnInit {
     // Subscription to the drop event from dragula. Used to calculate the order and update it
     // in the backend
     this.dragulaService.drop.subscribe((value) => {
-      let order = 0;
-      this.company_apps.forEach((v) => {
-        v.order = order;
-        order++;
-      });
+      if (value[0] === 'bag-apps-client') {
+        console.log('//ClientAppsBag');
+        let order = 0;
+        this.company_apps.forEach((v) => {
+          v.order = order;
+          order++;
+        });
 
-      this.accountantService.update_company_app_order(this.current_client.id, this.company_apps).then((res) => {
-        const response = res.json();
-      }, (err) => {
-        console.log(err);
-      });
+        this.accountantService.update_company_app_order(this.current_client.id, this.company_apps).then((res) => {
+          const response = res.json();
+        }, (err) => {
+          console.log(err);
+        });
+      }
 
     });
 

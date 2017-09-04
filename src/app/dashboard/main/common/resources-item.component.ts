@@ -3,7 +3,7 @@ import { Component, OnInit, Input, PACKAGE_ROOT_URL, TemplateRef } from '@angula
 import { LocalStorageService } from 'angular-2-local-storage';
 import { Subscription } from 'rxjs/Subscription';
 import * as _ from 'underscore';
- 
+
 /**
  * Dashboard main page component. It's empty for now
  */

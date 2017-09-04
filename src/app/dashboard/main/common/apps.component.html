@@ -41,7 +41,7 @@
             <div class="manage-apps-list">
                 <h4>Selected Apps</h4>
                 <p>Drag and drop the Selected Apps and choose the best order do display it to your client. Click an App to remove it from this list.</p>
-                <div class="manage-apps-row selected-apps scrollbars" [dragula]='"bag-client"' [dragulaModel]='company_apps' [dragulaOptions]='dragulaOptions'>
+                <div class="manage-apps-row selected-apps scrollbars" [dragula]='"bag-apps-client"' [dragulaModel]='company_apps' [dragulaOptions]='dragulaOptions'>
                     <div class="manage-apps-card active" *ngFor="let app of company_apps; let i = index" (click)="delete_company_app(app, i)">
                         <i class="manage-apps-icon feather package" placement="right" tooltip="Global library"></i>
                         <img src="assets/img/logos/{{app.logo}}" alt="{{app.name}}" class="manage-apps-logo">

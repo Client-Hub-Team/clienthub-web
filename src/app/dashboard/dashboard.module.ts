@@ -27,6 +27,7 @@ import { ResourcesItemComponent } from './main/common/resources-item.component';
 // Modals Components
 import { AddClientModalComponent } from './main/accountant/modals/addClientModal.component';
 import { AddAccountantModalComponent } from './main/accountant/modals/addAccountantModal.component';
+import { ManageResourcesModalComponent } from './main/accountant/modals/manage-resources-modal.component';
 
 // Services
 import { DashboardService } from './dashboard.service';
@@ -58,6 +59,7 @@ const routes: Routes = [
     PracticeinfoComponent,
     AddClientModalComponent,
     AddAccountantModalComponent,
+    ManageResourcesModalComponent,
     AppsPageComponent,
     ResourcesItemComponent
   ],
@@ -88,6 +90,6 @@ const routes: Routes = [
     ColorPickerModule
   ],
   providers: [LoginService, DashboardService, AccountantService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
-  entryComponents: [AddClientModalComponent, AddAccountantModalComponent],
+  entryComponents: [AddClientModalComponent, AddAccountantModalComponent, ManageResourcesModalComponent],
 })
 export class DashboardModule {  }

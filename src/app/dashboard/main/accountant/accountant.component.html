@@ -1,4 +1,4 @@
-<div class="empty-placeholder" [hidden]="clients.length != 0" *ngIf="current_company !== undefined">
+<div class="empty-placeholder" *ngIf="clients.length == 0 && loading == false">
 	<div class="container animated animation-300  fadeInUp delay-2">
 			<img src="assets/img/team-illustration.svg" alt="Team" width="280">
 			<h3>Start by adding a client</h3>
