@@ -55,6 +55,10 @@ hr {
 	border-top: 1px solid rgba(179, 186, 197, 0.2);
 }
 
+.bg-grey {
+    background: #f2f3f6;
+}
+
 /* Background top bar */
 .header-bar {
 	background-color: #fff;
