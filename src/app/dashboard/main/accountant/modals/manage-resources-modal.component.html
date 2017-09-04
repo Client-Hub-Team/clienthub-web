@@ -22,8 +22,8 @@
                             <h4 class="manage-apps-filter"><span class="library-name">All Libraries</span> <i class="feather chevron-down"></i></h4>
                         </span>
                         <ul *dropdownMenu class="dropdown-menu" role="menu" style="left:15px;top:30px">
-                            <li role="menuitem"><a class="dropdown-item" href="#">Global Library</a></li>
-                            <li role="menuitem"><a class="dropdown-item" href="#">Practice Library</a></li>
+                            <li role="menuitem"><a class="dropdown-item">Global Library</a></li>
+                            <li role="menuitem"><a class="dropdown-item">Practice Library</a></li>
                         </ul>
                     </div>
                     <div class="manage-apps-search">
@@ -36,8 +36,8 @@
                             Sort by <span class="sort-by">Recently Used</span> <i class="feather chevron-down"></i>
                         </span>
                         <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
-                            <li role="menuitem"><a class="dropdown-item" href="#">Recently Used</a></li>
-                            <li role="menuitem"><a class="dropdown-item" href="#">Alphabetical Order</a></li>
+                            <li role="menuitem"><a class="dropdown-item">Recently Used</a></li>
+                            <li role="menuitem"><a class="dropdown-item">Alphabetical Order</a></li>
                         </ul>
                     </div>
                 </div>
@@ -55,8 +55,8 @@
                         <div class="resources-content">
                             <div class="resources-content-wrapper">
                                 <div class="resources-type">&nbsp;</div>
-                                <div class="resources-title">New Resource</div>
-                                <div class="resources-description">Click to add a new resource</div>
+                                <div class="resources-title" style="top: 15px;">New Resource</div>
+                                <div class="resources-description" style="padding-top: 3px;">Click to add a new resource</div>
                             </div>
                         </div>
                     </a>
@@ -84,11 +84,10 @@
                     <div class="form-group">
                         <label for="ResourceCategory01">Resource type</label>
                         <select id="ResourceCategory01" formControlName="file_type" class="form-control">
-                        <option value="" selected disabled>Choose a category</option>
-                        <option value="5">Link</option>
-                        <option value="3">Video</option>
-                        <option value="1">Document</option>
-                        <option value="4">Image</option>
+                            <option value="5">Link</option>
+                            <option value="3">Video</option>
+                            <option value="1">Document</option>
+                            <option value="4">Image</option>
                         </select>
                     </div>
                 </div>

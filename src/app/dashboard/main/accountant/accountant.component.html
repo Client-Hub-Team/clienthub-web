@@ -32,19 +32,19 @@
 			</div>
 			<div class="row client-info-header-row">
 				<div class="col-sm-4">
-					<a href="#" class="client-info-header-content-wrapper">
+					<a class="client-info-header-content-wrapper">
 						<div class="client-info-header-icon"><i class="feather mail"></i></div>
 						<div class="client-info-header-text">{{current_company.email}}</div>
 					</a>
 				</div>
 				<div class="col-sm-5">
-					<a href="#" class="client-info-header-content-wrapper">
+					<a class="client-info-header-content-wrapper">
 						<div class="client-info-header-icon"><i class="feather map-pin"></i></div>
 						<div class="client-info-header-text">1 Infinite Loop - Cupertino, CA 95014</div>
 					</a>
 				</div>
 				<div class="col-sm-3">
-					<a href="#" class="client-info-header-content-wrapper pull-right">
+					<a class="client-info-header-content-wrapper pull-right">
 						<div class="client-info-header-icon"><i class="feather phone"></i></div>
 						<div class="client-info-header-text">(555) 555-5555</div>
 					</a>
@@ -53,7 +53,7 @@
 
 			<div class="row client-info-header-row">
 				<div class="col-sm-4">
-					<a href="#" class="client-info-header-content-wrapper">
+					<a class="client-info-header-content-wrapper">
 						<div class="client-info-header-icon"><i class="feather globe"></i></div>
 						<div class="client-info-header-text">clientdomain.com</div>
 					</a>
@@ -78,9 +78,9 @@
 				</div>
 			</div>
 
-			<nav class="client-info-header-tabs">
-				<a href="#" data-tab="1" class="active">Gateway</a>
-				<a href="#" data-tab="2">Users</a>
+			<nav class="client-info-header-tabs tabs">
+				<a data-tab="1" class="active">Gateway</a>
+				<a data-tab="2">Users</a>
 			</nav>
 		</div>
 
@@ -171,7 +171,7 @@
 									<span class="bubble-message-sender-time">3:27pm</span>
 								</div>
 								<div class="bubble-message-text">
-									<a href="#"><i class="feather download"></i> filename.pdf</a>
+									<a><i class="feather download"></i> filename.pdf</a>
 								</div>
 							</div>
 						</div>
@@ -197,7 +197,7 @@
 								</div>
 							</td>
 							<td>{{invite.name}} {{invite.email}}</td>
-							<td class="text-right"><a href="#" class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
+							<td class="text-right"><a class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
 						</tr>
 					</table>
 				</div>
@@ -222,8 +222,8 @@
 								<strong *ngIf="user.user.id == current_company.owner.id">Owner</strong>
 								<strong *ngIf="user.user.id != current_company.owner.id">User</strong>
 							</td>
-							<td class="text-right"><a href="#"><i class="feather edit visible-xs"></i><span class="hidden-xs">Edit info</span></a></td>
-							<td class="text-right"><a href="#" class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
+							<td class="text-right"><a><i class="feather edit visible-xs"></i><span class="hidden-xs">Edit info</span></a></td>
+							<td class="text-right"><a class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
 						</tr>
 					</table>
 				</div>
@@ -243,8 +243,8 @@
 								</div>
 							</td>
 							<td>{{accountant.user.first_name}} {{accountant.user.last_name}}</td>
-							<td class="text-right"><a href="#"><i class="feather edit visible-xs"></i><span class="hidden-xs">Manage Assignments</span></a></td>
-							<td class="text-right"><a href="#" class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
+							<td class="text-right"><a><i class="feather edit visible-xs"></i><span class="hidden-xs">Manage Assignments</span></a></td>
+							<td class="text-right"><a class="color-red-hover"><i class="feather trash visible-xs"></i><span class="hidden-xs">Remove</span></a></td>
 						</tr>
 					</table>
 				</div>

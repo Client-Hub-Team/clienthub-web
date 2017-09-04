@@ -1,8 +1,22 @@
 <a class="resources-item" [href]="resource.url" (click)="link ? '' : $event.preventDefault()" target="_blank">
-    <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
+    <div class="resources-thumb">
+        <!-- <img src="http://placehold.it/64x64/111"> -->
+        <div class="resources-type text-center">
+            <i class="feather x3" [ngClass]="{
+                'link': resource.file_type == 5,
+                'image': resource.file_type == 4,
+                'film': resource.file_type == 3,
+                'file-text': resource.file_type == 1 || resource.file_type == 2
+            }"></i><br>
+            <span *ngIf="resource.file_type == 5">Link</span>
+            <span *ngIf="resource.file_type == 4">Image</span>
+            <span *ngIf="resource.file_type == 3">Video</span>
+            <span *ngIf="resource.file_type == 2 || resource.file_type == 1">Document</span>
+        </div>
+    </div>
     <div class="resources-content">
         <div class="resources-content-wrapper">
-            <div class="resources-type">
+            <!-- <div class="resources-type">
                 <i class="feather" [ngClass]="{
                     'image': resource.file_type == 4,
                     'video': resource.file_type == 3,
@@ -11,9 +25,14 @@
                 <span *ngIf="resource.file_type == 4">Image</span>
                 <span *ngIf="resource.file_type == 3">Video</span>
                 <span *ngIf="resource.file_type == 2 || resource.file_type == 1">Document</span>
-            </div>
+            </div> -->
             <div class="resources-title">{{resource.name}}</div>
             <div class="resources-description">{{resource.description}}</div>
+            <div class="resources-tags">
+                <div class="resources-tag">Tag One</div>
+                <div class="resources-tag">Tag Two</div>
+                <div class="resources-tag">Tag Three</div>
+            </div>
         </div>
     </div>
 </a>

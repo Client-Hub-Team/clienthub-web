@@ -101,7 +101,7 @@
 	text-align: center;
 	margin-right: 15px;
 	transition: 150ms;
-	border: 1px solid transparent;
+	border: 1px solid #edeff4;
 	border-radius: 2px;
 }
 
@@ -143,6 +143,26 @@
 	margin-bottom: 5px;
 	margin-top: -4px;
 	margin-left: -2px;
+}
+
+.manage-apps-icon-right {
+	display: inline-block;
+	text-align: right;
+	float: right;
+	clear: right;
+	margin-bottom: 5px;
+	margin-top: -4px;
+	margin-right: -2px;
+}
+
+.manage-apps-icon-right.zap {
+	opacity: .4;
+}
+
+.manage-apps-icon-right.zap.enabled {
+	opacity: 1;
+	color: #ffc000 !important;
+	text-shadow: 0 0 25px #ffc000, 0 0 25px #ffc000, 0 0 25px #ffc000 !important;
 }
 
 .manage-apps-card .app-name {
@@ -306,6 +326,19 @@
 	width: 100%;
 }
 
+.resources-widget .panel-body .resources-item {
+	border-radius: 2px;
+	background: #fff;
+	transition: 150ms;
+	padding: 10px;
+	padding-bottom: 1px;
+	background: #fbfbfb;
+	border: 1px solid #f4f5f7;
+}
+.resources-widget .panel-body .resources-item:hover {
+	border-color: #0084ff;
+}
+
 .resources-item:hover .resources-title {
 	color: #0084ff;
 }
@@ -318,10 +351,12 @@
 
 .resources-type {
 	font-size: 11px;
+	height: 64px; width: 64px;
 	text-transform: uppercase;
 	/* font-weight: 500; */
+	border-radius: 2px;
+    /*background: #f0f1f3;*/
 	color: #9ea6b3;
-	letter-spacing: 2px;
 	margin-top: -2px;
 	padding-bottom: 2px;
 }
@@ -338,18 +373,44 @@
 .resources-content-wrapper {
 	height: 72px;
 	overflow: hidden;
+	position: relative;
+	padding-top: 20px;
+	margin-top: -3px;
 }
 
 .resources-title {
 	color: #333c48;
 	font-weight: 500;
+	overflow: hidden;
+	white-space: nowrap;
+	top: 0; left: 0;
+	max-width: 100%;
+	text-overflow: ellipsis;
+	position: absolute;
 }
 
 .resources-description {
 	color: #7e8692;
 	font-size: 12px;
+	max-height: 30px;
+	line-height: 1.3;
+	overflow: hidden;
 }
 
+.resources-tags {}
+.resources-tag {
+	background: #979ea8;
+	color: #fff;
+	border-radius: 3px;
+	padding: 0 4px;
+	display: inline-block;
+	font-size: 11px;
+}
+
+
+.selected-resources-list .resources-item .resources-tag {
+	background: rgba(0,0,0,.3);
+}
 
 .manage-resources-list .resources-item {
 	padding: 10px;
@@ -409,6 +470,11 @@
 	color: #fff !important;
 	/* background: #0084ff; */
 }
+
+.col-sort-resource.gu-mirror .resources-tag {
+	background: rgba(0,0,0,.3);
+}
+
 
 .col-sort-resource.gu-mirror .resources-item {
 	color: #fff !important;
