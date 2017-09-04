@@ -1,4 +1,4 @@
-<a class="resources-item">
+<a class="resources-item" [href]="resource.url" (click)="link ? '' : $event.preventDefault()" target="_blank">
     <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
     <div class="resources-content">
         <div class="resources-content-wrapper">

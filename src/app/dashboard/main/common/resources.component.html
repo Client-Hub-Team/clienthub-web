@@ -28,16 +28,7 @@
 
           <div class="row">
             <div class="col-md-6" *ngFor="let resource of company_resources; let i = index">
-                <a href="#" class="resources-item">
-                    <div class="resources-thumb"><img src="http://placehold.it/64x64/111"></div>
-                    <div class="resources-content">
-                        <div class="resources-content-wrapper">
-                            <div class="resources-type"><i class="feather image"></i> Image</div>
-                            <div class="resources-title">{{resource.name}}</div>
-                            <div class="resources-description">{{resource.description}}</div>
-                        </div>
-                    </div>
-                </a>
+                <app-resources-item [resource]="resource" [link]="true"></app-resources-item>
             </div>
         </div>  
     </div>
@@ -55,7 +46,7 @@
             <p>Drag and drop the Selected Apps and choose the best order do display it to your client. Click on a Resource to remove it from this list.</p>
             <div class="row selected-resources-list" [dragula]='"bag-client"' [dragulaModel]='company_resources' [dragulaOptions]='dragulaOptions'>
                 <div class="col-md-6 col-sort-resource" *ngFor="let resource of company_resources; let i = index" (click)="delete_company_resource(resource, i)">
-                    <app-resources-item [resource]="resource"></app-resources-item>
+                    <app-resources-item [resource]="resource" [link]="false"></app-resources-item>
                 </div>
             </div>
         </div>
@@ -108,7 +99,7 @@
                     </a>
                 </div>
                 <div class="col-md-6" *ngFor="let resource of all_resources; let i = index" (click)="add_company_resource(resource, i)">
-                    <app-resources-item [resource]="resource"></app-resources-item>
+                    <app-resources-item [resource]="resource" [link]="false"></app-resources-item>
                 </div>
             </div>
         </div>
@@ -118,52 +109,61 @@
         <a href="javascript:" (click)="addResourceScreen(false)" style="display:inline-block;padding:10px 0; margin-bottom:0px"><i class="feather arrow-left"></i> Back</a>
         <h4>Add a new Resource</h4>
         <p>Provide the information to add a new Resource.</p>
-        <form>
+        <form [formGroup]="addResourceForm">
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="ResourceTitleInput01">Resource title</label>
-                        <input id="ResourceTitleInput01" type="text" autofocus class="form-control" placeholder="QuickBooks">
+                        <input id="ResourceTitleInput01" formControlName="name" type="text" autofocus class="form-control" placeholder="QuickBooks">
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="ResourceCategory01">Resource category</label>
-                        <select id="ResourceCategory01" class="form-control">
+                        <label for="ResourceCategory01">Resource type</label>
+                        <select id="ResourceCategory01" formControlName="file_type" class="form-control">
                         <option value="" selected disabled>Choose a category</option>
-                        <option value="Link">Link</option>
-                        <option value="Video">Video</option>
-                        <option value="Document">Document</option>
-                        <option value="Image">Image</option>
+                        <option value="5">Link</option>
+                        <option value="3">Video</option>
+                        <option value="1">Document</option>
+                        <option value="4">Image</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
                         <label for="ResourceDesc01">Resource description</label>
-                        <textarea id="ResourceDesc01" class="form-control" placeholder="Describe this resource"></textarea>
+                        <textarea id="ResourceDesc01" class="form-control" formControlName="description" placeholder="Describe this resource"></textarea>
                     </div>
                 </div>
-                <!-- SHOW IF CHOOSES DOCUMENT/IMG/ETC
                 <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="ResourceDesc01">Resource category</label>
+                        <textarea id="ResourceDesc01" class="form-control" formControlName="category" placeholder="Describe this resource"></textarea>
+                    </div>
+                </div>
+
+                <div class="col-sm-12" *ngIf="addResourceForm.get('file_type').value == 1 ||
+                    addResourceForm.get('file_type').value == 2 ||
+                    addResourceForm.get('file_type').value == 4">
                     <div class="form-group">
                         <label for="ResourceAttachment01">Resource attachment</label>
-                        <input id="ResourceAttachment01" type="file" class="form-control">
+                        <input id="ResourceAttachment01" type="file" #resourceInput class="form-control">
                     </div>
-                </div> -->
-                <!-- SHOWS IF CHOOSE VIDEO/LINK/ETC
-                <div class="col-sm-12">
+                </div>
+
+                <div class="col-sm-12" *ngIf="addResourceForm.get('file_type').value == 5 || addResourceForm.get('file_type').value == 3">
                     <div class="form-group">
                         <label for="ResourceURL01">Resource URL</label>
-                        <input id="ResourceURL01" type="text" class="form-control" placeholder="https://domain.com/resource">
+                        <input id="ResourceURL01" type="text" class="form-control" formControlName="url" placeholder="https://domain.com/resource">
                     </div>
-                </div> -->
+                </div> 
+
             </div>
         </form>
     </div>
-    <div class="modal-footer">
-        <button class="btn btn-primary pull-left" *ngIf="showAddResource == true"><i class="feather plus"></i> Add Resource</button>
-        <button type="button" class="btn btn-default" *ngIf="showAddResource == true" (click)="addResourceScreen(false)">Cancel</button>
-        <button type="button" class="btn btn-default" *ngIf="showAddResource == false" (click)="modalRef.hide()">Close</button>
+    <div class="modal-footer" *ngIf="showAddResource == true">
+        <button class="btn btn-primary pull-left" [disabled]="!addResourceForm.valid" (click)="saveResource()"><i class="feather plus"></i> Add Resource</button>
+        <button type="button" class="btn btn-default" (click)="addResourceScreen(false)">Cancel</button>
+        <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
     </div>
 </ng-template>

@@ -1,7 +1,9 @@
 import { AccountantViewComponent } from '../accountant/accountant.component';
-import { Component, OnInit, PACKAGE_ROOT_URL, TemplateRef } from '@angular/core';
+import { Component, OnInit, PACKAGE_ROOT_URL, TemplateRef, ViewChild, ElementRef } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormUtil } from '../../../utils/formutils';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { DashboardService } from '../../dashboard.service';
 import { AccountantService } from '../accountant/accountant.service';
@@ -20,6 +22,9 @@ import * as _ from 'underscore';
 export class ResourcesWidgetComponent implements OnInit {
 
   public modalRef: BsModalRef;
+  addResourceForm: FormGroup;
+  formUtil: FormUtil;
+  fileForm: FormData = new FormData();
   user: any;
   data: any;
   company: any;
@@ -40,9 +45,12 @@ export class ResourcesWidgetComponent implements OnInit {
     'dots': true
   };
 
+  @ViewChild('resourceInput') resourceInput: ElementRef;
+
   constructor(
     private localStorage: LocalStorageService,
     private modalService: BsModalService,
+    private formBuilder: FormBuilder,
     private dashboardService: DashboardService,
     private accountantService: AccountantService,
     private dragulaService: DragulaService
@@ -66,6 +74,30 @@ export class ResourcesWidgetComponent implements OnInit {
         };
     }
 
+    this.addResourceForm = this.formBuilder.group({
+      name: [
+        null,
+        [Validators.required],
+      ],
+      description: [
+        null,
+        [],
+      ],
+      category: [
+        null,
+        []
+      ],
+      file_type: [
+        null,
+        [Validators.required],
+      ],
+      url: [
+        null,
+        [],
+      ],
+    });
+
+    // Retrieve the resources
     this.dashboardService.get_resources().then((res) => {
       const response = res.json();
       this.all_resources_list = response.all_resources;
@@ -136,6 +168,37 @@ export class ResourcesWidgetComponent implements OnInit {
         this.all_resources.push(resource);
         this.company_resources.splice(index, 1);
     });
+  }
+
+  saveResource(): void {
+    this.fileForm = new FormData();
+
+    if (this.addResourceForm.valid) {
+      if (this.resourceInput !== undefined) {
+        const fileList: FileList = this.resourceInput.nativeElement.files;
+        if (fileList.length > 0) {
+            const file: File = fileList[0];
+            this.fileForm.append('file', file, file.name);
+        }
+      }
+
+      this.fileForm.append('name', this.addResourceForm.get('name').value);
+      this.fileForm.append('category', this.addResourceForm.get('category').value);
+      this.fileForm.append('url', this.addResourceForm.get('url').value);
+      this.fileForm.append('file_type', this.addResourceForm.get('file_type').value);
+      this.fileForm.append('description', this.addResourceForm.get('description').value);
+      this.fileForm.append('company_id', this.company.id);
+
+      this.accountantService.add_resource(this.fileForm).then((res) => {
+        // this.toastr.success('Resource added successfully!', 'Success!');
+        if (this.resourceInput !== undefined) {
+          this.resourceInput.nativeElement.value = '';
+        }
+      }, (err) => {
+        console.log(err);
+        // this.toastr.error(err.json().message, 'Oops!');
+      });
+    }
   }
 
 }

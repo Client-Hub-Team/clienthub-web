@@ -15,6 +15,7 @@ import * as _ from 'underscore';
 export class ResourcesItemComponent implements OnInit {
 
   @Input() resource: any;
+  @Input() link: boolean;
 
   constructor() {}
 

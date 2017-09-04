@@ -131,4 +131,11 @@ export class AccountantService {
     return this.http.post(`${environment.apiUrl}/user/invite`, data, this.options).toPromise();
   }
 
+  add_resource(resource): Promise<any> {
+    const headers = new Headers();
+    headers.set('Authorization', 'JWT ' + this.localStorage.get('access_token'));
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post(`${environment.apiUrl}/resources/`, resource, options).toPromise();
+  }
+
 }

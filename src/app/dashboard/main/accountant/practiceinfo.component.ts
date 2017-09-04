@@ -1,3 +1,4 @@
+import { AfterViewChecked } from 'angular2-color-picker/node_modules/@angular/core/src/metadata/lifecycle_hooks';
 import { Component, OnInit, ViewContainerRef, ViewChild, ElementRef } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { AccountantService } from './accountant.service';
@@ -19,7 +20,7 @@ declare var jQuery: any;
   templateUrl: './practiceinfo.component.html',
   styleUrls: []
 })
-export class PracticeinfoComponent implements OnInit {
+export class PracticeinfoComponent implements OnInit, AfterViewChecked {
 
   @ViewChild('logoInput') logoInput: ElementRef;
   @ViewChild('logoImage') logoImage: ElementRef;
