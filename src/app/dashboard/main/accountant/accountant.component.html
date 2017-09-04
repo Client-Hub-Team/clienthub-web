@@ -19,7 +19,7 @@
 					<h3>
 						{{current_company.name}} <br>
 						<small class="client-info-header-owner" data-tab="2">
-							<div *ngIf="current_company.owner != null" class="avatar avatar-24">{{generalUtil.getNameInitials(current_company.owner.first_name + ' ' + current_company.owner.last_name)}}</div> 
+							<div *ngIf="current_company.owner != null" class="avatar avatar-24" initials [name]="current_company.owner.first_name + ' ' + current_company.owner.last_name"></div> 
 							<span>
 								{{current_company.owner != null ? current_company.owner.first_name : 'No Owner' }} {{current_company.owner != null ? current_company.owner.last_name : ''}}
 							</span>
@@ -192,8 +192,8 @@
 						<tr *ngFor="let invite of current_company.pending_invites">
 							<td>
 								<div class="avatar avatar-32">
-									<img src="http://via.placeholder.com/32x32/b3bac5">
-									<div class="avatar-inicitials">{{generalUtil.getNameInitials(invite.name)}}</div>
+									<!-- <img src="http://via.placeholder.com/32x32/b3bac5"> -->
+									<div class="avatar-initials" initials [name]="invite.name"></div>
 								</div>
 							</td>
 							<td>{{invite.name}} {{invite.email}}</td>
@@ -213,8 +213,8 @@
 						<tr *ngFor="let user of current_company.users">
 							<td width="42">
 								<div class="avatar avatar-32">
-									<img src="http://via.placeholder.com/32x32/b3bac5">
-									<div class="avatar-inicitials">{{generalUtil.getNameInitials(user.user.first_name + ' ' + user.user.last_name)}}</div>
+									<!-- <img src="http://via.placeholder.com/32x32/b3bac5"> -->
+									<div class="avatar-initials" initials [name]="user.user.first_name + ' ' + user.user.last_name"></div>
 								</div>
 							</td>
 							<td>{{user.user.first_name}} {{user.user.last_name}}</td>
@@ -239,8 +239,7 @@
 						<tr *ngFor="let accountant of current_company.accountants">
 							<td>
 								<div class="avatar avatar-32">
-									<img src="http://via.placeholder.com/32x32/b3bac5">
-									<div class="avatar-inicitials">{{generalUtil.getNameInitials(accountant.user.first_name + ' ' + accountant.user.last_name)}}</div>
+									<div class="avatar-inicitials" initials [name]="accountant.user.first_name + ' ' + accountant.user.last_name"></div>
 								</div>
 							</td>
 							<td>{{accountant.user.first_name}} {{accountant.user.last_name}}</td>

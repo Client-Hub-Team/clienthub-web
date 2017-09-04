@@ -23,6 +23,9 @@ import { AppRoutingModule } from './app-routing.module';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import {ToastOptions} from 'ng2-toastr';
 
+// Directives
+// import { InitialsDirective } from './utils/initials.directive';
+
 export class CustomOptions extends ToastOptions {
   positionClass = 'toast-top-center';
 }

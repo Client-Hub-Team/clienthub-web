@@ -12,8 +12,8 @@
                         <tr *ngFor="let accountant of company.accountants">
                             <td>
                                 <div class="avatar avatar-32">
-                                    <img src="http://via.placeholder.com/32x32/b3bac5">
-                                    <div class="avatar-inicitials">{{generalUtil.getNameInitials(accountant.user.first_name + ' ' + accountant.user.last_name)}}</div>
+                                    <!-- <img src="http://via.placeholder.com/32x32/b3bac5"> -->
+                                    <div class="avatar-inicitials" initials [name]="accountant.user.first_name + ' ' + accountant.user.last_name"></div>
                                 </div>
                             </td>
                             <td>{{accountant.user.first_name}} {{accountant.user.last_name}}</td>

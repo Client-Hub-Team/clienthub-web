@@ -6,8 +6,8 @@
 	<!-- Start practice -->
 	 <div class="practice-sidebar animated fadeInLeft" *ngIf="data.user_type == 1">
 		<a routerLink="#" routerLinkActive="active" placement="right" tooltip="Dashboard"><i class="feather compass"></i> <span>Dashboard</span></a>
-		<a routerLink="/dashboard/practice-info" routerLinkActive="active" placement="right" tooltip="Practice"><i class="feather briefcase"></i> <span>Practice</span></a>
 		<a routerLink="/dashboard/main" routerLinkActive="active" placement="right" tooltip="Clients"><i class="feather users"></i> <span>Clients</span></a>
+		<a routerLink="/dashboard/practice-info" routerLinkActive="active" placement="right" tooltip="Practice"><i class="feather briefcase"></i> <span>Practice</span></a>
 		<a routerLink="/dashboard/manage-apps" routerLinkActive="active" placement="right" tooltip="Apps"><i class="feather package"></i> <span>Apps</span></a>
 		<a routerLink="#" routerLinkActive="active" placement="right" tooltip="Resources"><i class="feather folder"></i> <span>Resources</span></a>
 		<a routerLink="#" routerLinkActive="active" placement="right" tooltip="Messages"><i class="feather message-square"></i> <span>Messages</span></a>
@@ -86,8 +86,8 @@
 					<div class="welcome-user">
 						<div class="welcome-user-avatar-wrapper">
 							<div class="avatar avatar-64 avatar-welcome-user">
-								<img src="http://via.placeholder.com/64x64">
-								<div class="avatar-inicitials">{{generalUtil.getNameInitials(user.first_name + ' ' + user.last_name)}}</div>
+								<!-- <img src="http://via.placeholder.com/64x64"> -->
+								<div class="avatar-inicitials" initials [name]="user.first_name + ' ' + user.last_name"></div>
 							</div>
 						</div>
 						<div class="welcome-user-name-wrapper">

@@ -26,7 +26,7 @@ export class AccountantViewComponent implements OnInit {
   clientSubscription: Subscription;
   generalUtil = new GeneralUtil();
   clients: any = [];
-  loading: boolean = true;
+  loading = true;
 
   constructor(
     private localStorage: LocalStorageService,

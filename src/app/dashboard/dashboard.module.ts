@@ -33,6 +33,9 @@ import { ManageResourcesModalComponent } from './main/accountant/modals/manage-r
 import { DashboardService } from './dashboard.service';
 import { AccountantService } from './main/accountant/accountant.service';
 
+// Directives
+import { InitialsDirective } from '../utils/initials.directive';
+
 // Other imports
 import { AuthGuard } from '../guards/auth.guard';
 import { SlickModule } from 'ngx-slick';
@@ -61,7 +64,8 @@ const routes: Routes = [
     AddAccountantModalComponent,
     ManageResourcesModalComponent,
     AppsPageComponent,
-    ResourcesItemComponent
+    ResourcesItemComponent,
+    InitialsDirective
   ],
   exports: [
     DashboardComponent,
@@ -70,6 +74,7 @@ const routes: Routes = [
     ResourcesWidgetComponent,
     AccountantViewComponent,
     ClientViewComponent,
+    InitialsDirective
   ],
   imports: [
     LocalStorageModule.withConfig({
