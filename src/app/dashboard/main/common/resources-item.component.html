@@ -6,8 +6,7 @@
                 <i class="feather" [ngClass]="{
                     'image': resource.file_type == 4,
                     'video': resource.file_type == 3,
-                    'file_text': resource.file_type == 1,
-                    'file_text': resource.file_type == 2
+                    'file_text': resource.file_type == 1 || resource.file_type == 2
                 }"></i>
                 <span *ngIf="resource.file_type == 4">Image</span>
                 <span *ngIf="resource.file_type == 3">Video</span>

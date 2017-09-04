@@ -1,5 +1,4 @@
-import { AfterViewChecked } from 'angular2-color-picker/node_modules/@angular/core/src/metadata/lifecycle_hooks';
-import { Component, OnInit, ViewContainerRef, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { AccountantService } from './accountant.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
