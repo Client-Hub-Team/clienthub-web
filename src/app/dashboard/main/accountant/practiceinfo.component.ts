@@ -107,6 +107,7 @@ export class PracticeinfoComponent implements OnInit, AfterViewChecked {
       if (company != null) {
         this.bsModalRef.content.invited_to = company.id;
         this.bsModalRef.content.name = company.name;
+        this.bsModalRef.content.pending_accountants = company.pending_accountants;
       }
   }
 

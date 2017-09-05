@@ -14,6 +14,7 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
   export class AddAccountantModalComponent implements OnInit {
     public invited_to: any = null;
     public name: any = null;
+    public pending_accountants: any = [];
 
     inviteForm: FormGroup;
     formUtil: FormUtil;
@@ -53,6 +54,7 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
         1,
         this.invited_to
       ).then((res) => {
+        this.pending_accountants.unshift(res.json().invite);
         this.bsModalRef.hide();
         this.toastr.success(res.json().message, 'Success!');
       }, (err) => {
