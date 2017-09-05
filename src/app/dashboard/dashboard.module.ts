@@ -36,6 +36,9 @@ import { AccountantService } from './main/accountant/accountant.service';
 // Directives
 import { InitialsDirective } from '../utils/initials.directive';
 
+// Pipes
+import { ResourceSearchPipe } from './main/common/resources.pipes';
+
 // Other imports
 import { AuthGuard } from '../guards/auth.guard';
 import { SlickModule } from 'ngx-slick';
@@ -65,7 +68,8 @@ const routes: Routes = [
     ManageResourcesModalComponent,
     AppsPageComponent,
     ResourcesItemComponent,
-    InitialsDirective
+    InitialsDirective,
+    ResourceSearchPipe
   ],
   exports: [
     DashboardComponent,

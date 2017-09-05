@@ -36,11 +36,11 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
         ],
         email: [
           null,
-          [Validators.required],
+          [Validators.required, Validators.email],
         ],
         company_name: [
           null,
-          [Validators.required]
+          []
         ]
       });
 
@@ -50,24 +50,28 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
     inviteClient(): void {
       this.inviteFormSubmitAttempt = true;
 
-      this.accountantService.invite_client(
-        this.inviteForm.get('name').value,
-        this.inviteForm.get('email').value,
-        this.inviteForm.get('company_name').value,
-        2,
-        this.invited_to
-      ).then((res) => {
-        console.log(res.json());
-        this.bsModalRef.hide();
-        this.toastr.success(res.json().message, 'Success!');
+      if (this.inviteForm.valid) {
+        this.accountantService.invite_client(
+          this.inviteForm.get('name').value,
+          this.inviteForm.get('email').value,
+          this.inviteForm.get('company_name').value,
+          2,
+          this.invited_to
+        ).then((res) => {
+          console.log(res.json());
+          this.bsModalRef.hide();
+          this.toastr.success(res.json().message, 'Success!');
 
-        this.accountantService.get_clients().then((clientsRes) => {
-          this.accountantService.clients.next({clients: clientsRes.json()});
+          this.accountantService.get_clients().then((clientsRes) => {
+            this.accountantService.clients.next({clients: clientsRes.json()});
+          });
+        }, (err) => {
+          console.log(err);
+          this.toastr.error('Error inviting client', 'Oops!');
         });
-      }, (err) => {
-        console.log(err);
-        this.toastr.error('Error inviting client', 'Oops!');
-      });
+      }
+
+      
     }
 
   }

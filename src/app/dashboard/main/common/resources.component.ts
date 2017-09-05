@@ -38,7 +38,10 @@ export class ResourcesWidgetComponent implements OnInit {
   current_client: any;
   showAddResource: any;
   all_resources_list: any;
+  company_resources_list: any;
+  search = '';
   clientSubscription: Subscription;
+  sort_type = 'Order';
   dragulaOptions: any = {
     direction: 'horizontal'
   };
@@ -111,6 +114,7 @@ export class ResourcesWidgetComponent implements OnInit {
       const response = res.json();
       this.all_resources_list = response.all_resources;
       this.company_resources = response.company_resources;
+      this.company_resources_list = response.company_resources;
       this.all_resources = response.all_resources;
     });
 
@@ -142,6 +146,18 @@ export class ResourcesWidgetComponent implements OnInit {
       this.bsModalRef.content.all_resources_list = this.all_resources_list;
       this.bsModalRef.content.company_id = this.company.id;
       this.bsModalRef.content.current_client = this.current_client;
+  }
+
+  sort(type): void {
+    this.sort_type = type.charAt(0).toUpperCase() + type.slice(1);
+
+    if (type === 'title') {
+      this.company_resources = _.sortBy(this.company_resources, 'name');
+    } else if (type === 'type') {
+      this.company_resources = _.sortBy(this.company_resources, 'file_type');
+    } else {
+      this.company_resources = this.company_resources_list;
+    }
   }
 
 }

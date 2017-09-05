@@ -9,12 +9,14 @@
             <div class="form-group">
                 <label for="inputCompanyOwner">Accountant Name</label>
                 <input id="inputCompanyOwner" type="text" class="form-control" formControlName="name" placeholder="William Hurst" [ngClass]="formUtil.displayFieldCss(inviteForm, 'name', inviteFormSubmitAttempt)">
+                <div class="form-invalid-message" *ngIf="!inviteForm.get('name').valid && inviteForm.get('name').dirty && inviteFormSubmitAttempt">Name cannot be empty</div>
             </div>
         </div>
         <div class="col-sm-6">
             <div class="form-group">
                 <label for="inputCompanyEmail">Accountant Email</label>
                 <input id="inputCompanyEmail" type="text" class="form-control" formControlName="email" [ngClass]="formUtil.displayFieldCss(inviteForm, 'email', inviteFormSubmitAttempt)" placeholder="william@willswindsurf.com">
+                <div class="form-invalid-message" *ngIf="!inviteForm.get('email').valid && inviteForm.get('email').dirty && inviteFormSubmitAttempt">Email must be valid</div>
             </div>
         </div>
     </div>
@@ -26,7 +28,7 @@
             <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Cancel</button>
         </div>
         <div class="col-sm-6">
-            <button type="button" class="btn btn-primary" (click)="inviteClient()">
+            <button type="button" [disabled]="!inviteForm.valid && inviteFormSubmitAttempt" class="btn btn-primary" (click)="inviteClient()">
                 <span>Invite accountant</span>
             </button>
         </div>
