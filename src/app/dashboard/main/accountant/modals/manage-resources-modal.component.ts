@@ -2,6 +2,7 @@ import { Component, ViewContainerRef, OnInit, ViewChild, ElementRef, AfterViewIn
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { AccountantService } from '../accountant.service';
+import { DashboardService } from '../../../dashboard.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormUtil } from '../../../../utils/formutils';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
@@ -34,6 +35,7 @@ import { DragulaService } from 'ng2-dragula';
     constructor(
       public bsModalRef: BsModalRef,
       private accountantService: AccountantService,
+      private dashboardService: DashboardService,
       private formBuilder: FormBuilder,
       public toastr: ToastsManager,
       vcr: ViewContainerRef,
@@ -98,54 +100,61 @@ import { DragulaService } from 'ng2-dragula';
     }
 
     add_company_resource(resource, index): void {
+        this.dashboardService.show_loading.next(true);
         this.accountantService.add_company_resource(this.current_client.id, resource.id).then((res) => {
             const response = res.json();
             resource.order = response.order;
             resource.company_resource_id = response.company_resource_id;
             this.company_resources.push(resource);
             this.all_resources.splice(index, 1);
+            this.dashboardService.show_loading.next(false);
         });
     }
 
     delete_company_resource(resource, index): void {
+        this.dashboardService.show_loading.next(true);
         this.accountantService.delete_company_resource(this.current_client.id, resource.id).then((res) => {
             this.all_resources.push(resource);
             this.company_resources.splice(index, 1);
+            this.dashboardService.show_loading.next(false);
         });
     }
 
     saveResource(): void {
+        this.dashboardService.show_loading.next(true);
         this.fileForm = new FormData();
         console.log(this.resourceInput);
         if (this.addResourceForm.valid) {
-        if (this.resourceInput !== undefined) {
-            const fileList: FileList = this.resourceInput.nativeElement.files;
-            if (fileList.length > 0) {
-                const file: File = fileList[0];
-                this.fileForm.append('file', file, file.name);
-            }
-        }
-
-        this.fileForm.append('name', this.addResourceForm.get('name').value);
-        this.fileForm.append('category', this.addResourceForm.get('category').value);
-        this.fileForm.append('url', this.addResourceForm.get('url').value);
-        this.fileForm.append('file_type', this.addResourceForm.get('file_type').value);
-        this.fileForm.append('description', this.addResourceForm.get('description').value);
-        this.fileForm.append('company_id', this.company_id);
-
-        this.accountantService.add_resource(this.fileForm).then((res) => {
-            this.toastr.success('Resource added successfully!', 'Success!');
             if (this.resourceInput !== undefined) {
-                this.resourceInput.nativeElement.value = '';
+                const fileList: FileList = this.resourceInput.nativeElement.files;
+                if (fileList.length > 0) {
+                    const file: File = fileList[0];
+                    this.fileForm.append('file', file, file.name);
+                }
             }
 
-            this.all_resources_list.unshift(res.json().resource);
-            this.all_resources.unshift(res.json().resource);
-            this.showAddResource = false;
-        }, (err) => {
-            console.log(err);
-            this.toastr.error(err.json().message, 'Oops!');
-        });
+            this.fileForm.append('name', this.addResourceForm.get('name').value);
+            this.fileForm.append('category', this.addResourceForm.get('category').value);
+            this.fileForm.append('url', this.addResourceForm.get('url').value);
+            this.fileForm.append('file_type', this.addResourceForm.get('file_type').value);
+            this.fileForm.append('description', this.addResourceForm.get('description').value);
+            this.fileForm.append('company_id', this.company_id);
+
+            this.accountantService.add_resource(this.fileForm).then((res) => {
+                this.toastr.success('Resource added successfully!', 'Success!');
+                if (this.resourceInput !== undefined) {
+                    this.resourceInput.nativeElement.value = '';
+                }
+
+                this.all_resources_list.unshift(res.json().resource);
+                this.all_resources.unshift(res.json().resource);
+                this.showAddResource = false;
+                this.dashboardService.show_loading.next(false);
+            }, (err) => {
+                console.log(err);
+                this.dashboardService.show_loading.next(false);
+                this.toastr.error(err.json().message, 'Oops!');
+            });
         }
     }
 

@@ -123,19 +123,23 @@ export class AppsWidgetComponent implements OnInit {
   }
 
   add_company_app(app, index): void {
+    this.dashboardService.show_loading.next(true);
     this.accountantService.add_company_app(this.current_client.id, app.id).then((res) => {
         const response = res.json();
         app.order = response.order;
         app.company_app_id = response.company_app_id;
         this.company_apps.push(app);
         this.all_apps.splice(index, 1);
+        this.dashboardService.show_loading.next(false);
     });
   }
 
   delete_company_app(app, index): void {
+    this.dashboardService.show_loading.next(true);
     this.accountantService.delete_company_app(this.current_client.id, app.id).then((res) => {
         this.all_apps.push(app);
         this.company_apps.splice(index, 1);
+        this.dashboardService.show_loading.next(false);
     });
   }
 

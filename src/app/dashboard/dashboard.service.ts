@@ -4,10 +4,14 @@ import { Router } from '@angular/router';
 import 'rxjs/add/operator/toPromise';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
 
 @Injectable()
 export class DashboardService {
+
+  show_loading = new Subject<any>();
 
   constructor(private http: Http, private localStorage: LocalStorageService, private router: Router) {
 

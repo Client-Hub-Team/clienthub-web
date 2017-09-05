@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewContainerRef, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { AccountantService } from './accountant.service';
+import { DashboardService } from '../../dashboard.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormUtil } from '../../../utils/formutils';
 import { GeneralUtil } from '../../../utils/general';
@@ -37,6 +38,7 @@ export class PracticeinfoComponent implements OnInit, AfterViewChecked {
   constructor(
     private localStorage: LocalStorageService,
     private accountantService: AccountantService,
+    private dashboardService: DashboardService,
     private formBuilder: FormBuilder,
     public toastr: ToastsManager,
     vcr: ViewContainerRef,
@@ -79,7 +81,7 @@ export class PracticeinfoComponent implements OnInit, AfterViewChecked {
 
   ngOnInit(): void {
     this.data = this.localStorage.get('data');
-
+    this.dashboardService.show_loading.next(true);
     this.accountantService.get_company_info().then(info => {
       this.company = info.json();
       this.practiceInfoForm.patchValue(
@@ -95,6 +97,7 @@ export class PracticeinfoComponent implements OnInit, AfterViewChecked {
 
       this.color = this.company.color;
       this.practiceInfoForm.get('name').markAsTouched();
+      this.dashboardService.show_loading.next(false);
     });
   }
 
@@ -112,6 +115,7 @@ export class PracticeinfoComponent implements OnInit, AfterViewChecked {
   }
 
   saveCompany(): void {
+    this.dashboardService.show_loading.next(true);
     const fileList: FileList = this.logoInput.nativeElement.files;
     if (fileList.length > 0) {
         const file: File = fileList[0];
@@ -128,8 +132,10 @@ export class PracticeinfoComponent implements OnInit, AfterViewChecked {
     this.accountantService.update_company_info(this.fileForm).then((res) => {
       this.toastr.success('Company info updated successfully!', 'Success!');
       this.logoInput.nativeElement.value = '';
+      this.dashboardService.show_loading.next(false);
     }, (err) => {
       console.log(err);
+      this.dashboardService.show_loading.next(false);
       this.toastr.error(err.json().message, 'Oops!');
     });
   }

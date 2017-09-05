@@ -3,6 +3,7 @@ import { LocalStorageService } from 'angular-2-local-storage';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { GeneralUtil } from '../utils/general';
+import { DashboardService } from './dashboard.service';
 
 declare var jQuery: any;
 
@@ -22,13 +23,18 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   data: any;
   generalUtil = new GeneralUtil();
   company: any;
+  show_loading = false;
 
-  constructor(private localStorage: LocalStorageService, private router: Router) {}
+  constructor(private localStorage: LocalStorageService, private router: Router, private dashboardService: DashboardService) {}
 
   ngOnInit(): void {
     if (this.localStorage.get('company') == null || this.localStorage.get('company') === undefined) {
       this.router.navigate(['/registration/create']);
     }
+
+    this.dashboardService.show_loading.subscribe((sub) => {
+      this.show_loading = sub;
+    });
 
     this.user = this.localStorage.get('user');
     this.data = this.localStorage.get('data');
