@@ -14,8 +14,11 @@
                     <li><a><i class="feather film"></i> Videos</a></li>
                 </ul>
             </span>
-        </span>
+    </span>
         <button *ngIf="data.user_type == 1" class="btn btn-success" (click)="openModal(resourcesModal)">Manage</button>
+        <div class="panel-search" *ngIf="company_resources.length > 4 && data.user_type == 2">
+            <i class="feather search"></i> <input type="text" placeholder="Search in Resources">
+        </div>
     </div>
     <div class="panel-body scrollable">
         <!-- Placeholder -->
@@ -23,6 +26,12 @@
             <img src="assets/img/resources-illustration.svg" alt="Apps" width="130" style="margin-top:10px">
             <h4>Choose the Resources</h4>
             <p>Click on "Manage" to select the Resources to use with this client.</p>
+        </div>
+
+        <div class="text-center" *ngIf="company_resources.length == 0 && data.user_type == 2">
+            <img src="assets/img/resources-illustration.svg" alt="Apps" width="130" style="margin-top:10px">
+            <h4>Your Resources</h4>
+            <p>Your accountant has not selected the Resources yet, please try again later.</p>
         </div>
         <!-- Placeholder -->
 
