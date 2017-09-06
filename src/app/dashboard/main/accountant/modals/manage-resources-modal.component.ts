@@ -1,4 +1,4 @@
-import { Component, ViewContainerRef, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, ViewContainerRef, OnInit, ViewChild, ElementRef, AfterContentChecked} from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { AccountantService } from '../accountant.service';
@@ -14,17 +14,20 @@ import { DragulaService } from 'ng2-dragula';
     templateUrl: './manage-resources-modal.component.html',
     providers: [DragulaService]
   })
-  export class ManageResourcesModalComponent implements OnInit {
-    public company_resources: any = [];
-    public all_resources: any = [];
-    public all_resources_list: any = [];
-    public company_id: any;
-    public current_client: any;
+  export class ManageResourcesModalComponent implements OnInit, AfterContentChecked {
+     company_resources: any = [];
+     global_resources: any = [];
+     practice_resources: any  = [];
+     global_resources_list: any = [];
+     company_id: any;
+     current_client: any;
 
     addResourceForm: FormGroup;
     formUtil: FormUtil;
     fileForm: FormData = new FormData();
     showAddResource: boolean;
+    search = '';
+    current_library = {name: 'Global Library', bucket: this.global_resources};
 
     dragulaOptions: any = {
         direction: 'horizontal'
@@ -42,35 +45,34 @@ import { DragulaService } from 'ng2-dragula';
       private dragulaService: DragulaService,
     ) {
 
-    this.toastr.setRootViewContainerRef(vcr);
+        this.toastr.setRootViewContainerRef(vcr);
 
-    this.addResourceForm = this.formBuilder.group({
-      name: [
-        null,
-        [Validators.required],
-      ],
-      description: [
-        null,
-        [],
-      ],
-      file: [
-        null,
-        [],
-      ],
-      category: [
-        null,
-        []
-      ],
-      file_type: [
-        null,
-        [Validators.required],
-      ],
-      url: [
-        null,
-        [],
-      ],
-    });
-
+        this.addResourceForm = this.formBuilder.group({
+        name: [
+            null,
+            [Validators.required],
+        ],
+        description: [
+            null,
+            [],
+        ],
+        file: [
+            null,
+            [],
+        ],
+        // category: [
+        //     null,
+        //     []
+        // ],
+        file_type: [
+            null,
+            [Validators.required],
+        ],
+        url: [
+            null,
+            [],
+        ],
+        });
     }
 
     ngOnInit(): void {
@@ -95,6 +97,14 @@ import { DragulaService } from 'ng2-dragula';
         });
     }
 
+    ngAfterContentChecked(): void {
+        if (this.current_library.bucket.length === 0) {
+            if (this.bsModalRef.content !== undefined) {
+                this.current_library.bucket = this.bsModalRef.content.global_resources;
+            }
+        }
+    }
+
     public addResourceScreen(value) {
         this.showAddResource = value;
     }
@@ -106,7 +116,7 @@ import { DragulaService } from 'ng2-dragula';
             resource.order = response.order;
             resource.company_resource_id = response.company_resource_id;
             this.company_resources.push(resource);
-            this.all_resources.splice(index, 1);
+            this.current_library.bucket.splice(index, 1);
             this.dashboardService.show_loading.next(false);
         });
     }
@@ -114,7 +124,7 @@ import { DragulaService } from 'ng2-dragula';
     delete_company_resource(resource, index): void {
         this.dashboardService.show_loading.next(true);
         this.accountantService.delete_company_resource(this.current_client.id, resource.id).then((res) => {
-            this.all_resources.push(resource);
+            this.current_library.bucket.push(resource);
             this.company_resources.splice(index, 1);
             this.dashboardService.show_loading.next(false);
         });
@@ -134,7 +144,7 @@ import { DragulaService } from 'ng2-dragula';
             }
 
             this.fileForm.append('name', this.addResourceForm.get('name').value);
-            this.fileForm.append('category', this.addResourceForm.get('category').value);
+            this.fileForm.append('category', '');
             this.fileForm.append('url', this.addResourceForm.get('url').value);
             this.fileForm.append('file_type', this.addResourceForm.get('file_type').value);
             this.fileForm.append('description', this.addResourceForm.get('description').value);
@@ -146,8 +156,7 @@ import { DragulaService } from 'ng2-dragula';
                     this.resourceInput.nativeElement.value = '';
                 }
 
-                this.all_resources_list.unshift(res.json().resource);
-                this.all_resources.unshift(res.json().resource);
+                this.practice_resources.unshift(res.json().resource);
                 this.showAddResource = false;
                 this.dashboardService.show_loading.next(false);
             }, (err) => {
@@ -155,6 +164,16 @@ import { DragulaService } from 'ng2-dragula';
                 this.dashboardService.show_loading.next(false);
                 this.toastr.error(err.json().message, 'Oops!');
             });
+        }
+    }
+
+    change_library(type): void {
+        if (type === 'global') {
+            this.current_library.bucket = this.global_resources;
+            this.current_library.name = 'Global Library';
+        } else if (type === 'practice') {
+            this.current_library.bucket = this.practice_resources;
+            this.current_library.name = 'Practice Library';
         }
     }
 

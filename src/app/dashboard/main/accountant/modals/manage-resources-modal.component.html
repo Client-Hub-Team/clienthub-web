@@ -19,19 +19,19 @@
                 <div class="col-xs-6">
                     <div dropdown style="display:inline-block">
                         <span dropdownToggle>
-                            <h4 class="manage-apps-filter"><span class="library-name">All Libraries</span> <i class="feather chevron-down"></i></h4>
+                            <h4 class="manage-apps-filter"><span class="library-name">{{current_library.name}}</span> <i class="feather chevron-down"></i></h4>
                         </span>
                         <ul *dropdownMenu class="dropdown-menu" role="menu" style="left:15px;top:30px">
-                            <li role="menuitem"><a class="dropdown-item">Global Library</a></li>
-                            <li role="menuitem"><a class="dropdown-item">Practice Library</a></li>
+                            <li role="menuitem" (click)="change_library('global')"><a class="dropdown-item">Global Library</a></li>
+                            <li role="menuitem" (click)="change_library('practice')"><a class="dropdown-item">Practice Library</a></li>
                         </ul>
                     </div>
                     <div class="manage-apps-search">
-                        <i class="feather search"></i> <input type="text" placeholder="Search in Resources">
+                        <i class="feather search"></i> <input type="text" [(ngModel)]="search" placeholder="Search in Resources">
                     </div>
                 </div>
                 <div class="col-xs-6 text-right">
-                    <div class="manage-apps-order" dropdown placement="bottom right">
+                    <!-- <div class="manage-apps-order" dropdown placement="bottom right">
                         <span dropdownToggle>
                             Sort by <span class="sort-by">Recently Used</span> <i class="feather chevron-down"></i>
                         </span>
@@ -39,7 +39,7 @@
                             <li role="menuitem"><a class="dropdown-item">Recently Used</a></li>
                             <li role="menuitem"><a class="dropdown-item">Alphabetical Order</a></li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@
         <div>
             <p>Simply click on a Resource to add it to the Selected Resources.</p>
             <div class="row not-selected-resources-list manage-resources-list scrollbars">
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="current_library.name == 'Practice Library'">
                     <a href="javascript:" (click)="addResourceScreen(true)" class="resources-item resources-item-add">
                         <div class="resources-thumb">
                             <i class="feather plus x3" style="margin-left: 14px;margin-top: 9px;display: inline-block;color:#7e8692!important"></i>
@@ -61,7 +61,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-md-6" *ngFor="let resource of all_resources; let i = index" (click)="add_company_resource(resource, i)">
+                <div class="col-md-6" *ngFor="let resource of (current_library.bucket | resourceSearch:search); let i = index" (click)="add_company_resource(resource, i)">
                     <app-resources-item [resource]="resource" [link]="false"></app-resources-item>
                 </div>
             </div>
@@ -97,12 +97,12 @@
                         <textarea id="ResourceDesc01" class="form-control" formControlName="description" placeholder="Describe this resource"></textarea>
                     </div>
                 </div>
-                <div class="col-sm-12">
+                <!-- <div class="col-sm-12">
                     <div class="form-group">
                         <label for="ResourceDesc01">Resource category</label>
                         <textarea id="ResourceDesc01" class="form-control" formControlName="category" placeholder="Describe this resource"></textarea>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="col-sm-12" [hidden]="!(addResourceForm.get('file_type').value == 1 ||
                     addResourceForm.get('file_type').value == 2 ||
@@ -126,5 +126,5 @@
     <div class="modal-footer" *ngIf="showAddResource == true">
         <button class="btn btn-primary pull-left" [disabled]="!addResourceForm.valid" (click)="saveResource()"><i class="feather plus"></i> Add Resource</button>
         <button type="button" class="btn btn-default" (click)="addResourceScreen(false)">Cancel</button>
-        <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>
+        <!-- <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button> -->
     </div>

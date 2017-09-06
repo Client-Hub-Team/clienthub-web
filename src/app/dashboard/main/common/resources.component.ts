@@ -32,13 +32,24 @@ export class ResourcesWidgetComponent implements OnInit {
   user: any;
   data: any;
   company: any;
-  all_resources: any;
+
+  // Store global resources from /resource when ACCOUNTANT
+  global_resources: any = [];
+
+  // Store company specific resources from /resource when ACCOUNTANT
+  practice_resources: any = [];
+
+  // Store company specific resources from /resource when CLIENT
   company_resources: any = [];
+
+  // Fixed copy for sorting purposes
+  fixed_global_resources: any = [];
+
+
   innerWidth: any;
   current_client: any;
   showAddResource: any;
-  all_resources_list: any;
-  company_resources_list: any;
+
   search = '';
   clientSubscription: Subscription;
   sort_type = 'Order';
@@ -109,31 +120,32 @@ export class ResourcesWidgetComponent implements OnInit {
         };
     }
 
-    // Retrieve the resources
+    // Retrieve the resources for ACCOUNTANT or CLIENT
     this.dashboardService.get_resources().then((res) => {
       const response = res.json();
-      this.all_resources_list = response.all_resources;
+      this.global_resources = response.global_resources;
       this.company_resources = response.company_resources;
-      this.company_resources_list = response.company_resources;
-      this.all_resources = response.all_resources;
+      this.practice_resources = response.practice_resources;
     });
 
 
     // Subscription to get current_client changes in client list
     this.clientSubscription = this.accountantService.current_company.subscribe(sub => {
 
-      console.log('Changed company', sub);
-
-      // Update client and apps variables
-      this.all_resources = this.all_resources_list;
+      // Update CLIENT and RESOURCES variable
       this.current_client = sub.company;
       this.company_resources = sub.company.resources;
+      // this.company_resources_list = sub.company.resources;
 
       // Calculate the differences between the full list and the client list
       // so it only shows in the complete list the apps that user doesnt have
-      this.all_resources = _.filter(this.all_resources, (obj) => {
+      this.global_resources = _.filter(this.global_resources, (obj) => {
          return !_.findWhere(this.company_resources, obj);
       });
+
+      this.practice_resources = _.filter(this.practice_resources, (obj) => {
+        return !_.findWhere(this.company_resources, obj);
+     });
 
     });
 
@@ -141,22 +153,25 @@ export class ResourcesWidgetComponent implements OnInit {
 
   public openModal(template: TemplateRef<any>) {
     this.bsModalRef = this.modalService.show(ManageResourcesModalComponent, {class: 'modal-lg'});
-      this.bsModalRef.content.company_resources = this.company_resources;
-      this.bsModalRef.content.all_resources = this.all_resources;
-      this.bsModalRef.content.all_resources_list = this.all_resources_list;
-      this.bsModalRef.content.company_id = this.company.id;
-      this.bsModalRef.content.current_client = this.current_client;
+    this.bsModalRef.content.company_resources = this.company_resources;
+
+    this.bsModalRef.content.global_resources = this.global_resources;
+    this.bsModalRef.content.practice_resources = this.practice_resources;
+
+    // this.bsModalRef.content.all_resources_list = this.all_resources_list;
+    this.bsModalRef.content.company_id = this.company.id;
+    this.bsModalRef.content.current_client = this.current_client;
+    
   }
 
   sort(type): void {
     this.sort_type = type.charAt(0).toUpperCase() + type.slice(1);
-
     if (type === 'title') {
       this.company_resources = _.sortBy(this.company_resources, 'name');
     } else if (type === 'type') {
       this.company_resources = _.sortBy(this.company_resources, 'file_type');
     } else {
-      this.company_resources = this.company_resources_list;
+      this.company_resources = _.sortBy(this.company_resources, 'order');
     }
   }
 

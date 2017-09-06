@@ -10,12 +10,9 @@ export class InitialsDirective implements OnInit {
     @Input() name: string;
 
     constructor(public el: ElementRef, public renderer: Renderer) {
-        console.log('Initials Directive');
     }
 
     ngOnInit(): void {
-       console.log('Initials Directive');
-       console.log(this.el);
        this.el.nativeElement.innerHTML = this.generalUtil.getNameInitials(this.name);
     //    this.renderer.setElementStyle(this.el.nativeElement, 'display', 'none');
     }
